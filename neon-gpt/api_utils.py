@@ -9,7 +9,7 @@ import os
 
 
 # === CONFIGURATION === #
-API_KEY = "API-KEY"  # <-- Replace with your actual OpenRouter API key
+API_KEY = "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"  # <-- Replace with your actual OpenRouter API key
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 #MODEL = "meta-llama/llama-4-maverick-17b-128e-instruct"
 MODEL = "deepseek/deepseek-v3.2-exp"
@@ -33,7 +33,7 @@ def save_output_to_file(content: str, filename: str):
     return filepath
 
 
-def send_prompt(prompt: str, persona: str, step_name: str, max_retries: int = 3, wait_time: int = 20):
+def send_prompt(prompt: str, persona: str, step_name: str, model: str = None, max_retries: int = 3, wait_time: int = 20):
     """
     Send a single stateless prompt to OpenRouter, extract between markers,
     save output to a file, and return the extracted content.
@@ -46,6 +46,7 @@ def send_prompt(prompt: str, persona: str, step_name: str, max_retries: int = 3,
                    "Avoid explanations or text outside these markers."
     }
     user_prompt = {"role": "user", "content": prompt}
+    selected_model = model or MODEL
 
     for attempt in range(1, max_retries + 1):
         response = requests.post(
@@ -55,8 +56,9 @@ def send_prompt(prompt: str, persona: str, step_name: str, max_retries: int = 3,
                 "Content-Type": "application/json"
             },
             json={
-                "model": MODEL,
-                "messages": [system_prompt, user_prompt]
+                "model": selected_model,
+                "messages": [system_prompt, user_prompt],
+                "max_tokens": 4096,
             }
         )
 

@@ -483,7 +483,204 @@ Q: What is the oxygen level of the sample site? → Entities: SamplingSite, Envi
 """
 
 
-        }
+        },
+    "GeothermalEnergy": {
+
+    "domain_name": "Geothermal Energy",
+
+    "domain_description": """
+Geothermal energy is thermal energy extracted from the Earth's crust.
+
+The domain includes geothermal energy resources, geothermal heating,
+geothermal power generation, geothermal power plants, hot springs,
+ground-source heat pumps, geological heat sources, tectonic settings,
+resource extraction, and the use of geothermal energy for heating
+and electricity generation.
+
+Geothermal heating includes the direct use of geothermal energy for
+heating buildings and water. Geothermal power refers to the generation
+of electricity from geothermal energy.
+
+Geothermal resources are associated with heat contained within the Earth
+and are commonly exploited in regions where geological conditions allow
+heat to be accessed economically. Many geothermal developments occur
+near tectonic plate boundaries.
+
+The domain also includes the exploration and development of geothermal
+resources, drilling, geothermal fluids, heat extraction, power generation,
+district heating, industrial uses, and operational issues that arise in
+geothermal systems.
+""",
+
+    "persona": """
+You are an expert knowledge engineer and geothermal energy specialist
+with expertise in renewable energy systems, geology, geothermal resource
+development, and semantic web technologies.
+
+You specialize in representing knowledge about geothermal resources,
+subsurface heat, geothermal heating, geothermal electricity generation,
+geothermal power plants, wells, geothermal fluids, ground-source heat
+pumps, geological formations, tectonic settings, and geothermal resource
+development.
+
+You are experienced in constructing ontologies using RDF, OWL, and
+Turtle syntax. Your task is to identify and formalize the important
+entities, relationships, properties, and constraints present in the
+provided geothermal-energy domain description.
+
+You should base ontology generation on the supplied domain description
+and avoid introducing unrelated concepts.
+
+You are tasked with generating an ontology about the following domain.
+
+Domain Name: Geothermal Energy
+
+Domain Description:
+
+Geothermal energy is thermal energy extracted from the Earth's crust.
+
+The domain includes geothermal energy resources, geothermal heating,
+geothermal power generation, geothermal power plants, hot springs,
+ground-source heat pumps, geological heat sources, tectonic settings,
+resource extraction, and the use of geothermal energy for heating
+and electricity generation.
+
+Geothermal heating includes the direct use of geothermal energy for
+heating buildings and water. Geothermal power refers to the generation
+of electricity from geothermal energy.
+
+Geothermal resources are associated with heat contained within the Earth
+and are commonly exploited in regions where geological conditions allow
+heat to be accessed economically. Many geothermal developments occur
+near tectonic plate boundaries.
+
+The domain also includes the exploration and development of geothermal
+resources, drilling, geothermal fluids, heat extraction, power generation,
+district heating, industrial uses, and operational issues that arise in
+geothermal systems.
+""",
+
+    "keywords": """
+GeothermalEnergy, ThermalEnergy, EarthCrust, GeothermalResource,
+GeothermalHeating, GeothermalPower, GeothermalPowerPlant,
+GroundSourceHeatPump, HotSpring, GeothermalFluid, GeothermalWell,
+HeatExtraction, ElectricityGeneration, DistrictHeating,
+TectonicPlateBoundary, GeologicalFormation, ResourceExploration,
+ResourceDevelopment, Drilling, SubsurfaceHeat
+""",
+
+    "ontology_metrics": """
+Classes: 100, Object Properties: 35, Data Properties: 20, Individuals: 10
+""",
+
+    "reuse_example_desc": """
+Classes and properties related to geothermal resources, geothermal
+heating, geothermal electricity generation, subsurface heat extraction,
+geological settings, wells, fluids, and geothermal development.
+""",
+
+    "few_shot_reuse": """
+(GeothermalEnergy - extractedFrom - EarthCrust)
+(GeothermalResource - contains - ThermalEnergy)
+(GeothermalEnergy - usedFor - GeothermalHeating)
+(GeothermalEnergy - usedFor - GeothermalPower)
+(GeothermalPowerPlant - generates - Electricity)
+(GeothermalHeating - heats - Building)
+(GeothermalHeating - heats - Water)
+(GroundSourceHeatPump - extractsHeatFrom - Ground)
+(GeothermalWell - accesses - GeothermalResource)
+(GeothermalWell - contains - GeothermalFluid)
+(GeothermalResource - locatedIn - GeologicalFormation)
+(GeothermalResource - associatedWith - TectonicPlateBoundary)
+(GeothermalFluid - transports - ThermalEnergy)
+(GeothermalPowerPlant - uses - GeothermalFluid)
+(GeothermalProject - requires - ResourceExploration)
+""",
+
+    "few_shot_entity_extraction": """
+Q: Where is geothermal energy extracted from?
+→ Entities: GeothermalEnergy, EarthCrust | Property: extractedFrom
+
+Q: What can geothermal energy be used for?
+→ Entities: GeothermalEnergy, GeothermalHeating, GeothermalPower | Property: usedFor
+
+Q: What does a geothermal power plant generate?
+→ Entities: GeothermalPowerPlant, Electricity | Property: generates
+
+Q: What resource does a geothermal well access?
+→ Entities: GeothermalWell, GeothermalResource | Property: accesses
+
+Q: What carries heat from underground geological formations?
+→ Entities: GeothermalFluid, ThermalEnergy | Property: transports
+
+Q: Where are many geothermal resources located?
+→ Entities: GeothermalResource, TectonicPlateBoundary | Property: associatedWith
+
+Q: What technology extracts heat from the ground?
+→ Entities: GroundSourceHeatPump, Ground | Property: extractsHeatFrom
+""",
+
+    "few_shot_cqs": """
+Q: Where is geothermal energy extracted from?
+Q: What are the main uses of geothermal energy?
+Q: How is geothermal energy used for heating?
+Q: How is electricity generated from geothermal energy?
+Q: What does a geothermal power plant use to generate electricity?
+Q: What is a geothermal resource?
+Q: How are geothermal resources accessed?
+Q: What role do geothermal wells play?
+Q: What role do geothermal fluids play in heat extraction?
+Q: Where are geothermal resources commonly located?
+Q: What technologies are used to extract geothermal heat?
+Q: What stages are involved in developing a geothermal resource?
+""",
+
+    "few_shot_data_properties": """
+:resourceTemperature a :GeothermalDataProperty ;
+    rdfs:comment "Represents the temperature associated with a geothermal resource." .
+
+:wellDepth a :GeothermalDataProperty ;
+    rdfs:comment "Represents the depth of a geothermal well." .
+
+:fluidTemperature a :GeothermalDataProperty ;
+    rdfs:comment "Represents the temperature of a geothermal fluid." .
+
+:powerCapacity a :GeothermalDataProperty ;
+    rdfs:comment "Represents the electrical generation capacity of a geothermal power plant." .
+
+:heatOutput a :GeothermalDataProperty ;
+    rdfs:comment "Represents the amount of thermal energy delivered by a geothermal heating system." .
+
+:location a :GeospatialDataProperty ;
+    rdfs:comment "Represents the geographic location of a geothermal resource or facility." .
+""",
+
+    "few_shot_individuals": """
+:GeothermalEnergy a :EnergySource ;
+    rdfs:comment "Thermal energy extracted from the Earth's crust." .
+
+:EarthCrust a :GeologicalRegion ;
+    rdfs:comment "The outer solid layer of Earth from which geothermal energy can be extracted." .
+
+:GeothermalHeating a :EnergyApplication ;
+    rdfs:comment "The use of geothermal energy for heating buildings and water." .
+
+:GeothermalPower a :EnergyApplication ;
+    rdfs:comment "The generation of electrical power using geothermal energy." .
+
+:GroundSourceHeatPump a :HeatPumpTechnology ;
+    rdfs:comment "A technology that extracts heat stored in the ground." .
+
+:GeothermalWell a :Well ;
+    rdfs:comment "A well used to access subsurface geothermal resources." .
+
+:GeothermalFluid a :Fluid ;
+    rdfs:comment "A subsurface fluid involved in transferring geothermal heat." .
+
+:TectonicPlateBoundary a :GeologicalFeature ;
+    rdfs:comment "A boundary between tectonic plates associated with many accessible geothermal resources." .
+"""
+}
     
 }
 
@@ -505,9 +702,6 @@ few_shot_entity_extraction = config["few_shot_entity_extraction"]
 few_shot_data_properties = config["few_shot_data_properties"]
 few_shot_individuals = config["few_shot_individuals"]
 few_shot_cqs = config["few_shot_cqs"]
-
-# === Initialize Ontology File === #
-ontology_file = init_ontology_file(domain_name)
 
 
 # === Helper wrapper for ontology steps === #
@@ -554,6 +748,10 @@ def send_and_capture(prompt: str, persona: str, step_name: str, ontology_file: s
 # === ONTOLOGY GENERATION PIPELINE === #
 def run_pipeline():
     print("\n🚀 Starting NeOn-GPT Ontology Generation Pipeline...\n")
+
+    # === Initialize Ontology File === #
+    ontology_file = init_ontology_file(domain_name)
+
     # Step 1 – Specification
     send_and_capture(
         f"""You are a {persona}. The {domain_name} describes {domain_description}.
@@ -681,6 +879,9 @@ def run_pipeline():
     # Append Step 5 output to unified conceptual model file
     append_output("step_05_initial_conceptual_model", "conceptual_model")
 
+    # Thesis baseline experiment:
+    # Stop after the initial conceptual model.
+    return
 
     # Step 6 – Extend Conceptual Model (first refinement)
     send_and_capture(
@@ -1313,6 +1514,6 @@ with no duplication of existing content..
 
 
 
-
-run_pipeline()
-#print("Ontology generation pipeline is ready to run. Uncomment the run_pipeline() call to execute.")
+if __name__ == "__main__":
+    run_pipeline()
+    #print("Ontology generation pipeline is ready to run. Uncomment the run_pipeline() call to execute.")
