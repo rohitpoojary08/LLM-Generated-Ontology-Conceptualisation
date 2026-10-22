@@ -1,0 +1,51 @@
+**Ontology Requirements Specification Document (ORSD)**
+**Based on the NeOn Methodology**
+
+**1. Purpose of the Ontology**
+The purpose of the Geothermal Energy Ontology is to provide a formal, structured, and machine-interpretable representation of knowledge concerning the extraction and utilization of thermal energy from the Earth's subsurface. It aims to standardize terminology, clarify relationships between key concepts, and enable inference to support data integration, knowledge sharing, and decision-making in the geothermal energy sector.
+
+**2. Scope of the Ontology**
+The ontology's scope is bounded by the concepts explicitly mentioned in the domain description and keywords. It will cover:
+*   The core concept of **GeothermalEnergy** as **ThermalEnergy** sourced from the **EarthCrust**.
+*   **GeothermalResources**, their association with **SubsurfaceHeat** and **GeologicalFormations**, and their location relative to **TectonicPlateBoundaries**.
+*   The processes of **ResourceExploration** and **ResourceDevelopment**, including the activity of **Drilling** to create **GeothermalWells**.
+*   The extracted **GeothermalFluid** and the process of **HeatExtraction**.
+*   The applications of geothermal energy: **GeothermalHeating** (including **DistrictHeating** and building/water heating) and **GeothermalPower** (i.e., **ElectricityGeneration**).
+*   The systems and facilities involved: **GeothermalPowerPlants**, **GroundSourceHeatPumps**, and natural features like **HotSprings**.
+*   The operational issues arising within geothermal systems.
+
+Concepts outside this scope (e.g., detailed thermodynamics, specific engineering materials, financial models, or other renewable energy types like solar or wind) will not be included unless they are directly necessary to define the core geothermal concepts.
+
+**3. Target Group**
+*   **Domain Experts & Researchers:** Geologists, reservoir engineers, and energy scientists for knowledge organization and research collaboration.
+*   **Industry Professionals & Developers:** Project developers, planners, and engineers involved in geothermal exploration, plant operation, and system design.
+*   **Policy Makers & Regulators:** Individuals needing a clear framework for categorizing resources, technologies, and applications for policy development.
+*   **Data Scientists & Semantic Web Developers:** Professionals tasked with integrating heterogeneous geothermal datasets from various sources (e.g., geological surveys, power plant databases, environmental reports).
+*   **Educators & Students:** As a structured learning resource for geothermal energy concepts.
+
+**4. Intended Uses**
+*   **Knowledge Integration & Interoperability:** To serve as a common reference model for linking disparate datasets (geological, operational, environmental).
+*   **Resource Classification & Cataloguing:** To classify geothermal resources, projects, and technologies based on their properties (e.g., temperature, tectonic setting, application type).
+*   **Decision Support Systems:** To provide a semantic layer for tools that assess site suitability, technology selection, or environmental impact.
+*   **Information Retrieval & Question Answering:** To enable sophisticated search and querying over geothermal knowledge bases.
+*   **Scenario Modeling & Inference:** To reason about relationships (e.g., infer that a resource located near a tectonic boundary is likely high-temperature).
+
+**5. Functional Requirements (Competency Questions - CQs)**
+The ontology must be able to answer questions such as:
+*   CQ1: What is a **GeothermalResource** and with what type of **GeologicalFormation** is it commonly associated?
+*   CQ2: What are the main types of **GeothermalHeating** applications?
+*   CQ3: What is the difference between a **GeothermalPowerPlant** and a **GroundSourceHeatPump** system?
+*   CQ4: What processes (**ResourceExploration**, **Drilling**, **HeatExtraction**) are involved in developing a **GeothermalResource**?
+*   CQ5: Where are most **GeothermalResources** for power generation located (e.g., near **TectonicPlateBoundaries**)?
+*   CQ6: What is extracted via a **GeothermalWell** (**GeothermalFluid**) and for what purpose (**ElectricityGeneration**, heating)?
+*   CQ7: What are the outputs of a **GeothermalPowerPlant**?
+*   CQ8: What natural surface feature (**HotSpring**) can indicate the presence of a **GeothermalResource**?
+*   CQ9: What are common operational issues in geothermal systems?
+*   CQ10: How is **DistrictHeating** related to **GeothermalHeating**?
+
+**6. Non-Functional Requirements**
+*   **Clarity & Comprehensibility:** Definitions for classes and properties must be clear and aligned with domain expert terminology.
+*   **Extensibility:** The ontology design should allow for future integration with related ontologies (e.g., geology, energy infrastructure, environmental impact).
+*   **Reusability:** Core modules (e.g., for geological settings or energy conversion processes) should be decoupled where possible to maximize reuse.
+*   **Consistency & Coherence:** The ontology must be logically consistent, with no contradictory axioms. It should be coherent, meaning all inferred subsumptions are intended and sensible for domain experts.
+*   **Computational Efficiency:** While expressiveness is needed, the ontology should be designed to support efficient reasoning for the stated competency questions, adhering to appropriate OWL profiles (e.g., OWL 2 EL, QL) where complex reasoning is not required.

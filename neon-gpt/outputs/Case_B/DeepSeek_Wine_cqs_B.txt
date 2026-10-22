@@ -1,0 +1,100 @@
+1. What are the main categories of wine based on color?
+2. Which wines are classified as sparkling wines?
+3. What are the sweetness levels available for wines?
+4. Which wines are considered fortified?
+5. What grape varieties are used in a specific wine?
+6. What percentage of each grape variety is used in a blend?
+7. What is the genetic lineage of a grape variety?
+8. What flavor profiles are associated with a grape variety?
+9. Which climates and soils are suitable for a grape variety?
+10. What viticultural practices are applied in a vineyard?
+11. What planting techniques are used for a grape variety?
+12. What pruning methods are employed in a vineyard?
+13. What pest control measures are implemented?
+14. What harvesting methods are used for grapes?
+15. What winemaking processes are involved in producing a wine?
+16. What crushing techniques are applied?
+17. What types of fermentation (primary, malolactic) are used?
+18. What aging vessels (oak barrels, stainless steel tanks) are utilized?
+19. What clarification methods are employed?
+20. What bottling processes are followed?
+21. What sensory characteristics describe a wine's aroma?
+22. What sensory characteristics describe a wine's flavor?
+23. What is the body level of a wine?
+24. What are the tannin levels in a wine?
+25. What is the alcohol content of a wine?
+26. What is the acidity level of a wine?
+27. What is the residual sugar content of a wine?
+28. What quality indicators are associated with a wine?
+29. What geographical indications apply to a wine?
+30. What appellations designate a wine's origin?
+31. What regions of origin influence a wine's style?
+32. What terroir factors affect a wine's characteristics?
+33. What wineries produce a specific wine?
+34. What is the history of a winery?
+35. What are the production volumes of a winery?
+36. What signature styles are associated with a winery?
+37. What vintages are available for a wine?
+38. What climatic conditions affected a specific vintage?
+39. How did climatic conditions influence grape development in a vintage?
+40. What are the characteristics of a wine from a specific vintage?
+41. What foods pair well with a wine?
+42. What flavor compatibilities guide wine and food pairings?
+43. What cultural traditions influence wine pairings?
+44. What labeling requirements apply to a wine?
+45. What classification systems govern a wine?
+46. What legal standards regulate wine production?
+47. What marketing regulations apply to a wine?
+48. What are the sub-regions within a wine region?
+49. What are the legal designations for a wine region?
+50. What are the key enological processes for a wine type?
+51. What vineyard management techniques impact grape quality?
+52. What are the chemical properties of a wine?
+53. What are the sensory profiles of a wine style?
+54. What are the production methods for a fortified wine?
+55. What are the effervescence levels of a wine?
+56. What are the color classifications for a wine?
+57. What are the sweetness classifications for a wine?
+58. What are the fortification types for a wine?
+59. What are the grape cultivar details for a wine?
+60. What are the vineyard management details for a grape variety?
+61. What are the winemaking process details for a wine?
+62. What are the sensory attribute details for a wine?
+63. What are the geographical origin details for a wine?
+64. What are the producer details for a wine?
+65. What are the vintage details for a wine?
+66. What are the food pairing details for a wine?
+67. What are the regulatory details for a wine?
+68. What are the subclasses of wine based on effervescence?
+69. What are the subclasses of wine based on sweetness?
+70. What are the subclasses of wine based on fortification?
+71. What are the subclasses of grape varieties?
+72. What are the subclasses of viticultural practices?
+73. What are the subclasses of winemaking processes?
+74. What are the subclasses of wine attributes?
+75. What are the subclasses of geographical indications?
+76. What are the subclasses of wineries?
+77. What are the subclasses of vintages?
+78. What are the subclasses of wine pairings?
+79. What are the subclasses of regulatory aspects?
+80. What are the relationships between wine types and grape varieties?
+81. What are the relationships between wine and production regions?
+82. What are the relationships between wine and vintages?
+83. What are the relationships between wine and tasting notes?
+84. What are the relationships between wine and food pairings?
+85. What are the relationships between wine and wineries?
+86. What are the relationships between wine and regulatory aspects?
+87. What are the relationships between grape varieties and viticultural practices?
+88. What are the relationships between wine and winemaking processes?
+89. What are the relationships between wine and wine attributes?
+90. What are the data properties for alcohol content?
+91. What are the data properties for residual sugar?
+92. What are the data properties for vintage year?
+93. What are the data properties for winery founding date?
+94. What are the data properties for production volume?
+95. What are the data properties for acidity level?
+96. What are the data properties for tannin level?
+97. What are the data properties for body level?
+98. What are the data properties for aroma description?
+99. What are the data properties for flavor description?
+100. What are the data properties for quality indicators?

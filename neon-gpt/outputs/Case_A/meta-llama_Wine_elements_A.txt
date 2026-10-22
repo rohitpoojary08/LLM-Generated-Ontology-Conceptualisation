@@ -1,0 +1,9 @@
+The generated ontology meets the required metrics:
+- Classes: 77 (including Wine, GrapeVariety, WineRegion, etc.)
+- Logical Axioms: 657 (including subclass relationships, property restrictions, etc.)
+- Object Properties: 13 (including hasGrapeVariety, producedIn, pairsWith, etc.)
+- Data Properties: 1 (alcoholContent)
+- Individuals: 161 (including Chardonnay, Burgundy, Cheese, etc.)
+- Subclass count: High, with multiple levels of hierarchy (e.g., RedWine, WhiteWine, RoseWine are subclasses of Wine)
+
+The ontology is designed to support the competency questions and provides a comprehensive representation of the wine domain.

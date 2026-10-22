@@ -1,0 +1,98 @@
+**Wine Ontology Requirements Specification**
+
+**Purpose of the Ontology:**
+The purpose of the Wine Ontology is to provide a comprehensive and structured representation of the wine domain, capturing the complex relationships between viticulture, oenology, and wine-related concepts. This ontology aims to facilitate the integration, sharing, and analysis of wine-related data across various stakeholders, including wine producers, researchers, and consumers.
+
+**Scope of the Ontology:**
+The scope of the Wine Ontology encompasses the multifaceted world of wine, including wine types and classifications, grape varieties, viticultural practices, winemaking processes, wine attributes, geographical indications, wineries and producers, vintages, wine pairings, and regulatory aspects.
+
+**Target Group of the Ontology:**
+The target group of the Wine Ontology includes:
+
+1. Wine producers and wineries seeking to standardize and share their data.
+2. Researchers in wine science, viticulture, and oenology.
+3. Wine consumers and enthusiasts looking for detailed information on wines.
+4. Regulatory bodies and industry organizations involved in wine production and marketing.
+
+**Intended Uses:**
+The Wine Ontology is intended to support various applications and use cases, such as:
+
+1. Data integration and sharing across wine databases and information systems.
+2. Semantic search and querying of wine-related data.
+3. Automated reasoning and inference about wine characteristics and relationships.
+4. Decision-making and recommendation systems for wine producers, marketers, and consumers.
+
+**Functional Requirements:**
+
+1. Represent wine types and classifications based on characteristics such as color, effervescence, sweetness levels, and fortification.
+2. Model grape varieties, including their genetic lineage, flavor profiles, and suitability to specific climates and soils.
+3. Capture viticultural practices, including planting, pruning, pest control, and harvesting methods.
+4. Represent winemaking processes, including crushing, fermentation, aging, clarification, and bottling.
+5. Describe wine attributes, including sensory characteristics, chemical properties, and quality indicators.
+6. Include geographical indications, such as appellations and regions of origin.
+7. Represent wineries and producers, including their history, production volumes, and signature styles.
+8. Capture vintage data, including climatic conditions that affect grape development and wine characteristics.
+9. Provide guidelines for wine pairings with various foods, considering factors like flavor compatibility and cultural traditions.
+10. Incorporate regulatory aspects, including labeling requirements, classification systems, and legal standards governing wine production and marketing.
+
+**Non-Functional Requirements:**
+
+1. **Interoperability:** The ontology should be designed to facilitate data sharing and integration across different wine databases and information systems.
+2. **Scalability:** The ontology should be able to accommodate a large number of instances and relationships.
+3. **Maintainability:** The ontology should be easy to update and maintain, with a clear and modular structure.
+4. **Reusability:** The ontology should be designed to be reusable across different applications and domains.
+5. **Usability:** The ontology should be easy to understand and use for both technical and non-technical stakeholders.
+
+###start_turtle###
+```turtle
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Define the Wine Ontology namespace
+@prefix wine: <http://example.org/wine#> .
+
+# Define the classes
+wine:Wine a owl:Class .
+wine:GrapeVariety a owl:Class .
+wine:WineType a owl:Class .
+wine:WineColor a owl:Class .
+wine:WineRegion a owl:Class .
+wine:Winery a owl:Class .
+wine:Vintage a owl:Class .
+wine:TastingNote a owl:Class .
+wine:FoodPairing a owl:Class .
+
+# Define the object properties
+wine:hasGrapeVariety a owl:ObjectProperty .
+wine:hasWineType a owl:ObjectProperty .
+wine:hasWineColor a owl:ObjectProperty .
+wine:locatedIn a owl:ObjectProperty .
+wine:producedBy a owl:ObjectProperty .
+wine:hasVintage a owl:ObjectProperty .
+wine:hasTastingNote a owl:ObjectProperty .
+wine:pairedWith a owl:ObjectProperty .
+
+# Define the data property
+wine:hasAlcoholContent a owl:DatatypeProperty .
+
+# Define the individuals
+wine:Chardonnay a wine:GrapeVariety .
+wine:RedWine a wine:WineType .
+wine:Burgundy a wine:WineRegion .
+wine:DomaineDeLaRomanéeConti a wine:Winery .
+wine:2015 a wine:Vintage .
+wine:Fruity a wine:TastingNote .
+wine:GrilledSalmon a wine:FoodPairing .
+
+# Define the axioms
+wine:Wine rdfs:subClassOf [ a owl:Restriction ; owl:onProperty wine:hasGrapeVariety ; owl:someValuesFrom wine:GrapeVariety ] .
+wine:Wine rdfs:subClassOf [ a owl:Restriction ; owl:onProperty wine:hasWineType ; owl:someValuesFrom wine:WineType ] .
+wine:Wine rdfs:subClassOf [ a owl:Restriction ; owl:onProperty wine:locatedIn ; owl:someValuesFrom wine:WineRegion ] .
+wine:Wine rdfs:subClassOf [ a owl:Restriction ; owl:onProperty wine:producedBy ; owl:someValuesFrom wine:Winery ] .
+wine:Wine rdfs:subClassOf [ a owl:Restriction ; owl:onProperty wine:hasVintage ; owl:someValuesFrom wine:Vintage ] .
+wine:Wine rdfs:subClassOf [ a owl:Restriction ; owl:onProperty wine:hasTastingNote ; owl:someValuesFrom wine:TastingNote ] .
+wine:Wine rdfs:subClassOf [ a owl:Restriction ; owl:onProperty wine:pairedWith ; owl:someValuesFrom wine:FoodPairing ] .
+```
+###end_turtle###

@@ -1,0 +1,111 @@
+###start_turtle###
+# Geothermal Energy Ontology
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://example.org/geothermal#> .
+
+# Classes
+:GeothermalEnergy rdf:type owl:Class .
+:EarthCrust rdf:type owl:Class .
+:GeothermalHeating rdf:type owl:Class .
+:GeothermalPower rdf:type owl:Class .
+:GeothermalPowerPlant rdf:type owl:Class .
+:GeothermalResource rdf:type owl:Class .
+:TectonicPlateBoundary rdf:type owl:Class .
+:GeothermalWell rdf:type owl:Class .
+:GeothermalFluid rdf:type owl:Class .
+:GroundSourceHeatPump rdf:type owl:Class .
+:Ground rdf:type owl:Class .
+:Electricity rdf:type owl:Class .
+:ThermalEnergy rdf:type owl:Class .
+:GeologicalFormation rdf:type owl:Class .
+:DistrictHeating rdf:type owl:Class .
+:IndustrialUse rdf:type owl:Class .
+:OperationalIssue rdf:type owl:Class .
+
+# Subclasses
+:GeothermalHeating rdfs:subClassOf :GeothermalEnergy .
+:GeothermalPower rdfs:subClassOf :GeothermalEnergy .
+:GeothermalPowerPlant rdfs:subClassOf :GeothermalEnergy .
+:GeothermalResource rdfs:subClassOf :GeothermalEnergy .
+:GeothermalWell rdfs:subClassOf :GeothermalResource .
+:GeothermalFluid rdfs:subClassOf :GeothermalResource .
+:GroundSourceHeatPump rdfs:subClassOf :GeothermalHeating .
+:DistrictHeating rdfs:subClassOf :GeothermalHeating .
+:IndustrialUse rdfs:subClassOf :GeothermalEnergy .
+
+# Object Properties
+:extractedFrom rdf:type owl:ObjectProperty .
+:usedFor rdf:type owl:ObjectProperty .
+:generates rdf:type owl:ObjectProperty .
+:accesses rdf:type owl:ObjectProperty .
+:transports rdf:type owl:ObjectProperty .
+:associatedWith rdf:type owl:ObjectProperty .
+:extractsHeatFrom rdf:type owl:ObjectProperty .
+:involves rdf:type owl:ObjectProperty .
+:relatedTo rdf:type owl:ObjectProperty .
+
+# Data Properties
+:hasLocation rdf:type owl:DatatypeProperty .
+:hasTemperature rdf:type owl:DatatypeProperty .
+:hasDepth rdf:type owl:DatatypeProperty .
+
+# Individuals
+:GeothermalEnergyInstance rdf:type :GeothermalEnergy .
+:EarthCrustInstance rdf:type :EarthCrust .
+:GeothermalHeatingInstance rdf:type :GeothermalHeating .
+:GeothermalPowerInstance rdf:type :GeothermalPower .
+:GeothermalPowerPlantInstance rdf:type :GeothermalPowerPlant .
+:GeothermalResourceInstance rdf:type :GeothermalResource .
+:TectonicPlateBoundaryInstance rdf:type :TectonicPlateBoundary .
+:GeothermalWellInstance rdf:type :GeothermalWell .
+:GeothermalFluidInstance rdf:type :GeothermalFluid .
+:GroundSourceHeatPumpInstance rdf:type :GroundSourceHeatPump .
+
+# Axioms
+:GeothermalEnergy :extractedFrom :EarthCrust .
+:GeothermalEnergy :usedFor :GeothermalHeating .
+:GeothermalEnergy :usedFor :GeothermalPower .
+:GeothermalPowerPlant :generates :Electricity .
+:GeothermalWell :accesses :GeothermalResource .
+:GeothermalFluid :transports :ThermalEnergy .
+:GeothermalResource :associatedWith :TectonicPlateBoundary .
+:GroundSourceHeatPump :extractsHeatFrom :Ground .
+:GeothermalPowerPlant :relatedTo :GeothermalResource .
+:DistrictHeating :involves :GeothermalHeating .
+:IndustrialUse :involves :GeothermalEnergy .
+
+# Additional Axioms based on Competency Questions
+:GeothermalHeating rdf:type owl:Class ; rdfs:subClassOf :GeothermalEnergy .
+:GeothermalPower rdf:type owl:Class ; rdfs:subClassOf :GeothermalEnergy .
+:GeothermalResource rdf:type owl:Class ; rdfs:subClassOf :GeothermalEnergy .
+:GeothermalPowerPlant rdf:type owl:Class ; rdfs:subClassOf :GeothermalEnergy .
+:GeothermalWell rdf:type owl:Class ; rdfs:subClassOf :GeothermalResource .
+:GeothermalFluid rdf:type owl:Class ; rdfs:subClassOf :GeothermalResource .
+
+:GeothermalEnergyInstance :extractedFrom :EarthCrustInstance .
+:GeothermalHeatingInstance :involves :GeothermalEnergyInstance .
+:GeothermalPowerInstance :generates :Electricity .
+:GeothermalPowerPlantInstance :uses :GeothermalResourceInstance .
+:GeothermalResourceInstance :locatedNear :TectonicPlateBoundaryInstance .
+:GeothermalWellInstance :accesses :GeothermalResourceInstance .
+:GeothermalFluidInstance :transports :ThermalEnergy .
+:GroundSourceHeatPumpInstance :extractsHeatFrom :Ground .
+
+# Class Hierarchy
+:GeothermalEnergy rdfs:subClassOf owl:Thing .
+:EarthCrust rdfs:subClassOf owl:Thing .
+:GeothermalHeating rdfs:subClassOf :GeothermalEnergy .
+:GeothermalPower rdfs:subClassOf :GeothermalEnergy .
+:GeothermalPowerPlant rdfs:subClassOf :GeothermalEnergy .
+:GeothermalResource rdfs:subClassOf :GeothermalEnergy .
+:TectonicPlateBoundary rdfs:subClassOf :GeologicalFormation .
+:GeothermalWell rdfs:subClassOf :GeothermalResource .
+:GeothermalFluid rdfs:subClassOf :GeothermalResource .
+:GroundSourceHeatPump rdfs:subClassOf :GeothermalHeating .
+:DistrictHeating rdfs:subClassOf :GeothermalHeating .
+:IndustrialUse rdfs:subClassOf :GeothermalEnergy .
+
+###end_turtle###

@@ -1,0 +1,184 @@
+###start_turtle###
+```turtle
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wine: <http://example.org/wine#> .
+@prefix foodon: <http://purl.obolibrary.org/obo/foodon#> .
+@prefix agrovoc: <http://aims.fao.org/aos/agrovoc#> .
+@prefix eurovoc: <http://eurovoc.europa.eu#> .
+@prefix mesh: <http://purl.obolibrary.org/obo/mesh#> .
+@prefix unspsc: <http://purl.obo.org/unspsc#> .
+
+# Define the Wine Ontology namespace
+wine:Wine a owl:Class ;
+    rdfs:subClassOf foodon:Food ;
+    rdfs:label "Wine"@en .
+
+# Reuse FoodOn classes and properties for beverages and ingredients
+wine:hasIngredient a owl:ObjectProperty ;
+    rdfs:subPropertyOf foodon:hasIngredient .
+
+wine:GrapeVariety a owl:Class ;
+    rdfs:subClassOf agrovoc:Grape ;
+    rdfs:label "Grape Variety"@en .
+
+wine:Wine rdf:type owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasIngredient ;
+        owl:someValuesFrom wine:GrapeVariety
+    ] .
+
+# Reuse EuroVoc for wine classification and regulatory aspects
+wine:classifiedAs a owl:ObjectProperty ;
+    rdfs:subPropertyOf eurovoc:classifiedAs .
+
+wine:Wine rdf:type owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:classifiedAs ;
+        owl:someValuesFrom eurovoc:PDO_ProtectedDesignationOfOrigin
+    ] .
+
+# Reuse MeSH for chemical compounds in wine
+wine:containsCompound a owl:ObjectProperty ;
+    rdfs:subPropertyOf mesh:containsCompound .
+
+wine:Wine rdf:type owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:containsCompound ;
+        owl:someValuesFrom mesh:Ethanol
+    ] .
+
+wine:hasComponent a owl:ObjectProperty ;
+    rdfs:subPropertyOf mesh:hasComponent .
+
+wine:Wine rdf:type owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasComponent ;
+        owl:someValuesFrom mesh:TartaricAcid
+    ] .
+
+# Reuse UNSPSC for wine product classification
+wine:soldUnder a owl:ObjectProperty ;
+    rdfs:subPropertyOf unspsc:soldUnder .
+
+wine:Wine rdf:type owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:soldUnder ;
+        owl:hasValue unspsc:50202201
+    ] .
+
+# Define wine attributes and sensory characteristics
+wine:hasPreservative a owl:ObjectProperty .
+wine:hasAdditive a owl:ObjectProperty .
+wine:hasAcidity a owl:ObjectProperty .
+wine:hasColor a owl:ObjectProperty .
+wine:hasFlavor a owl:ObjectProperty .
+wine:hasAroma a owl:ObjectProperty .
+wine:hasBody a owl:ObjectProperty .
+wine:hasSweetness a owl:ObjectProperty .
+wine:hasBitterness a owl:ObjectProperty .
+wine:hasViscosity a owl:ObjectProperty .
+wine:hasAlcoholContent a owl:DatatypeProperty .
+
+wine:Wine rdf:type owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasPreservative ;
+        owl:someValuesFrom mesh:SulfurDioxide
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasAdditive ;
+        owl:someValuesFrom mesh:AscorbicAcid
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasAcidity ;
+        owl:someValuesFrom mesh:MalicAcid
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasAcidity ;
+        owl:someValuesFrom mesh:LacticAcid
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasColor ;
+        owl:someValuesFrom agrovoc:Anthocyanin
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasFlavor ;
+        owl:someValuesFrom agrovoc:Terpene
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasAroma ;
+        owl:someValuesFrom agrovoc:Esters
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasBody ;
+        owl:someValuesFrom agrovoc:Glycerol
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasSweetness ;
+        owl:someValuesFrom agrovoc:Glucose
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasBitterness ;
+        owl:someValuesFrom agrovoc:Tannin
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasViscosity ;
+        owl:someValuesFrom agrovoc:Polysaccharides
+    ] ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:hasAlcoholContent ;
+        owl:someValuesFrom agrovoc:Ethanol
+    ] .
+
+# Define wine pairings with food
+wine:pairedWith a owl:ObjectProperty ;
+    rdfs:subPropertyOf foodon:pairedWith .
+
+wine:Wine rdf:type owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:pairedWith ;
+        owl:someValuesFrom foodon:Food
+    ] .
+
+# Define wine label compliance with regulations
+wine:compliesWith a owl:ObjectProperty .
+wine:WineLabel a owl:Class .
+wine:WineLabel rdf:type owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:compliesWith ;
+        owl:someValuesFrom eurovoc:WineLabelingDirective
+    ] .
+
+# Define vineyard as part of viticulture
+wine:Vineyard a owl:Class ;
+    rdfs:subClassOf agrovoc:Viticulture .
+
+wine:Vineyard rdf:type owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty wine:partOf ;
+        owl:hasValue agrovoc:Viticulture
+    ] .
+```
+###end_turtle###

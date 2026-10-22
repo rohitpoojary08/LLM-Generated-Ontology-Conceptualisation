@@ -1,0 +1,139 @@
+###start_turtle###
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://example.org/geothermal#> .
+
+:GeothermalEnergy rdf:type owl:Class .
+:GeothermalEnergy rdfs:label "Geothermal Energy" .
+:GeothermalEnergy rdfs:comment "Thermal energy extracted from the Earth's crust" .
+
+:EarthCrust rdf:type owl:Class .
+:EarthCrust rdfs:label "Earth's Crust" .
+
+:extractedFrom rdf:type owl:ObjectProperty .
+:extractedFrom rdfs:domain :GeothermalEnergy .
+:extractedFrom rdfs:range :EarthCrust .
+
+:GeothermalResource rdf:type owl:Class .
+:GeothermalResource rdfs:label "Geothermal Resource" .
+:GeothermalResource rdfs:comment "Contains thermal energy" .
+
+:contains rdf:type owl:ObjectProperty .
+:contains rdfs:domain :GeothermalResource .
+:contains rdfs:range :ThermalEnergy .
+
+:ThermalEnergy rdf:type owl:Class .
+:ThermalEnergy rdfs:label "Thermal Energy" .
+
+:GeothermalHeating rdf:type owl:Class .
+:GeothermalHeating rdfs:label "Geothermal Heating" .
+:GeothermalHeating rdfs:comment "Direct use of geothermal energy for heating" .
+
+:usedFor rdf:type owl:ObjectProperty .
+:usedFor rdfs:domain :GeothermalEnergy .
+:usedFor rdfs:range owl:unionOf (:GeothermalHeating, :GeothermalPower) .
+
+:GeothermalPower rdf:type owl:Class .
+:GeothermalPower rdfs:label "Geothermal Power" .
+:GeothermalPower rdfs:comment "Generation of electricity from geothermal energy" .
+
+:GeothermalPowerPlant rdf:type owl:Class .
+:GeothermalPowerPlant rdfs:label "Geothermal Power Plant" .
+:GeothermalPowerPlant rdfs:comment "Generates electricity from geothermal energy" .
+
+:generates rdf:type owl:ObjectProperty .
+:generates rdfs:domain :GeothermalPowerPlant .
+:generates rdfs:range :Electricity .
+
+:Electricity rdf:type owl:Class .
+:Electricity rdfs:label "Electricity" .
+
+:heats rdf:type owl:ObjectProperty .
+:heats rdfs:domain :GeothermalHeating .
+:heats rdfs:range owl:unionOf (:Building, :Water) .
+
+:Building rdf:type owl:Class .
+:Building rdfs:label "Building" .
+
+:Water rdf:type owl:Class .
+:Water rdfs:label "Water" .
+
+:GroundSourceHeatPump rdf:type owl:Class .
+:GroundSourceHeatPump rdfs:label "Ground-Source Heat Pump" .
+:GroundSourceHeatPump rdfs:comment "Extracts heat from the ground" .
+
+:extractsHeatFrom rdf:type owl:ObjectProperty .
+:extractsHeatFrom rdfs:domain :GroundSourceHeatPump .
+:extractsHeatFrom rdfs:range :Ground .
+
+:Ground rdf:type owl:Class .
+:Ground rdfs:label "Ground" .
+
+:GeothermalWell rdf:type owl:Class .
+:GeothermalWell rdfs:label "Geothermal Well" .
+:GeothermalWell rdfs:comment "Accesses geothermal resources" .
+
+:accesses rdf:type owl:ObjectProperty .
+:accesses rdfs:domain :GeothermalWell .
+:accesses rdfs:range :GeothermalResource .
+
+:contains rdf:type owl:ObjectProperty .
+:contains rdfs:domain :GeothermalWell .
+:contains rdfs:range :GeothermalFluid .
+
+:GeothermalFluid rdf:type owl:Class .
+:GeothermalFluid rdfs:label "Geothermal Fluid" .
+:GeothermalFluid rdfs:comment "Transports thermal energy" .
+
+:transports rdf:type owl:ObjectProperty .
+:transports rdfs:domain :GeothermalFluid .
+:transports rdfs:range :ThermalEnergy .
+
+:locatedIn rdf:type owl:ObjectProperty .
+:locatedIn rdfs:domain :GeothermalResource .
+:locatedIn rdfs:range :GeologicalFormation .
+
+:GeologicalFormation rdf:type owl:Class .
+:GeologicalFormation rdfs:label "Geological Formation" .
+
+:associatedWith rdf:type owl:ObjectProperty .
+:associatedWith rdfs:domain :GeothermalResource .
+:associatedWith rdfs:range :TectonicPlateBoundary .
+
+:TectonicPlateBoundary rdf:type owl:Class .
+:TectonicPlateBoundary rdfs:label "Tectonic Plate Boundary" .
+
+:uses rdf:type owl:ObjectProperty .
+:uses rdfs:domain :GeothermalPowerPlant .
+:uses rdfs:range :GeothermalFluid .
+
+:GeothermalProject rdf:type owl:Class .
+:GeothermalProject rdfs:label "Geothermal Project" .
+:GeothermalProject rdfs:comment "Requires resource exploration" .
+
+:requires rdf:type owl:ObjectProperty .
+:requires rdfs:domain :GeothermalProject .
+:requires rdfs:range :ResourceExploration .
+
+:ResourceExploration rdf:type owl:Class .
+:ResourceExploration rdfs:label "Resource Exploration" .
+
+:GeothermalEnergy :extractedFrom :EarthCrust .
+:GeothermalResource :contains :ThermalEnergy .
+:GeothermalEnergy :usedFor :GeothermalHeating .
+:GeothermalEnergy :usedFor :GeothermalPower .
+:GeothermalPowerPlant :generates :Electricity .
+:GeothermalHeating :heats :Building .
+:GeothermalHeating :heats :Water .
+:GroundSourceHeatPump :extractsHeatFrom :Ground .
+:GeothermalWell :accesses :GeothermalResource .
+:GeothermalWell :contains :GeothermalFluid .
+:GeothermalResource :locatedIn :GeologicalFormation .
+:GeothermalResource :associatedWith :TectonicPlateBoundary .
+:GeothermalFluid :transports :ThermalEnergy .
+:GeothermalPowerPlant :uses :GeothermalFluid .
+:GeothermalProject :requires :ResourceExploration .
+
+###end_turtle###
+###end_output###

@@ -1,0 +1,313 @@
+###start_turtle###
+@prefix : <http://www.semanticweb.org/geothermal-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+
+:GeothermalOntology rdf:type owl:Ontology ;
+    rdfs:label "Geothermal Energy Ontology" ;
+    rdfs:comment "An ontology for representing knowledge about geothermal energy extraction and utilization." ;
+    owl:imports <http://www.opengis.net/ont/geosparql> ;
+    owl:imports <http://www.w3.org/ns/sosa/> ;
+    owl:imports <http://www.w3.org/ns/prov#> .
+
+### Classes ###
+# Core Concepts (Reusing foundational notions of energy and matter)
+:Energy rdf:type owl:Class ;
+    rdfs:label "Energy" ;
+    rdfs:comment "A fundamental physical concept." .
+
+:ThermalEnergy rdf:type owl:Class ;
+    rdfs:subClassOf :Energy ;
+    rdfs:label "Thermal Energy" ;
+    rdfs:comment "Energy in the form of heat." .
+
+:MaterialEntity rdf:type owl:Class ;
+    rdfs:label "Material Entity" ;
+    rdfs:comment "A physical object or substance." .
+
+:EarthCrust rdf:type owl:Class ;
+    rdfs:subClassOf :MaterialEntity ;
+    rdfs:label "Earth Crust" ;
+    rdfs:comment "The outermost solid shell of the Earth." .
+
+# Geothermal Core
+:GeothermalEnergy rdf:type owl:Class ;
+    rdfs:subClassOf :ThermalEnergy ;
+    rdfs:label "Geothermal Energy" ;
+    rdfs:comment "Thermal energy extracted from the Earth's crust." .
+
+:GeothermalResource rdf:type owl:Class ;
+    rdfs:subClassOf [
+        rdf:type owl:Restriction ;
+        owl:onProperty :contains ;
+        owl:someValuesFrom :ThermalEnergy
+    ] , [
+        rdf:type owl:Restriction ;
+        owl:onProperty :locatedIn ;
+        owl:someValuesFrom :GeologicalFormation
+    ] ;
+    rdfs:label "Geothermal Resource" ;
+    rdfs:comment "A volume of the subsurface containing economically accessible thermal energy." .
+
+# Geological Context (Reusing spatial/geological concepts)
+:GeologicalFormation rdf:type owl:Class ;
+    rdfs:subClassOf geo:Feature ;
+    rdfs:label "Geological Formation" ;
+    rdfs:comment "A body of rock with distinctive characteristics." .
+
+:TectonicPlateBoundary rdf:type owl:Class ;
+    rdfs:subClassOf geo:Feature ;
+    rdfs:label "Tectonic Plate Boundary" ;
+    rdfs:comment "A region where tectonic plates meet." .
+
+# Fluids and Infrastructure
+:GeothermalFluid rdf:type owl:Class ;
+    rdfs:subClassOf :MaterialEntity ;
+    rdfs:label "Geothermal Fluid" ;
+    rdfs:comment "A fluid (water/steam) that transports thermal energy from a geothermal resource." .
+
+:GeothermalWell rdf:type owl:Class ;
+    rdfs:subClassOf sosa:Platform ;
+    rdfs:label "Geothermal Well" ;
+    rdfs:comment "A borehole drilled to access a geothermal resource." .
+
+# Systems and Facilities
+:GeothermalSystem rdf:type owl:Class ;
+    rdfs:subClassOf sosa:System ;
+    rdfs:label "Geothermal System" ;
+    rdfs:comment "A system designed to extract and/or utilize geothermal energy." .
+
+:GeothermalPowerPlant rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalSystem ;
+    rdfs:label "Geothermal Power Plant" ;
+    rdfs:comment "A facility that generates electricity from geothermal energy." .
+
+:GroundSourceHeatPump rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalSystem ;
+    rdfs:label "Ground-Source Heat Pump" ;
+    rdfs:comment "A system that exchanges heat with the shallow ground for heating and cooling." .
+
+# Natural Features
+:HotSpring rdf:type owl:Class ;
+    rdfs:subClassOf geo:Feature ;
+    rdfs:label "Hot Spring" ;
+    rdfs:comment "A spring produced by the emergence of geothermally heated groundwater." .
+
+# Applications and Outputs
+:GeothermalApplication rdf:type owl:Class ;
+    rdfs:label "Geothermal Application" ;
+    rdfs:comment "An end-use application of geothermal energy." .
+
+:GeothermalHeating rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalApplication ;
+    rdfs:label "Geothermal Heating" ;
+    rdfs:comment "The direct use of geothermal energy for heating purposes." .
+
+:DistrictHeating rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalHeating ;
+    rdfs:label "District Heating" ;
+    rdfs:comment "A system for distributing heat generated in a centralized location for residential and commercial heating." .
+
+:GeothermalPower rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalApplication ;
+    rdfs:label "Geothermal Power" ;
+    rdfs:comment "The generation of electricity from geothermal energy." .
+
+:Electricity rdf:type owl:Class ;
+    rdfs:subClassOf :Energy ;
+    rdfs:label "Electricity" ;
+    rdfs:comment "A form of energy resulting from the flow of electric charge." .
+
+# Processes and Activities (Reusing PROV-O and SSN/SOSA for activities and processes)
+:GeothermalActivity rdf:type owl:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "Geothermal Activity" ;
+    rdfs:comment "An activity related to the geothermal domain." .
+
+:ResourceExploration rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalActivity ;
+    rdfs:label "Resource Exploration" ;
+    rdfs:comment "The activity of searching for and assessing geothermal resources." .
+
+:ResourceDevelopment rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalActivity ;
+    rdfs:label "Resource Development" ;
+    rdfs:comment "The activity of preparing a geothermal resource for exploitation, including drilling." .
+
+:Drilling rdf:type owl:Class ;
+    rdfs:subClassOf :ResourceDevelopment ;
+    rdfs:label "Drilling" ;
+    rdfs:comment "The process of boring holes into the earth to create geothermal wells." .
+
+:HeatExtraction rdf:type owl:Class ;
+    rdfs:subClassOf sosa:Actuation ;
+    rdfs:label "Heat Extraction" ;
+    rdfs:comment "The process of removing thermal energy from a geothermal resource, typically via fluid." .
+
+:ElectricityGeneration rdf:type owl:Class ;
+    rdfs:subClassOf sosa:Actuation ;
+    rdfs:label "Electricity Generation" ;
+    rdfs:comment "The process of producing electricity." .
+
+# Issues
+:OperationalIssue rdf:type owl:Class ;
+    rdfs:label "Operational Issue" ;
+    rdfs:comment "A problem or challenge that arises during the operation of a geothermal system." .
+
+### Object Properties ###
+# Core Relationships
+:extractedFrom rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalEnergy ;
+    rdfs:range :EarthCrust ;
+    rdfs:label "extracted from" ;
+    rdfs:comment "Relates geothermal energy to the Earth's crust it is sourced from." .
+
+:contains rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalResource ;
+    rdfs:range :ThermalEnergy ;
+    rdfs:label "contains" ;
+    rdfs:comment "Relates a geothermal resource to the thermal energy it holds." .
+
+:locatedIn rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalResource ;
+    rdfs:range :GeologicalFormation ;
+    rdfs:subPropertyOf geo:sfWithin ;
+    rdfs:label "located in" ;
+    rdfs:comment "Relates a geothermal resource to the geological formation it occupies." .
+
+:associatedWith rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalResource ;
+    rdfs:range :TectonicPlateBoundary ;
+    rdfs:subPropertyOf geo:sfTouches ;
+    rdfs:label "associated with" ;
+    rdfs:comment "Indicates a spatial or causal association between a resource and a tectonic boundary." .
+
+# Process & Activity Relationships (Reusing PROV-O and SOSA)
+:usedFor rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalEnergy ;
+    rdfs:range :GeothermalApplication ;
+    rdfs:label "used for" ;
+    rdfs:comment "Relates geothermal energy to its application." .
+
+:generates rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalPowerPlant ;
+    rdfs:range :Electricity ;
+    rdfs:subPropertyOf sosa:actsOnProperty ;
+    rdfs:label "generates" ;
+    rdfs:comment "Relates a power plant to the electricity it produces." .
+
+:heats rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalHeating ;
+    rdfs:range :MaterialEntity ;
+    rdfs:label "heats" ;
+    rdfs:comment "Relates a geothermal heating application to the entity (e.g., Building, Water) it heats." .
+
+:extractsHeatFrom rdf:type owl:ObjectProperty ;
+    rdfs:domain :GroundSourceHeatPump ;
+    rdfs:range :MaterialEntity ;
+    rdfs:label "extracts heat from" ;
+    rdfs:comment "Relates a GSHP to the ground or other source from which it extracts low-grade heat." .
+
+:accesses rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalWell ;
+    rdfs:range :GeothermalResource ;
+    rdfs:label "accesses" ;
+    rdfs:comment "Relates a well to the resource it is drilled into." .
+
+:containsFluid rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalWell ;
+    rdfs:range :GeothermalFluid ;
+    rdfs:label "contains fluid" ;
+    rdfs:comment "Relates a well to the fluid within it." .
+
+:transports rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalFluid ;
+    rdfs:range :ThermalEnergy ;
+    rdfs:label "transports" ;
+    rdfs:comment "Relates a geothermal fluid to the thermal energy it carries." .
+
+:uses rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalPowerPlant ;
+    rdfs:range :GeothermalFluid ;
+    rdfs:label "uses" ;
+    rdfs:comment "Relates a power plant to the fluid it uses as a working medium." .
+
+:requiresActivity rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalProject ;
+    rdfs:range :GeothermalActivity ;
+    rdfs:label "requires activity" ;
+    rdfs:comment "Relates a project to an activity it necessitates." .
+
+:indicatesPresenceOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :HotSpring ;
+    rdfs:range :GeothermalResource ;
+    rdfs:label "indicates presence of" ;
+    rdfs:comment "Relates a hot spring (a natural feature) to the subsurface resource it may signal." .
+
+:hasOutput rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalActivity ;
+    rdfs:range :MaterialEntity ;
+    rdfs:label "has output" ;
+    rdfs:comment "Relates an activity to a material entity it produces or yields." .
+    # Example: :HeatExtraction :hasOutput :GeothermalFluid .
+
+:experiences rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeothermalSystem ;
+    rdfs:range :OperationalIssue ;
+    rdfs:label "experiences" ;
+    rdfs:comment "Relates a geothermal system to an operational issue it encounters." .
+
+### Data Properties (Examples) ###
+:hasTemperature rdf:type owl:DatatypeProperty ;
+    rdfs:domain :GeothermalResource ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has temperature" ;
+    rdfs:comment "The temperature of the geothermal resource (in degrees Celsius)." .
+
+:hasFlowRate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :GeothermalFluid ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has flow rate" ;
+    rdfs:comment "The volumetric flow rate of the geothermal fluid." .
+
+:hasCapacity rdf:type owl:DatatypeProperty ;
+    rdfs:domain :GeothermalPowerPlant ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has capacity" ;
+    rdfs:comment "The electrical generation capacity of the power plant (in MW)." .
+
+### Individuals (Example Instances) ###
+:GeysersField rdf:type :GeothermalResource ;
+    :locatedIn :GeysersGeologicalFormation ;
+    :associatedWith :SanAndreasFault ;
+    :hasTemperature 240 .
+
+:SanAndreasFault rdf:type :TectonicPlateBoundary .
+
+:GeysersGeologicalFormation rdf:type :GeologicalFormation .
+
+:ExamplePowerPlant rdf:type :GeothermalPowerPlant ;
+    :uses :ProducedSteam ;
+    :generates :ElectricityOutput ;
+    :hasCapacity 75 .
+
+:ProducedSteam rdf:type :GeothermalFluid ;
+    :transports :GeothermalEnergyInstance .
+
+:ElectricityOutput rdf:type :Electricity .
+
+:GeothermalEnergyInstance rdf:type :GeothermalEnergy ;
+    :extractedFrom :EarthCrustInstance ;
+    :usedFor :GeothermalPowerInstance .
+
+:EarthCrustInstance rdf:type :EarthCrust .
+
+:GeothermalPowerInstance rdf:type :GeothermalPower .
+
+###end_turtle###

@@ -1,0 +1,55 @@
+**Competency Questions for the Wine Ontology Core Module**
+
+**Category 1: Wine Identification and Classification**
+1.  What is the specific type of this wine (e.g., Red, White, Sparkling, Fortified)?
+2.  What is the color of this wine?
+3.  Is this wine classified under a protected designation of origin (PDO) or other appellation?
+4.  What is the alcohol content of this wine?
+5.  Is this wine considered light-bodied or full-bodied (for red wines)?
+
+**Category 2: Grape Varieties and Lineage**
+6.  Which grape variety or varieties is this wine made from?
+7.  What are the parent varieties (genetic lineage) of a specific grape cultivar?
+8.  Is a given grape variety a *Vitis vinifera* or a hybrid?
+9.  Which wines are made primarily from the Cabernet Sauvignon grape?
+10. What are the typical flavor profiles associated with a specific grape variety?
+
+**Category 3: Production and Origin**
+11. In which wine region was this wine produced?
+12. Is the production region considered an Old World or New World region?
+13. Which winery produced this wine?
+14. Is the producing winery commercial, boutique, or a cooperative?
+15. What viticultural practices (e.g., Organic Farming, specific Pruning Methods) did the winery employ for this wine?
+16. What winemaking processes (e.g., Fermentation, Aging) were used in its production?
+17. Was the wine aged in oak barrels or stainless steel tanks?
+
+**Category 4: Vintage and Climate**
+18. What is the vintage (harvest year) of this wine?
+19. How would you characterize this vintage (e.g., Excellent, Good, Poor)?
+20. What were the key climate conditions (temperature, rainfall) that influenced this specific vintage?
+
+**Category 5: Sensory Characteristics and Composition**
+21. What are the tasting notes (Aroma, Flavor, Mouthfeel) for this wine?
+22. What chemical compounds (e.g., Tartaric Acid, Tannins, Anthocyanins) are present in this wine?
+23. Which compounds contribute to the wine's acidity?
+24. Which compounds act as preservatives (e.g., Sulfur Dioxide) in this wine?
+25. Does this wine contain specific additives?
+
+**Category 6: Food and Pairing**
+26. What are the recommended food pairings for this wine?
+27. Is this wine particularly recommended for pairing with cheese, meat, or dessert?
+28. Which wines are recommended to pair with a specific food (e.g., steak, goat cheese)?
+
+**Category 7: Regulatory and Commercial Aspects**
+29. What regulatory aspects (labeling requirements, production standards) is this wine subject to?
+30. Does the wine label comply with specific regulations?
+31. Under which commercial product classification (UNSPSC code) is this wine sold?
+
+**Category 8: Relationships and Inferences**
+32. List all wines produced in the Bordeaux region.
+33. Find all wineries that use organic farming practices.
+34. Identify all full-bodied red wines from excellent vintages.
+35. Show all sparkling wines that have tasting notes containing "citrus" aromas.
+36. Which wines have an alcohol content greater than 14%?
+37. Find wines that are derived from a specific ancestral grape variety.
+38. List wines that are suitable for a given set of food pairing categories.

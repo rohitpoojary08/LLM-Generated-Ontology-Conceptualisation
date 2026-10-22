@@ -1,0 +1,853 @@
+###start_turtle###
+@prefix : <http://www.semanticweb.org/geothermal-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Ontology Header
+:GeothermalEnergyOntology rdf:type owl:Ontology ;
+    rdfs:label "Geothermal Energy Ontology" ;
+    rdfs:comment "An ontology for the geothermal energy domain." .
+
+############################################################
+# CLASSES
+############################################################
+
+# Core Concepts
+:ThermalEnergy rdf:type owl:Class ;
+    rdfs:label "Thermal Energy" ;
+    rdfs:comment "Energy in the form of heat." .
+
+:GeothermalEnergy rdf:type owl:Class ;
+    rdfs:subClassOf :ThermalEnergy ;
+    rdfs:label "Geothermal Energy" ;
+    rdfs:comment "Thermal energy extracted from the Earth's crust." .
+
+:EnergyResource rdf:type owl:Class ;
+    rdfs:label "Energy Resource" ;
+    rdfs:comment "A source of usable energy." .
+
+:GeothermalResource rdf:type owl:Class ;
+    rdfs:subClassOf :EnergyResource ;
+    rdfs:label "Geothermal Resource" ;
+    rdfs:comment "A resource containing accessible geothermal energy." .
+
+:HeatSource rdf:type owl:Class ;
+    rdfs:label "Heat Source" ;
+    rdfs:comment "A source of thermal energy." .
+
+:EarthInterior rdf:type owl:Class ;
+    rdfs:subClassOf :HeatSource ;
+    rdfs:label "Earth Interior" ;
+    rdfs:comment "The interior of the Earth, a primary heat source." .
+
+# Geological Context
+:GeologicalFormation rdf:type owl:Class ;
+    rdfs:label "Geological Formation" ;
+    rdfs:comment "A body of rock with distinctive characteristics." .
+
+:GeologicalFeature rdf:type owl:Class ;
+    rdfs:label "Geological Feature" ;
+    rdfs:comment "A distinct geological entity." .
+
+:TectonicPlateBoundary rdf:type owl:Class ;
+    rdfs:subClassOf :GeologicalFeature ;
+    rdfs:label "Tectonic Plate Boundary" ;
+    rdfs:comment "The boundary between tectonic plates." .
+
+:HotSpring rdf:type owl:Class ;
+    rdfs:subClassOf :GeologicalFeature ;
+    rdfs:label "Hot Spring" ;
+    rdfs:comment "A spring produced by the emergence of geothermally heated groundwater." .
+
+# Resource Types
+:HighTemperatureGeothermalResource rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalResource ;
+    rdfs:label "High Temperature Geothermal Resource" ;
+    rdfs:comment "A geothermal resource with high enthalpy." .
+
+:LowGradeHeatResource rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalResource ;
+    rdfs:label "Low Grade Heat Resource" ;
+    rdfs:comment "A resource with lower temperature heat, suitable for direct use." .
+
+# Physical Locations
+:EarthCrust rdf:type owl:Class ;
+    rdfs:label "Earth Crust" ;
+    rdfs:comment "The outermost solid shell of the Earth." .
+
+:Subsurface rdf:type owl:Class ;
+    rdfs:label "Subsurface" ;
+    rdfs:comment "The area beneath the Earth's surface." .
+
+:ShallowSubsurface rdf:type owl:Class ;
+    rdfs:subClassOf :Subsurface ;
+    rdfs:label "Shallow Subsurface" ;
+    rdfs:comment "The near-surface region of the Earth." .
+
+:Ground rdf:type owl:Class ;
+    rdfs:subClassOf :ShallowSubsurface ;
+    rdfs:label "Ground" ;
+    rdfs:comment "The solid surface of the Earth." .
+
+# Infrastructure
+:Well rdf:type owl:Class ;
+    rdfs:label "Well" ;
+    rdfs:comment "A hole drilled into the ground." .
+
+:GeothermalWell rdf:type owl:Class ;
+    rdfs:subClassOf :Well ;
+    rdfs:label "Geothermal Well" ;
+    rdfs:comment "A well specifically for accessing geothermal resources." .
+
+:Borehole rdf:type owl:Class ;
+    rdfs:subClassOf :Well ;
+    rdfs:label "Borehole" ;
+    rdfs:comment "A deep, narrow hole drilled into the ground." .
+
+:PowerPlant rdf:type owl:Class ;
+    rdfs:label "Power Plant" ;
+    rdfs:comment "An industrial facility for generating electricity." .
+
+:GeothermalPowerPlant rdf:type owl:Class ;
+    rdfs:subClassOf :PowerPlant ;
+    rdfs:label "Geothermal Power Plant" ;
+    rdfs:comment "A power plant that generates electricity using geothermal energy." .
+
+:HeatPump rdf:type owl:Class ;
+    rdfs:label "Heat Pump" ;
+    rdfs:comment "A device that transfers heat." .
+
+:GroundSourceHeatPump rdf:type owl:Class ;
+    rdfs:subClassOf :HeatPump ;
+    rdfs:label "Ground Source Heat Pump" ;
+    rdfs:comment "A heat pump that exchanges heat with the ground." .
+
+# Materials
+:Fluid rdf:type owl:Class ;
+    rdfs:label "Fluid" ;
+    rdfs:comment "A substance that flows." .
+
+:GeothermalFluid rdf:type owl:Class ;
+    rdfs:subClassOf :Fluid ;
+    rdfs:label "Geothermal Fluid" ;
+    rdfs:comment "Fluid found in geothermal systems, often water or steam." .
+
+# Applications
+:GeothermalEnergyApplication rdf:type owl:Class ;
+    rdfs:label "Geothermal Energy Application" ;
+    rdfs:comment "An application or use of geothermal energy." .
+
+:GeothermalHeating rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalEnergyApplication ;
+    rdfs:label "Geothermal Heating" ;
+    rdfs:comment "The direct use of geothermal energy for heating." .
+
+:GeothermalPower rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalEnergyApplication ;
+    rdfs:label "Geothermal Power" ;
+    rdfs:comment "The generation of electricity from geothermal energy." .
+
+:Heating rdf:type owl:Class ;
+    rdfs:label "Heating" ;
+    rdfs:comment "The process of raising temperature." .
+
+:HeatingSystem rdf:type owl:Class ;
+    rdfs:label "Heating System" ;
+    rdfs:comment "A system designed to provide heat." .
+
+:DistrictHeating rdf:type owl:Class ;
+    rdfs:subClassOf :HeatingSystem ;
+    rdfs:label "District Heating" ;
+    rdfs:comment "A system for distributing heat generated in a centralized location." .
+
+:DistrictHeatingNetwork rdf:type owl:Class ;
+    rdfs:label "District Heating Network" ;
+    rdfs:comment "The infrastructure for district heating." .
+
+# Entities to be Heated
+:Building rdf:type owl:Class ;
+    rdfs:label "Building" ;
+    rdfs:comment "A structure with a roof and walls." .
+
+:Water rdf:type owl:Class ;
+    rdfs:label "Water" ;
+    rdfs:comment "A clear liquid essential for life." .
+
+# Energy Forms
+:Electricity rdf:type owl:Class ;
+    rdfs:label "Electricity" ;
+    rdfs:comment "A form of energy resulting from charged particles." .
+
+# Processes and Activities
+:Activity rdf:type owl:Class ;
+    rdfs:label "Activity" ;
+    rdfs:comment "An action or task." .
+
+:Process rdf:type owl:Class ;
+    rdfs:label "Process" ;
+    rdfs:comment "A series of actions or steps." .
+
+:GeothermalExploration rdf:type owl:Class ;
+    rdfs:subClassOf :Activity ;
+    rdfs:label "Geothermal Exploration" ;
+    rdfs:comment "Activity to locate and assess geothermal resources." .
+
+:GeothermalResourceDevelopment rdf:type owl:Class ;
+    rdfs:subClassOf :Activity ;
+    rdfs:label "Geothermal Resource Development" ;
+    rdfs:comment "Activity to prepare a geothermal resource for exploitation." .
+
+:Drilling rdf:type owl:Class ;
+    rdfs:subClassOf :Activity ;
+    rdfs:label "Drilling" ;
+    rdfs:comment "The process of creating boreholes." .
+
+:HeatExtraction rdf:type owl:Class ;
+    rdfs:subClassOf :Process ;
+    rdfs:label "Heat Extraction" ;
+    rdfs:comment "The process of removing thermal energy from a resource." .
+
+:PowerGeneration rdf:type owl:Class ;
+    rdfs:subClassOf :Process ;
+    rdfs:label "Power Generation" ;
+    rdfs:comment "The process of generating electricity." .
+
+:GeothermalPowerGeneration rdf:type owl:Class ;
+    rdfs:subClassOf :PowerGeneration ;
+    rdfs:label "Geothermal Power Generation" ;
+    rdfs:comment "Power generation using geothermal energy." .
+
+# Systems and Issues
+:GeothermalSystem rdf:type owl:Class ;
+    rdfs:label "Geothermal System" ;
+    rdfs:comment "A system for utilizing geothermal energy." .
+
+:OperationalIssue rdf:type owl:Class ;
+    rdfs:label "Operational Issue" ;
+    rdfs:comment "A problem that occurs during operation." .
+
+# Additional Classes for Completeness
+:Exploitation rdf:type owl:Class ;
+    rdfs:label "Exploitation" ;
+    rdfs:comment "The utilization of a resource." .
+
+:Resource rdf:type owl:Class ;
+    rdfs:label "Resource" ;
+    rdfs:comment "A stock or supply of materials or assets." .
+
+:NaturalResource rdf:type owl:Class ;
+    rdfs:subClassOf :Resource ;
+    rdfs:label "Natural Resource" ;
+    rdfs:comment "Resources that exist without human action." .
+
+:RenewableEnergyResource rdf:type owl:Class ;
+    rdfs:subClassOf :EnergyResource ;
+    rdfs:label "Renewable Energy Resource" ;
+    rdfs:comment "An energy resource that is replenished naturally." .
+
+:GeothermalEnergyResource rdf:type owl:Class ;
+    rdfs:subClassOf :RenewableEnergyResource ;
+    rdfs:label "Geothermal Energy Resource" ;
+    rdfs:comment "A renewable energy resource based on geothermal energy." .
+
+:PlateBoundary rdf:type owl:Class ;
+    rdfs:subClassOf :TectonicPlateBoundary ;
+    rdfs:label "Plate Boundary" ;
+    rdfs:comment "A boundary between tectonic plates." .
+
+:ConvergentBoundary rdf:type owl:Class ;
+    rdfs:subClassOf :PlateBoundary ;
+    rdfs:label "Convergent Boundary" ;
+    rdfs:comment "A tectonic boundary where plates move toward each other." .
+
+:DivergentBoundary rdf:type owl:Class ;
+    rdfs:subClassOf :PlateBoundary ;
+    rdfs:label "Divergent Boundary" ;
+    rdfs:comment "A tectonic boundary where plates move apart." .
+
+:TransformBoundary rdf:type owl:Class ;
+    rdfs:subClassOf :PlateBoundary ;
+    rdfs:label "Transform Boundary" ;
+    rdfs:comment "A tectonic boundary where plates slide past each other." .
+
+:Reservoir rdf:type owl:Class ;
+    rdfs:label "Reservoir" ;
+    rdfs:comment "A subsurface pool of fluids." .
+
+:GeothermalReservoir rdf:type owl:Class ;
+    rdfs:subClassOf :Reservoir ;
+    rdfs:label "Geothermal Reservoir" ;
+    rdfs:comment "A reservoir containing geothermal fluids." .
+
+:ProductionWell rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalWell ;
+    rdfs:label "Production Well" ;
+    rdfs:label "Production Well" ;
+    rdfs:comment "A well used to extract geothermal fluids." .
+
+:InjectionWell rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalWell ;
+    rdfs:label "Injection Well" ;
+    rdfs:comment "A well used to inject fluids back into the reservoir." .
+
+:BinaryCyclePlant rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalPowerPlant ;
+    rdfs:label "Binary Cycle Plant" ;
+    rdfs:comment "A geothermal power plant using a secondary fluid." .
+
+:FlashSteamPlant rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalPowerPlant ;
+    rdfs:label "Flash Steam Plant" ;
+    rdfs:comment "A geothermal power plant using flashed steam." .
+
+:DrySteamPlant rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalPowerPlant ;
+    rdfs:label "Dry Steam Plant" ;
+    rdfs:comment "A geothermal power plant using dry steam directly." .
+
+:DirectUseApplication rdf:type owl:Class ;
+    rdfs:subClassOf :GeothermalHeating ;
+    rdfs:label "Direct Use Application" ;
+    rdfs:comment "Direct application of geothermal heat." .
+
+:SpaceHeating rdf:type owl:Class ;
+    rdfs:subClassOf :DirectUseApplication ;
+    rdfs:label "Space Heating" ;
+    rdfs:comment "Heating of interior spaces." .
+
+:WaterHeating rdf:type owl:Class ;
+    rdfs:subClassOf :DirectUseApplication ;
+    rdfs:label "Water Heating" ;
+    rdfs:comment "Heating of water for domestic or industrial use." .
+
+:IndustrialProcessHeating rdf:type owl:Class ;
+    rdfs:subClassOf :DirectUseApplication ;
+    rdfs:label "Industrial Process Heating" ;
+    rdfs:comment "Use of geothermal heat in industrial processes." .
+
+:AgriculturalUse rdf:type owl:Class ;
+    rdfs:subClassOf :DirectUseApplication ;
+    rdfs:label "Agricultural Use" ;
+    rdfs:comment "Use of geothermal energy in agriculture." .
+
+:GeothermalGreenhouse rdf:type owl:Class ;
+    rdfs:subClassOf :AgriculturalUse ;
+    rdfs:label "Geothermal Greenhouse" ;
+    rdfs:comment "A greenhouse heated by geothermal energy." .
+
+:GeothermalAquaculture rdf:type owl:Class ;
+    rdfs:subClassOf :AgriculturalUse ;
+    rdfs:label "Geothermal Aquaculture" ;
+    rdfs:comment "Aquaculture using geothermal heated water." .
+
+:ExplorationMethod rdf:type owl:Class ;
+    rdfs:label "Exploration Method" ;
+    rdfs:comment "A method used in geothermal exploration." .
+
+:GeologicalSurvey rdf:type owl:Class ;
+    rdfs:subClassOf :ExplorationMethod ;
+    rdfs:label "Geological Survey" ;
+    rdfs:comment "Survey of geological features." .
+
+:GeophysicalSurvey rdf:type owl:Class ;
+    rdfs:subClassOf :ExplorationMethod ;
+    rdfs:label "Geophysical Survey" ;
+    rdfs:comment "Survey using geophysical techniques." .
+
+:GeochemicalSurvey rdf:type owl:Class ;
+    rdfs:subClassOf :ExplorationMethod ;
+    rdfs:label "Geochemical Survey" ;
+    rdfs:comment "Survey of chemical properties." .
+
+:DrillingRig rdf:type owl:Class ;
+    rdfs:label "Drilling Rig" ;
+    rdfs:comment "Equipment used for drilling." .
+
+:HeatExchanger rdf:type owl:Class ;
+    rdfs:label "Heat Exchanger" ;
+    rdfs:comment "A device for transferring heat." .
+
+:Turbine rdf:type owl:Class ;
+    rdfs:label "Turbine" ;
+    rdfs:comment "A machine for generating rotary mechanical power." .
+
+:Generator rdf:type owl:Class ;
+    rdfs:label "Generator" ;
+    rdfs:comment "A device that converts mechanical energy to electricity." .
+
+:Condenser rdf:type owl:Class ;
+    rdfs:label "Condenser" ;
+    rdfs:comment "A device for condensing vapor." .
+
+:CoolingTower rdf:type owl:Class ;
+    rdfs:label "Cooling Tower" ;
+    rdfs:comment "A device for rejecting waste heat." .
+
+:Corrosion rdf:type owl:Class ;
+    rdfs:subClassOf :OperationalIssue ;
+    rdfs:label "Corrosion" ;
+    rdfs:comment "Deterioration of materials due to chemical reactions." .
+
+:Scaling rdf:type owl:Class ;
+    rdfs:subClassOf :OperationalIssue ;
+    rdfs:label "Scaling" ;
+    rdfs:comment "Deposition of minerals on surfaces." .
+
+:InducedSeismicity rdf:type owl:Class ;
+    rdfs:subClassOf :OperationalIssue ;
+    rdfs:label "Induced Seismicity" ;
+    rdfs:comment "Earthquakes triggered by human activity." .
+
+:FluidDepletion rdf:type owl:Class ;
+    rdfs:subClassOf :OperationalIssue ;
+    rdfs:label "Fluid Depletion" ;
+    rdfs:comment "Reduction in reservoir fluid volume." .
+
+:HeatDepletion rdf:type owl:Class ;
+    rdfs:subClassOf :OperationalIssue ;
+    rdfs:label "Heat Depletion" ;
+    rdfs:comment "Reduction in reservoir temperature over time." .
+
+:EnvironmentalImpact rdf:type owl:Class ;
+    rdfs:label "Environmental Impact" ;
+    rdfs:comment "Effect on the environment." .
+
+:LandUseImpact rdf:type owl:Class ;
+    rdfs:subClassOf :EnvironmentalImpact ;
+    rdfs:label "Land Use Impact" ;
+    rdfs:comment "Impact related to land use." .
+
+:WaterUseImpact rdf:type owl:Class ;
+    rdfs:subClassOf :EnvironmentalImpact ;
+    rdfs:label "Water Use Impact" ;
+    rdfs:comment "Impact related to water use." .
+
+:Emissions rdf:type owl:Class ;
+    rdfs:subClassOf :EnvironmentalImpact ;
+    rdfs:label "Emissions" ;
+    rdfs:comment "Release of substances into the environment." .
+
+:GreenhouseGasEmissions rdf:type owl:Class ;
+    rdfs:subClassOf :Emissions ;
+    rdfs:label "Greenhouse Gas Emissions" ;
+    rdfs:comment "Emissions of greenhouse gases." .
+
+:NonCondensableGasEmissions rdf:type owl:Class ;
+    rdfs:subClassOf :Emissions ;
+    rdfs:label "Non-Condensable Gas Emissions" ;
+    rdfs:comment "Emissions of gases that do not condense." .
+
+:RegulatoryFramework rdf:type owl:Class ;
+    rdfs:label "Regulatory Framework" ;
+    rdfs:comment "A system of regulations." .
+
+:Permit rdf:type owl:Class ;
+    rdfs:label "Permit" ;
+    rdfs:comment "Official permission to do something." .
+
+:EconomicFactor rdf:type owl:Class ;
+    rdfs:label "Economic Factor" ;
+    rdfs:comment "A factor affecting economic viability." .
+
+:CapitalCost rdf:type owl:Class ;
+    rdfs:subClassOf :EconomicFactor ;
+    rdfs:label "Capital Cost" ;
+    rdfs:comment "Initial investment cost." .
+
+:OperatingCost rdf:type owl:Class ;
+    rdfs:subClassOf :EconomicFactor ;
+    rdfs:label "Operating Cost" ;
+    rdfs:comment "Cost of ongoing operations." .
+
+:LevelizedCostOfEnergy rdf:type owl:Class ;
+    rdfs:subClassOf :EconomicFactor ;
+    rdfs:label "Levelized Cost of Energy" ;
+    rdfs:comment "A measure of average cost per unit of energy." .
+
+:ResearchAndDevelopment rdf:type owl:Class ;
+    rdfs:label "Research and Development" ;
+    rdfs:comment "Activities to innovate and improve." .
+
+:EnhancedGeothermalSystem rdf:type owl:Class ;
+    rdfs:label "Enhanced Geothermal System" ;
+    rdfs:comment "A geothermal system created by engineering the reservoir." .
+
+############################################################
+# OBJECT PROPERTIES
+############################################################
+
+:extractedFrom rdf:type owl:ObjectProperty ;
+    rdfs:label "extracted from" ;
+    rdfs:domain :GeothermalEnergy ;
+    rdfs:range :EarthCrust .
+
+:associatedWith rdf:type owl:ObjectProperty ;
+    rdfs:label "associated with" ;
+    rdfs:domain :GeothermalResource ;
+    rdfs:range :HeatSource .
+
+:locatedIn rdf:type owl:ObjectProperty ;
+    rdfs:label "located in" ;
+    rdfs:domain :GeothermalResource ;
+    rdfs:range :GeologicalFormation .
+
+:hasHeatSource rdf:type owl:ObjectProperty ;
+    rdfs:label "has heat source" ;
+    rdfs:domain :GeothermalResource ;
+    rdfs:range :HeatSource .
+
+:indicates rdf:type owl:ObjectProperty ;
+    rdfs:label "indicates" ;
+    rdfs:domain :HotSpring ;
+    rdfs:range :GeothermalResource .
+
+:accesses rdf:type owl:ObjectProperty ;
+    rdfs:label "accesses" ;
+    rdfs:domain :GeothermalWell ;
+    rdfs:range :GeothermalResource .
+
+:extracts rdf:type owl:ObjectProperty ;
+    rdfs:label "extracts" ;
+    rdfs:domain :GeothermalWell ;
+    rdfs:range :GeothermalFluid .
+
+:transports rdf:type owl:ObjectProperty ;
+    rdfs:label "transports" ;
+    rdfs:domain :GeothermalFluid ;
+    rdfs:range :ThermalEnergy .
+
+:usedIn rdf:type owl:ObjectProperty ;
+    rdfs:label "used in" ;
+    rdfs:domain :GeothermalFluid ;
+    rdfs:range :HeatExtraction .
+
+:usesInput rdf:type owl:ObjectProperty ;
+    rdfs:label "uses input" ;
+    rdfs:domain :GeothermalPowerPlant ;
+    rdfs:range :ThermalEnergy .
+
+:generatesOutput rdf:type owl:ObjectProperty ;
+    rdfs:label "generates output" ;
+    rdfs:domain :GeothermalPowerPlant ;
+    rdfs:range :Electricity .
+
+:extractsHeatFrom rdf:type owl:ObjectProperty ;
+    rdfs:label "extracts heat from" ;
+    rdfs:domain :GroundSourceHeatPump ;
+    rdfs:range :Ground .
+
+:heatedBy rdf:type owl:ObjectProperty ;
+    rdfs:label "heated by" ;
+    rdfs:domain [ owl:unionOf (:Building :Water :DistrictHeatingNetwork) ] ;
+    rdfs:range :GeothermalHeating .
+
+:usesEnergySource rdf:type owl:ObjectProperty ;
+    rdfs:label "uses energy source" ;
+    rdfs:domain :DistrictHeating ;
+    rdfs:range :GeothermalHeating .
+
+:produces rdf:type owl:ObjectProperty ;
+    rdfs:label "produces" ;
+    rdfs:domain :GeothermalPowerGeneration ;
+    rdfs:range :Electricity .
+
+:follows rdf:type owl:ObjectProperty ;
+    rdfs:label "follows" ;
+    rdfs:domain :GeothermalResourceDevelopment ;
+    rdfs:range :GeothermalExploration .
+
+:partOf rdf:type owl:ObjectProperty ;
+    rdfs:label "part of" ;
+    rdfs:domain :Drilling ;
+    rdfs:range :GeothermalResourceDevelopment .
+
+:hasOutput rdf:type owl:ObjectProperty ;
+    rdfs:label "has output" ;
+    rdfs:domain :HeatExtraction ;
+    rdfs:range :GeothermalFluid .
+
+:actsUpon rdf:type owl:ObjectProperty ;
+    rdfs:label "acts upon" ;
+    rdfs:domain :GeothermalPowerGeneration ;
+    rdfs:range :ThermalEnergy .
+
+:experiences rdf:type owl:ObjectProperty ;
+    rdfs:label "experiences" ;
+    rdfs:domain :GeothermalSystem ;
+    rdfs:range :OperationalIssue .
+
+:requiredFor rdf:type owl:ObjectProperty ;
+    rdfs:label "required for" ;
+    rdfs:domain :GeothermalResourceDevelopment ;
+    rdfs:range :GeothermalResource .
+
+:converts rdf:type owl:ObjectProperty ;
+    rdfs:label "converts" ;
+    rdfs:domain :PowerGeneration ;
+    rdfs:range :ThermalEnergy .
+
+:convertsTo rdf:type owl:ObjectProperty ;
+    rdfs:label "converts to" ;
+    rdfs:domain :PowerGeneration ;
+    rdfs:range :Electricity .
+
+:hasComponent rdf:type owl:ObjectProperty ;
+    rdfs:label "has component" ;
+    rdfs:domain :GeothermalPowerPlant ;
+    rdfs:range [ owl:unionOf (:Turbine :Generator :Condenser :CoolingTower) ] .
+
+:utilizes rdf:type owl:ObjectProperty ;
+    rdfs:label "utilizes" ;
+    rdfs:domain :GeothermalHeating ;
+    rdfs:range :GeothermalEnergy .
+
+:generates rdf:type owl:ObjectProperty ;
+    rdfs:label "generates" ;
+    rdfs:domain :GeothermalPower ;
+    rdfs:range :Electricity .
+
+:involves rdf:type owl:ObjectProperty ;
+    rdfs:label "involves" ;
+    rdfs:domain :GeothermalExploration ;
+    rdfs:range :ExplorationMethod .
+
+:creates rdf:type owl:ObjectProperty ;
+    rdfs:label "creates" ;
+    rdfs:domain :Drilling ;
+    rdfs:range :Borehole .
+
+:removes rdf:type owl:ObjectProperty ;
+    rdfs:label "removes" ;
+    rdfs:domain :HeatExtraction ;
+    rdfs:range :ThermalEnergy .
+
+:affects rdf:type owl:ObjectProperty ;
+    rdfs:label "affects" ;
+    rdfs:domain :GeothermalSystem ;
+    rdfs:range :EnvironmentalImpact .
+
+:regulatedBy rdf:type owl:ObjectProperty ;
+    rdfs:label "regulated by" ;
+    rdfs:domain :GeothermalResourceDevelopment ;
+    rdfs:range :RegulatoryFramework .
+
+:requires rdf:type owl:ObjectProperty ;
+    rdfs:label "requires" ;
+    rdfs:domain :GeothermalResourceDevelopment ;
+    rdfs:range :Permit .
+
+:influencedBy rdf:type owl:ObjectProperty ;
+    rdfs:label "influenced by" ;
+    rdfs:domain :GeothermalResourceDevelopment ;
+    rdfs:range :EconomicFactor .
+
+############################################################
+# DATA PROPERTIES
+############################################################
+
+:hasTemperature rdf:type owl:DatatypeProperty ;
+    rdfs:label "has temperature" ;
+    rdfs:domain :GeothermalResource ;
+    rdfs:range xsd:decimal .
+
+:hasEnthalpy rdf:type owl:DatatypeProperty ;
+    rdfs:label "has enthalpy" ;
+    rdfs:domain :GeothermalResource ;
+    rdfs:range xsd:decimal .
+
+:hasDepth rdf:type owl:DatatypeProperty ;
+    rdfs:label "has depth" ;
+    rdfs:domain :GeothermalWell ;
+    rdfs:range xsd:decimal .
+
+:hasDiameter rdf:type owl:DatatypeProperty ;
+    rdfs:label "has diameter" ;
+    rdfs:domain :GeothermalWell ;
+    rdfs:range xsd:decimal .
+
+:hasFlowRate rdf:type owl:DatatypeProperty ;
+    rdfs:label "has flow rate" ;
+    rdfs:domain :GeothermalFluid ;
+    rdfs:range xsd:decimal .
+
+:hasPressure rdf:type owl:DatatypeProperty ;
+    rdfs:label "has pressure" ;
+    rdfs:domain :GeothermalFluid ;
+    rdfs:range xsd:decimal .
+
+:hasSalinity rdf:type owl:DatatypeProperty ;
+    rdfs:label "has salinity" ;
+    rdfs:domain :GeothermalFluid ;
+    rdfs:range xsd:decimal .
+
+:hasCapacity rdf:type owl:DatatypeProperty ;
+    rdfs:label "has capacity" ;
+    rdfs:domain :GeothermalPowerPlant ;
+    rdfs:range xsd:decimal .
+
+:hasEfficiency rdf:type owl:DatatypeProperty ;
+    rdfs:label "has efficiency" ;
+    rdfs:domain :GeothermalPowerPlant ;
+    rdfs:range xsd:decimal .
+
+:hasCoefficientOfPerformance rdf:type owl:DatatypeProperty ;
+    rdfs:label "has coefficient of performance" ;
+    rdfs:domain :GroundSourceHeatPump ;
+    rdfs:range xsd:decimal .
+
+:hasHeatingLoad rdf:type owl:DatatypeProperty ;
+    rdfs:label "has heating load" ;
+    rdfs:domain :Building ;
+    rdfs:range xsd:decimal .
+
+:hasStartDate rdf:type owl:DatatypeProperty ;
+    rdfs:label "has start date" ;
+    rdfs:domain :GeothermalExploration ;
+    rdfs:range xsd:date .
+
+:hasEndDate rdf:type owl:DatatypeProperty ;
+    rdfs:label "has end date" ;
+    rdfs:domain :GeothermalExploration ;
+    rdfs:range xsd:date .
+
+:hasCost rdf:type owl:DatatypeProperty ;
+    rdfs:label "has cost" ;
+    rdfs:domain :GeothermalResourceDevelopment ;
+    rdfs:range xsd:decimal .
+
+:hasDuration rdf:type owl:DatatypeProperty ;
+    rdfs:label "has duration" ;
+    rdfs:domain :HeatExtraction ;
+    rdfs:range xsd:duration .
+
+:hasSeverity rdf:type owl:DatatypeProperty ;
+    rdfs:label "has severity" ;
+    rdfs:domain :OperationalIssue ;
+    rdfs:range xsd:string .
+
+:hasImpactLevel rdf:type owl:DatatypeProperty ;
+    rdfs:label "has impact level" ;
+    rdfs:domain :EnvironmentalImpact ;
+    rdfs:range xsd:string .
+
+:hasRegulationName rdf:type owl:DatatypeProperty ;
+    rdfs:label "has regulation name" ;
+    rdfs:domain :RegulatoryFramework ;
+    rdfs:range xsd:string .
+
+:hasPermitNumber rdf:type owl:DatatypeProperty ;
+    rdfs:label "has permit number" ;
+    rdfs:domain :Permit ;
+    rdfs:range xsd:string .
+
+:hasValue rdf:type owl:DatatypeProperty ;
+    rdfs:label "has value" ;
+    rdfs:domain :EconomicFactor ;
+    rdfs:range xsd:decimal .
+
+############################################################
+# AXIOMS / CLASS ASSERTIONS
+############################################################
+
+# Disjointness Axioms
+:GeothermalHeating owl:disjointWith :GeothermalPower .
+:GroundSourceHeatPump owl:disjointWith :GeothermalPowerPlant .
+:HighTemperatureGeothermalResource owl:disjointWith :LowGradeHeatResource .
+:ProductionWell owl:disjointWith :InjectionWell .
+:BinaryCyclePlant owl:disjointWith :FlashSteamPlant , :DrySteamPlant .
+:FlashSteamPlant owl:disjointWith :DrySteamPlant .
+:SpaceHeating owl:disjointWith :WaterHeating , :IndustrialProcessHeating , :AgriculturalUse .
+:WaterHeating owl:disjointWith :IndustrialProcessHeating , :AgriculturalUse .
+:IndustrialProcessHeating owl:disjointWith :AgriculturalUse .
+:GeologicalSurvey owl:disjointWith :GeophysicalSurvey , :GeochemicalSurvey .
+:GeophysicalSurvey owl:disjointWith :GeochemicalSurvey .
+:Corrosion owl:disjointWith :Scaling , :InducedSeismicity , :FluidDepletion , :HeatDepletion .
+:Scaling owl:disjointWith :InducedSeismicity , :FluidDepletion , :HeatDepletion .
+:InducedSeismicity owl:disjointWith :FluidDepletion , :HeatDepletion .
+:FluidDepletion owl:disjointWith :HeatDepletion .
+:LandUseImpact owl:disjointWith :WaterUseImpact , :Emissions .
+:WaterUseImpact owl:disjointWith :Emissions .
+:GreenhouseGasEmissions owl:disjointWith :NonCondensableGasEmissions .
+:CapitalCost owl:disjointWith :OperatingCost , :LevelizedCostOfEnergy .
+:OperatingCost owl:disjointWith :LevelizedCostOfEnergy .
+
+# Inverse Properties
+:extractedFrom owl:inverseOf :sourceOf .
+:associatedWith owl:inverseOf :associatedWith .
+:locatedIn owl:inverseOf :containsResource .
+:hasHeatSource owl:inverseOf :isHeatSourceOf .
+:indicates owl:inverseOf :indicatedBy .
+:accesses owl:inverseOf :accessedBy .
+:extracts owl:inverseOf :extractedBy .
+:transports owl:inverseOf :transportedBy .
+:usedIn owl:inverseOf :usesFluid .
+:usesInput owl:inverseOf :inputUsedBy .
+:generatesOutput owl:inverseOf :outputGeneratedBy .
+:extractsHeatFrom owl:inverseOf :heatExtractedBy .
+:heatedBy owl:inverseOf :heats .
+:usesEnergySource owl:inverseOf :energySourceUsedBy .
+:produces owl:inverseOf :producedBy .
+:follows owl:inverseOf :precededBy .
+:partOf owl:inverseOf :hasPart .
+:hasOutput owl:inverseOf :outputOf .
+:actsUpon owl:inverseOf :actedUponBy .
+:experiences owl:inverseOf :experiencedBy .
+:requiredFor owl:inverseOf :requiresDevelopment .
+:converts owl:inverseOf :convertedIn .
+:convertsTo owl:inverseOf :convertedFrom .
+:hasComponent owl:inverseOf :componentOf .
+:utilizes owl:inverseOf :utilizedBy .
+:generates owl:inverseOf :generatedBy .
+:involves owl:inverseOf :involvedIn .
+:creates owl:inverseOf :createdBy .
+:removes owl:inverseOf :removedBy .
+:affects owl:inverseOf :affectedBy .
+:regulatedBy owl:inverseOf :regulates .
+:requires owl:inverseOf :requiredBy .
+:influencedBy owl:inverseOf :influences .
+
+############################################################
+# INDIVIDUALS / NAMED INDIVIDUALS
+############################################################
+
+:TheGeysers rdf:type :GeothermalResource ;
+    rdfs:label "The Geysers" ;
+    :hasTemperature 240 ;
+    :hasEnthalpy 2800 .
+
+:NesjavellirPowerPlant rdf:type :GeothermalPowerPlant ;
+    rdfs:label "Nesjavellir Power Plant" ;
+    :hasCapacity 120 ;
+    :hasEfficiency 0.22 .
+
+:BlueLagoon rdf:type :HotSpring ;
+    rdfs:label "Blue Lagoon" .
+
+:ExampleGSHP rdf:type :GroundSourceHeatPump ;
+    rdfs:label "Example GSHP" ;
+    :hasCoefficientOfPerformance 4.0 .
+
+:ReykjavikDistrictHeating rdf:type :DistrictHeating ;
+    rdfs:label "Reykjavik District Heating" .
+
+:ExampleCorrosionIssue rdf:type :Corrosion ;
+    rdfs:label "Example Corrosion Issue" ;
+    :hasSeverity "Moderate" .
+
+:ExamplePermit rdf:type :Permit ;
+    rdfs:label "Example Permit" ;
+    :hasPermitNumber "GEO-2023-001" .
+
+:ExampleCapitalCost rdf:type :CapitalCost ;
+    rdfs:label "Example Capital Cost" ;
+    :hasValue 5000000 .
+
+:ExampleRegulation rdf:type :RegulatoryFramework ;
+    rdfs:label "Example Regulation" ;
+    :hasRegulationName "Geothermal Resource Act" .
+
+:ExampleEGS rdf:type :EnhancedGeothermalSystem ;
+    rdfs:label "Example Enhanced Geothermal System" .
+###end_turtle###

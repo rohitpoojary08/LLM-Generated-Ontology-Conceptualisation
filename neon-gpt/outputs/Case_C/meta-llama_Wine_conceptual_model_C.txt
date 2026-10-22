@@ -1,0 +1,190 @@
+###start_turtle###
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wine: <http://example.org/wine#> .
+
+# Classes
+wine:Wine a owl:Class .
+wine:WineColor a owl:Class .
+wine:GrapeVariety a owl:Class .
+wine:WineRegion a owl:Class .
+wine:Appellation a owl:Class .
+wine:Winery a owl:Class .
+wine:Vintage a owl:Class .
+wine:TastingNote a owl:Class .
+wine:Food a owl:Class .
+wine:ViticulturalPractice a owl:Class .
+wine:WinemakingProcess a owl:Class .
+wine:WineAttribute a owl:Class .
+wine:RegulatoryStandard a owl:Class .
+
+wine:RedWine rdfs:subClassOf wine:Wine .
+wine:WhiteWine rdfs:subClassOf wine:Wine .
+wine:RoséWine rdfs:subClassOf wine:Wine .
+wine:SparklingWine rdfs:subClassOf wine:Wine .
+wine:StillWine rdfs:subClassOf wine:Wine .
+wine:FortifiedWine rdfs:subClassOf wine:Wine .
+wine:DryWine rdfs:subClassOf wine:Wine .
+wine:SemiDryWine rdfs:subClassOf wine:Wine .
+wine:SweetWine rdfs:subClassOf wine:Wine .
+
+wine:GrapeCultivar rdfs:subClassOf wine:GrapeVariety .
+
+wine:Appellation rdfs:subClassOf wine:WineRegion .
+
+wine:OrganicViticulture rdfs:subClassOf wine:ViticulturalPractice .
+wine:BiodynamicViticulture rdfs:subClassOf wine:ViticulturalPractice .
+
+wine:Crushing rdfs:subClassOf wine:WinemakingProcess .
+wine:Fermentation rdfs:subClassOf wine:WinemakingProcess .
+wine:Aging rdfs:subClassOf wine:WinemakingProcess .
+
+wine:Aroma rdfs:subClassOf wine:WineAttribute .
+wine:Flavor rdfs:subClassOf wine:WineAttribute .
+wine:Body rdfs:subClassOf wine:WineAttribute .
+wine:TanninLevel rdfs:subClassOf wine:WineAttribute .
+
+wine:AOC rdfs:subClassOf wine:RegulatoryStandard .
+wine:DOCG rdfs:subClassOf wine:RegulatoryStandard .
+wine:AVA rdfs:subClassOf wine:RegulatoryStandard .
+
+# Object Properties
+wine:hasColor a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:WineColor .
+
+wine:hasGrapeVariety a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:GrapeVariety .
+
+wine:producedIn a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:WineRegion .
+
+wine:hasVintage a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:Vintage .
+
+wine:producedBy a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:Winery .
+
+wine:hasTastingNote a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:TastingNote .
+
+wine:pairsWith a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:Food .
+
+wine:hasViticulturalPractice a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:ViticulturalPractice .
+
+wine:hasWinemakingProcess a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:WinemakingProcess .
+
+wine:hasWineAttribute a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:WineAttribute .
+
+wine:compliesWith a owl:ObjectProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range wine:RegulatoryStandard .
+
+# Data Properties
+wine:alcoholByVolume a owl:DatatypeProperty ;
+    rdfs:domain wine:Wine ;
+    rdfs:range xsd:float .
+
+# Individuals
+wine:Chardonnay a wine:GrapeVariety .
+wine:CabernetSauvignon a wine:GrapeVariety .
+wine:Bordeaux a wine:Appellation .
+wine:NapaValley a wine:WineRegion .
+wine:DomaineDeLaRomanéeConti a wine:Winery .
+wine:ChardonnayWine a wine:WhiteWine .
+wine:Vintage2015 a wine:Vintage .
+wine:TastingNote1 a wine:TastingNote .
+wine:GrilledChicken a wine:Food .
+
+# Axioms
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:hasColor ;
+    owl:someValuesFrom wine:WineColor
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:hasGrapeVariety ;
+    owl:someValuesFrom wine:GrapeVariety
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:producedIn ;
+    owl:someValuesFrom wine:WineRegion
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:hasVintage ;
+    owl:someValuesFrom wine:Vintage
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:producedBy ;
+    owl:someValuesFrom wine:Winery
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:hasTastingNote ;
+    owl:someValuesFrom wine:TastingNote
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:pairsWith ;
+    owl:someValuesFrom wine:Food
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:hasViticulturalPractice ;
+    owl:someValuesFrom wine:ViticulturalPractice
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:hasWinemakingProcess ;
+    owl:someValuesFrom wine:WinemakingProcess
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:hasWineAttribute ;
+    owl:someValuesFrom wine:WineAttribute
+] .
+
+wine:Wine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty wine:compliesWith ;
+    owl:someValuesFrom wine:RegulatoryStandard
+] .
+
+# Property Assertions
+wine:ChardonnayWine wine:hasGrapeVariety wine:Chardonnay .
+wine:ChardonnayWine wine:producedIn wine:NapaValley .
+wine:ChardonnayWine wine:hasVintage wine:Vintage2015 .
+wine:ChardonnayWine wine:producedBy wine:DomaineDeLaRomanéeConti .
+wine:ChardonnayWine wine:hasTastingNote wine:TastingNote1 .
+wine:ChardonnayWine wine:pairsWith wine:GrilledChicken .
+wine:ChardonnayWine wine:alcoholByVolume "13.5"^^xsd:float .
+
+###end_turtle###

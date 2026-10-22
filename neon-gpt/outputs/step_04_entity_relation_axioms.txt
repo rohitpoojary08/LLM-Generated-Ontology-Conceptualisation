@@ -1,0 +1,77 @@
+Based on the provided competency questions, here are the extracted entities, relations (properties), and axioms required for the Wine Ontology core module.
+
+**Entity/Class Extractions:**
+*   Wine
+*   WineType (Red, White, Rosé, Sparkling, Fortified)
+*   WineColor
+*   WineBody (LightBodied, MediumBodied, FullBodied)
+*   Appellation (PDO, PGI, Other)
+*   AlcoholContent (as a data property range: xsd:decimal)
+*   GrapeVariety
+*   *VitisVinifera* (subclass of GrapeVariety)
+*   HybridGrape (subclass of GrapeVariety)
+*   FlavorProfile
+*   WineRegion
+*   OldWorldRegion (subclass of WineRegion)
+*   NewWorldRegion (subclass of WineRegion)
+*   Winery
+*   WineryType (CommercialWinery, BoutiqueWinery, CooperativeWinery)
+*   ViticulturalPractice (e.g., OrganicFarming, PruningMethod)
+*   WinemakingProcess (e.g., Fermentation, Aging)
+*   AgingVessel (OakBarrel, StainlessSteelTank)
+*   Vintage
+*   VintageQuality (ExcellentVintage, GoodVintage, PoorVintage)
+*   ClimateCondition
+*   TastingNote
+*   SensoryCharacteristic (Aroma, Flavor, Mouthfeel)
+*   ChemicalCompound (TartaricAcid, Tannin, Anthocyanin, SulfurDioxide)
+*   WineAdditive
+*   Food
+*   FoodCategory (Cheese, Meat, Dessert)
+*   RegulatoryAspect
+*   CommercialClassification (e.g., UNSPSC_Code)
+
+**Property/Relation Extractions:**
+*   hasWineType (Domain: Wine, Range: WineType)
+*   hasColor (Domain: Wine, Range: WineColor)
+*   hasAppellation (Domain: Wine, Range: Appellation)
+*   hasAlcoholContent (Domain: Wine, Range: xsd:decimal) [Data Property]
+*   hasBody (Domain: Wine, Range: WineBody)
+*   madeFromGrapeVariety (Domain: Wine, Range: GrapeVariety)
+*   hasParentVariety (Domain: GrapeVariety, Range: GrapeVariety) [Object Property]
+*   hasFlavorProfile (Domain: GrapeVariety, Range: FlavorProfile)
+*   producedInRegion (Domain: Wine, Range: WineRegion)
+*   producedByWinery (Domain: Wine, Range: Winery)
+*   hasWineryType (Domain: Winery, Range: WineryType)
+*   employsPractice (Domain: Winery/ViticulturalPractice, Range: ViticulturalPractice/Wine) [Needs careful modeling, may involve reification or linking via a Vintage/ProductionEvent class]
+*   underwentProcess (Domain: Wine, Range: WinemakingProcess)
+*   agedIn (Domain: Wine/WinemakingProcess, Range: AgingVessel)
+*   hasVintage (Domain: Wine, Range: Vintage)
+*   hasVintageQuality (Domain: Vintage, Range: VintageQuality)
+*   influencedByClimate (Domain: Vintage, Range: ClimateCondition)
+*   hasTastingNote (Domain: Wine, Range: TastingNote)
+*   describesCharacteristic (Domain: TastingNote, Range: SensoryCharacteristic)
+*   containsCompound (Domain: Wine, Range: ChemicalCompound)
+*   contributesToAcidity (Domain: ChemicalCompound, Range: Wine) [Functional role of a compound]
+*   actsAsPreservative (Domain: ChemicalCompound, Range: Wine) [Functional role of a compound]
+*   hasAdditive (Domain: Wine, Range: WineAdditive)
+*   pairsWithFood (Domain: Wine, Range: Food)
+*   recommendedForCategory (Domain: Wine, Range: FoodCategory)
+*   subjectToRegulation (Domain: Wine, Range: RegulatoryAspect)
+*   hasLabelCompliance (Domain: Wine, Range: RegulatoryAspect) [Subproperty of subjectToRegulation?]
+*   hasCommercialClassification (Domain: Wine, Range: CommercialClassification)
+
+**Axiom Extractions:**
+*   SubClassOf axioms: e.g., `RedWine SubClassOf Wine`, `OldWorldRegion SubClassOf WineRegion`, `CommercialWinery SubClassOf Winery`.
+*   DisjointClasses axioms: e.g., `RedWine, WhiteWine, RoséWine, SparklingWine, FortifiedWine` are pairwise disjoint. `OldWorldRegion` and `NewWorldRegion` are disjoint.
+*   Class equivalence for defined classes: e.g., `FullBodiedRedWine EquivalentTo (Wine and hasWineType some RedWine and hasBody some FullBodied)`.
+*   Domain and Range restrictions for all Object and Data Properties.
+*   Property characteristics: e.g., `hasParentVariety` is likely transitive. `madeFromGrapeVariety` is functional? (Usually not, for blends).
+*   Inverse properties: e.g., `producedByWinery` inverse of `producesWine`.
+*   To answer complex queries (CQs 32-38), the ontology must support:
+    *   Class queries based on property restrictions.
+    *   Data property filters (e.g., `hasAlcoholContent some xsd:decimal[>= 14.0]`).
+    *   Intersection of classes (e.g., `FullBodiedRedWine and (hasVintage some (hasVintageQuality some ExcellentVintage))`).
+    *   Property chain axioms may be needed for inferences like "wines derived from an ancestral variety" using `hasParentVariety+` (transitive closure).
+
+**Note on Modeling Practices/Processes:** CQs 15-17 suggest a need for an intermediate class like `ProductionEvent` or `VintageDetail` that connects a `Wine`, its `Vintage`, the `Winery`, and the specific `ViticulturalPractice` and `WinemakingProcess` used for that instance. This avoids attributing practices/processes directly to the Winery or Wine in a blanket way.

@@ -1,0 +1,71 @@
+**Extracted Entities, Relations, and Axioms from Competency Questions**
+
+**A. Wine Classification & Basic Properties**
+1.  **Entities:** Wine, WineColor. **Property:** hasColor. **Axioms:** WineColor subClassOf WineAttribute; Wine hasColor exactly 1 WineColor.
+2.  **Entities:** Wine, EffervescenceLevel. **Property:** hasEffervescence. **Axioms:** EffervescenceLevel subClassOf WineAttribute; Wine hasEffervescence exactly 1 EffervescenceLevel.
+3.  **Entities:** Wine, FortificationStatus. **Property:** hasFortificationStatus. **Axioms:** FortificationStatus subClassOf WineAttribute; Wine hasFortificationStatus exactly 1 FortificationStatus.
+4.  **Entities:** Wine, SweetnessLevel. **Property:** hasSweetness. **Axioms:** SweetnessLevel subClassOf WineAttribute; Wine hasSweetness exactly 1 SweetnessLevel.
+5.  **Entities:** Wine. **Property:** hasAlcoholByVolume. **Data Property:** xsd:decimal.
+6.  **Entities:** Wine. **Property:** hasResidualSugar. **Data Property:** xsd:decimal (g/L).
+7.  **Entities:** Wine. **Property:** hasAcidity. **Data Properties:** hasPH (xsd:decimal), hasTitratableAcidity (xsd:decimal).
+
+**B. Composition & Origin**
+8.  **Entities:** Wine, GrapeVariety. **Property:** madeFromGrape. **Axioms:** Wine madeFromGrape some GrapeVariety; MonovarietalWine subClassOf (madeFromGrape exactly 1 GrapeVariety).
+9.  **Entities:** Wine, GrapeVariety, BlendedWine. **Property:** hasBlendComponent. **Axioms:** BlendedWine subClassOf Wine; hasBlendComponent only (GrapeVariety and hasProportion some xsd:decimal).
+10. **Entities:** GrapeVariety. **Property:** hasParentVariety. **Axioms:** GrapeVariety hasParentVariety only GrapeVariety.
+11. **Entities:** Wine, WineRegion. **Property:** producedInRegion.
+12. **Entities:** Wine, GeographicalIndication. **Property:** classifiedUnder. **Axioms:** GeographicalIndication subClassOf LegalDesignation.
+13. **Entities:** WineRegion. **Property:** hasSubRegion. **Axioms:** WineRegion hasSubRegion only WineRegion.
+14. **Entities:** WineRegion, Country. **Property:** locatedInCountry.
+15. **Entities:** VineyardSite, Terroir. **Property:** characterizedBy. **Axioms:** VineyardSite subClassOf Location; Terroir subClassOf (hasSoilType some SoilType) and (hasMesoclimate some ClimateType).
+
+**C. Production & Provenance**
+16. **Entities:** Wine, Winery. **Property:** producedBy.
+17. **Entities:** Winery. **Property:** foundedInYear. **Data Property:** xsd:gYear.
+18. **Entities:** Wine, ViticulturalPractice. **Property:** madeWithViticulturalPractice. **Axioms:** ViticulturalPractice subClassOf AgriculturalPractice.
+19. **Entities:** Wine, WinemakingProcess. **Property:** madeWithProcess. **Axioms:** WinemakingProcess subClassOf EnologicalProcess.
+20. **Entities:** Wine, AgingVessel. **Property:** agedIn. **Axioms:** AgingVessel subClassOf WinemakingEquipment; (agedIn some AgingVessel) and (hasAgingDuration some xsd:decimal).
+21. **Entities:** Wine. **Property:** underwentMalolacticFermentation. **Data Property:** xsd:boolean.
+22. **Entities:** Wine, ClarificationMethod. **Property:** clarifiedUsing. **Axioms:** ClarificationMethod subClassOf WinemakingProcess.
+
+**D. Vintage & Temporal Context**
+23. **Entities:** Wine, VintageYear. **Property:** hasVintageYear. **Axioms:** VintageYear subClassOf TemporalConcept.
+24. **Entities:** VintageYear, WineRegion, ClimateCondition. **Property:** hadClimateCondition. **Axioms:** ClimateCondition subClassOf EnvironmentalFactor.
+25. **Entities:** VintageYear, WineRegion. **Property:** hasVintageRating. **Data Property:** xsd:string or xsd:integer (scale defined).
+26. **Entities:** Wine, VintageYear. **Property:** hasVintageYear.
+
+**E. Sensory Profile & Evaluation**
+27. **Entities:** Wine, TastingNote, SensoryDescriptor. **Properties:** hasTastingNote, hasDescriptor. **Axioms:** TastingNote subClassOf Evaluation; hasDescriptor some SensoryDescriptor.
+28. **Entities:** Wine, BodyLevel. **Property:** hasBody. **Axioms:** BodyLevel subClassOf SensoryAttribute.
+29. **Entities:** RedWine, TanninLevel. **Property:** hasTanninLevel. **Axioms:** RedWine subClassOf Wine; TanninLevel subClassOf SensoryAttribute.
+30. **Entities:** Wine, AcidityLevel. **Property:** hasAcidityLevel. **Axioms:** AcidityLevel subClassOf SensoryAttribute.
+31. **Entities:** Wine, FinishLength. **Property:** hasFinishLength. **Axioms:** FinishLength subClassOf SensoryAttribute.
+32. **Entities:** Wine, QualityRating. **Property:** hasQualityRating. **Axioms:** QualityRating subClassOf Evaluation; (hasQualityRating some QualityRating) and (hasRater some Rater).
+33. **Entities:** TastingNote, Person. **Property:** authoredBy.
+
+**F. Food & Contextual Pairing**
+34. **Entities:** Wine, FoodDish. **Property:** pairsWith.
+35. **Entities:** FoodPairing, PairingRationale. **Property:** hasRationale. **Axioms:** FoodPairing subClassOf (pairsWine some Wine) and (pairsFood some FoodDish) and (hasRationale some PairingRationale).
+36. **Entities:** Wine, FoodDish. **Property:** pairsWith.
+37. **Entities:** FoodPairing, CulturalCuisine. **Property:** recommendedInContext. **Axioms:** CulturalCuisine subClassOf CulturalContext.
+
+**G. Regulatory & Commercial Aspects**
+38. **Entities:** Wine, RegulatoryStandard. **Property:** compliesWith. **Axioms:** RegulatoryStandard subClassOf LegalDesignation.
+39. **Entities:** GeographicalIndication. **Property:** hasLabelingRequirement. **Data Property:** xsd:string.
+40. **Entities:** GeographicalIndication, GrapeVariety. **Property:** permitsGrapeVariety.
+41. **Entities:** GeographicalIndication. **Property:** hasMaximumYield. **Data Property:** xsd:decimal (hl/ha).
+42. **Entities:** Winery. **Property:** hasProductionVolume. **Data Property:** xsd:decimal (bottles/year or hl/year).
+43. **Entities:** Winery, Wine. **Property:** hasSignatureStyle. **Axioms:** Winery hasSignatureStyle only Wine.
+
+**H. Relationships & Inferences**
+44. **Entities:** Winery, Wine. **Property:** producedBy.
+45. **Entities:** Wine, GrapeVariety. **Property:** madeFromGrape.
+46. **Entities:** Wine, WineRegion, GeographicalIndication. **Properties:** producedInRegion, classifiedUnder.
+47. **Entities:** RedWine, WineRegion, TanninLevel. **Properties:** producedInRegion, hasTanninLevel. **Axioms:** RedWine subClassOf Wine; TanninLevel value "High".
+48. **Entities:** WhiteWine, AgingVessel. **Property:** agedIn. **Axioms:** WhiteWine subClassOf Wine; AgingVessel value "OakBarrel".
+49. **Entities:** SparklingWine, WinemakingProcess. **Property:** madeWithProcess. **Axioms:** SparklingWine subClassOf Wine; WinemakingProcess value "TraditionalMethod".
+50. **Entities:** Wine, VintageYear, QualityRating. **Properties:** hasVintageYear, hasQualityRating. **Axioms:** hasQualityRating value > X (xsd:integer).
+51. **Entities:** Wine, SensoryDescriptor. **Property:** hasDescriptor (via TastingNote). **Axioms:** Inference based on shared descriptors.
+52. **Entities:** GrapeVariety, WineRegion. **Property:** commonlyGrownIn.
+53. **Entities:** WineStyle, WinemakingProcess. **Property:** typicallyUsesProcess. **Axioms:** WineStyle subClassOf WineClassification.
+54. **Entities:** GrapeVariety, WineRegion, ViticulturalChallenge. **Property:** hasChallengeInRegion. **Axioms:** ViticulturalChallenge subClassOf AgriculturalFactor.

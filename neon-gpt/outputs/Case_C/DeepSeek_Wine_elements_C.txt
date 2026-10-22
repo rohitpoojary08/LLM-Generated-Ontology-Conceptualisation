@@ -1,0 +1,213 @@
+**Entities, Relations, and Axioms Extracted from Competency Questions**
+
+**A. Wine Classification & Basic Properties**
+1.  **CQ1:** What is the color classification (red, white, rosé) of a given wine?
+    *   Entities: `Wine`, `WineColor`
+    *   Property: `hasColor` (Object Property, domain: Wine, range: WineColor)
+    *   Axioms: `WineColor` subclass of `WineAttribute`. `RedWineColor`, `WhiteWineColor`, `RoseWineColor` subclasses of `WineColor`.
+2.  **CQ2:** Is a given wine sparkling or still?
+    *   Entities: `Wine`, `EffervescenceLevel`
+    *   Property: `hasEffervescence` (Object Property, domain: Wine, range: EffervescenceLevel)
+    *   Axioms: `EffervescenceLevel` subclass of `WineAttribute`. `Sparkling`, `Still` subclasses of `EffervescenceLevel`.
+3.  **CQ3:** Is a given wine fortified?
+    *   Entities: `Wine`, `FortificationStatus`
+    *   Property: `hasFortificationStatus` (Object Property, domain: Wine, range: FortificationStatus)
+    *   Axioms: `FortificationStatus` subclass of `WineAttribute`. `Fortified`, `Unfortified` subclasses of `FortificationStatus`.
+4.  **CQ4:** What is the sweetness level (dry, off-dry, sweet) of a given wine?
+    *   Entities: `Wine`, `SweetnessLevel`
+    *   Property: `hasSweetness` (Object Property, domain: Wine, range: SweetnessLevel)
+    *   Axioms: `SweetnessLevel` subclass of `WineAttribute`. `Dry`, `OffDry`, `Sweet` subclasses of `SweetnessLevel`.
+5.  **CQ5:** What is the alcohol by volume (ABV) percentage of a given wine?
+    *   Entities: `Wine`
+    *   Property: `hasABV` (Data Property, domain: Wine, range: xsd:decimal)
+6.  **CQ6:** What is the residual sugar content of a given wine?
+    *   Entities: `Wine`
+    *   Property: `hasResidualSugar` (Data Property, domain: Wine, range: xsd:decimal)
+7.  **CQ7:** What is the pH level or titratable acidity of a given wine?
+    *   Entities: `Wine`
+    *   Properties: `hasPH` (Data Property, domain: Wine, range: xsd:decimal), `hasTitratableAcidity` (Data Property, domain: Wine, range: xsd:decimal)
+
+**B. Composition & Origin**
+8.  **CQ8:** Which single grape variety is a given monovarietal wine made from?
+    *   Entities: `Wine`, `GrapeVariety`
+    *   Property: `hasGrapeVariety` (Object Property, domain: Wine, range: GrapeVariety)
+    *   Axioms: `MonovarietalWine` subclass of `Wine`. `MonovarietalWine` equivalent to `Wine` and (`hasGrapeVariety` exactly 1 `GrapeVariety`).
+9.  **CQ9:** What are the grape varieties used in a given blended wine, and in what proportions?
+    *   Entities: `Wine`, `GrapeVariety`, `BlendComponent`
+    *   Properties: `hasBlendComponent` (Object Property, domain: Wine, range: BlendComponent), `composedOfGrapeVariety` (Object Property, domain: BlendComponent, range: GrapeVariety), `hasProportion` (Data Property, domain: BlendComponent, range: xsd:decimal)
+    *   Axioms: `BlendedWine` subclass of `Wine`. `BlendedWine` equivalent to `Wine` and (`hasBlendComponent` min 2 `BlendComponent`).
+10. **CQ10:** What is the genetic lineage or parentage of a given grape variety?
+    *   Entities: `GrapeVariety`
+    *   Properties: `hasParent` (Object Property, domain: GrapeVariety, range: GrapeVariety), `isParentOf` (Object Property, inverse of `hasParent`)
+11. **CQ11:** In which specific wine region (e.g., Napa Valley) is a given wine produced?
+    *   Entities: `Wine`, `WineRegion`
+    *   Property: `producedInRegion` (Object Property, domain: Wine, range: WineRegion)
+12. **CQ12:** Under which appellation or geographical indication (e.g., AOC Bordeaux, DOCG Barolo) is a given wine classified?
+    *   Entities: `Wine`, `GeographicalIndication`
+    *   Property: `hasGeographicalIndication` (Object Property, domain: Wine, range: GeographicalIndication)
+    *   Axioms: `GeographicalIndication` subclass of `WineRegion`. `Appellation` subclass of `GeographicalIndication`.
+13. **CQ13:** What are the sub-regions within a given major wine region?
+    *   Entities: `WineRegion`
+    *   Property: `hasSubRegion` (Object Property, domain: WineRegion, range: WineRegion)
+14. **CQ14:** Which country is a given wine region located in?
+    *   Entities: `WineRegion`, `Country`
+    *   Property: `locatedInCountry` (Object Property, domain: WineRegion, range: Country)
+15. **CQ15:** What is the specific terroir (soil type, mesoclimate) associated with a given vineyard site?
+    *   Entities: `VineyardSite`, `SoilType`, `Mesoclimate`
+    *   Properties: `hasSoilType` (Object Property, domain: VineyardSite, range: SoilType), `hasMesoclimate` (Object Property, domain: VineyardSite, range: Mesoclimate)
+    *   Axioms: `VineyardSite` subclass of `WineRegion`.
+
+**C. Production & Provenance**
+16. **CQ16:** Which winery produced a given wine?
+    *   Entities: `Wine`, `Winery`
+    *   Property: `producedBy` (Object Property, domain: Wine, range: Winery)
+17. **CQ17:** When was the producing winery founded?
+    *   Entities: `Winery`
+    *   Property: `foundedInYear` (Data Property, domain: Winery, range: xsd:gYear)
+18. **CQ18:** What viticultural practices (e.g., organic, biodynamic, trellising system) were used in growing the grapes for a given wine?
+    *   Entities: `Wine`, `ViticulturalPractice`
+    *   Property: `madeUsingViticulturalPractice` (Object Property, domain: Wine, range: ViticulturalPractice)
+    *   Axioms: `ViticulturalPractice` subclass of `WineProductionElement`. `OrganicPractice`, `BiodynamicPractice`, `TrellisingSystem` subclasses of `ViticulturalPractice`.
+19. **CQ19:** What specific winemaking processes (e.g., carbonic maceration, barrel fermentation, lees aging) were used to produce a given wine?
+    *   Entities: `Wine`, `WinemakingProcess`
+    *   Property: `madeUsingWinemakingProcess` (Object Property, domain: Wine, range: WinemakingProcess)
+    *   Axioms: `WinemakingProcess` subclass of `WineProductionElement`. `CarbonicMaceration`, `BarrelFermentation`, `LeesAging` subclasses of `WinemakingProcess`.
+20. **CQ20:** What type of vessel (e.g., French oak barrel, stainless steel tank, concrete egg) was used for aging a given wine, and for how long?
+    *   Entities: `Wine`, `AgingVessel`
+    *   Properties: `agedInVessel` (Object Property, domain: Wine, range: AgingVessel), `hasAgingDuration` (Data Property, domain: Wine, range: xsd:duration)
+    *   Axioms: `AgingVessel` subclass of `WinemakingProcess`. `FrenchOakBarrel`, `StainlessSteelTank`, `ConcreteEgg` subclasses of `AgingVessel`.
+21. **CQ21:** Was malolactic fermentation applied to a given wine?
+    *   Entities: `Wine`, `MalolacticFermentation`
+    *   Property: `underwentMalolacticFermentation` (Object Property, domain: Wine, range: MalolacticFermentation)
+    *   Axioms: `MalolacticFermentation` subclass of `WinemakingProcess`. `AppliedMLF`, `NotAppliedMLF` subclasses of `MalolacticFermentation`.
+22. **CQ22:** What filtration or clarification method was used before bottling?
+    *   Entities: `Wine`, `ClarificationMethod`
+    *   Property: `clarifiedUsing` (Object Property, domain: Wine, range: ClarificationMethod)
+    *   Axioms: `ClarificationMethod` subclass of `WinemakingProcess`. `Filtration`, `Fining` subclasses of `ClarificationMethod`.
+
+**D. Vintage & Temporal Context**
+23. **CQ23:** What is the vintage year (harvest year) of a given wine?
+    *   Entities: `Wine`, `Vintage`
+    *   Property: `hasVintage` (Object Property, domain: Wine, range: Vintage)
+24. **CQ24:** What were the general climatic conditions (e.g., hot/dry, cool/wet) for a given vintage in a specific region?
+    *   Entities: `Vintage`, `WineRegion`, `ClimaticCondition`
+    *   Properties: `experiencedInRegion` (Object Property, domain: Vintage, range: WineRegion), `hadClimaticCondition` (Object Property, domain: Vintage, range: ClimaticCondition)
+    *   Axioms: `ClimaticCondition` subclass of `VintageAttribute`. `HotDry`, `CoolWet` subclasses of `ClimaticCondition`.
+25. **CQ25:** How is the overall quality of a given vintage year rated for a specific region?
+    *   Entities: `Vintage`, `WineRegion`, `VintageQualityRating`
+    *   Properties: `experiencedInRegion` (Object Property, domain: Vintage, range: WineRegion), `hasVintageQualityRating` (Object Property, domain: Vintage, range: VintageQualityRating)
+    *   Axioms: `VintageQualityRating` subclass of `VintageAttribute`. `ExcellentVintage`, `GoodVintage`, `AverageVintage`, `PoorVintage` subclasses of `VintageQualityRating`.
+26. **CQ26:** Which wines share the same vintage year?
+    *   Entities: `Wine`, `Vintage`
+    *   Property: `hasVintage` (Object Property, domain: Wine, range: Vintage)
+    *   (Inference via shared `Vintage` individual).
+
+**E. Sensory Profile & Evaluation**
+27. **CQ27:** What are the primary aroma and flavor descriptors (e.g., blackberry, vanilla, tobacco) noted in a tasting note for a given wine?
+    *   Entities: `Wine`, `TastingNote`, `SensoryDescriptor`
+    *   Properties: `hasTastingNote` (Object Property, domain: Wine, range: TastingNote), `hasAromaDescriptor` (Object Property, domain: TastingNote, range: SensoryDescriptor), `hasFlavorDescriptor` (Object Property, domain: TastingNote, range: SensoryDescriptor)
+    *   Axioms: `SensoryDescriptor` subclass of `WineAttribute`. `BlackberryDescriptor`, `VanillaDescriptor`, `TobaccoDescriptor` subclasses of `SensoryDescriptor`.
+28. **CQ28:** What is the perceived body (light, medium, full) of a given wine?
+    *   Entities: `Wine`, `BodyLevel`
+    *   Property: `hasBody` (Object Property, domain: Wine, range: BodyLevel)
+    *   Axioms: `BodyLevel` subclass of `WineAttribute`. `LightBody`, `MediumBody`, `FullBody` subclasses of `BodyLevel`.
+29. **CQ29:** What is the perceived level of tannins (low, medium, high) in a given red wine?
+    *   Entities: `Wine`, `TanninLevel`
+    *   Property: `hasTanninLevel` (Object Property, domain: Wine, range: TanninLevel)
+    *   Axioms: `TanninLevel` subclass of `WineAttribute`. `LowTannin`, `MediumTannin`, `HighTannin` subclasses of `TanninLevel`.
+30. **CQ30:** What is the perceived level of acidity (low, medium, high) in a given wine?
+    *   Entities: `Wine`, `AcidityLevel`
+    *   Property: `hasAcidityLevel` (Object Property, domain: Wine, range: AcidityLevel)
+    *   Axioms: `AcidityLevel` subclass of `WineAttribute`. `LowAcidity`, `MediumAcidity`, `HighAcidity` subclasses of `AcidityLevel`.
+31. **CQ31:** What is the finish length (short, medium, long) of a given wine?
+    *   Entities: `Wine`, `FinishLength`
+    *   Property: `hasFinishLength` (Object Property, domain: Wine, range: FinishLength)
+    *   Axioms: `FinishLength` subclass of `WineAttribute`. `ShortFinish`, `MediumFinish`, `LongFinish` subclasses of `FinishLength`.
+32. **CQ32:** What is the overall quality score or rating (e.g., Parker points) assigned to a given wine?
+    *   Entities: `Wine`, `QualityRating`, `RatingSystem`
+    *   Properties: `hasQualityRating` (Object Property, domain: Wine, range: QualityRating), `fromRatingSystem` (Object Property, domain: QualityRating, range: RatingSystem), `hasScoreValue` (Data Property, domain: QualityRating, range: xsd:decimal)
+    *   Axioms: `ParkerPoints` subclass of `RatingSystem`.
+33. **CQ33:** Who authored a specific tasting note or review?
+    *   Entities: `TastingNote`, `Person`
+    *   Property: `authoredBy` (Object Property, domain: TastingNote, range: Person)
+
+**F. Food & Contextual Pairing**
+34. **CQ34:** With which specific food dishes or categories (e.g., grilled steak, roasted chicken, hard cheese) is a given wine recommended to pair?
+    *   Entities: `Wine`, `Food`
+    *   Property: `pairsWith` (Object Property, domain: Wine, range: Food)
+    *   Axioms: `Food` subclass of `PairingContext`. `GrilledSteak`, `RoastedChicken`, `HardCheese` subclasses of `Food`.
+35. **CQ35:** What is the rationale for a specific food and wine pairing (e.g., "complements richness", "contrasts saltiness")?
+    *   Entities: `Wine`, `Food`, `PairingRationale`
+    *   Properties: `pairsWith` (Object Property, domain: Wine, range: Food), `hasPairingRationale` (Object Property, domain: PairingRationale, range: Wine and Food)
+    *   Axioms: `PairingRationale` subclass of `PairingContext`. `ComplementsRichness`, `ContrastsSaltiness` subclasses of `PairingRationale`.
+36. **CQ36:** Which wines are recommended to pair with a given food item?
+    *   Entities: `Wine`, `Food`
+    *   Property: `pairsWith` (Object Property, domain: Wine, range: Food) (Inverse query).
+37. **CQ37:** In which cultural cuisine context is a specific wine pairing traditionally recommended?
+    *   Entities: `Wine`, `Food`, `CulturalCuisine`
+    *   Properties: `pairsWith` (Object Property, domain: Wine, range: Food), `recommendedInCuisineContext` (Object Property, domain: PairingRationale, range: CulturalCuisine)
+    *   Axioms: `CulturalCuisine` subclass of `PairingContext`. `FrenchCuisine`, `ItalianCuisine` subclasses of `CulturalCuisine`.
+
+**G. Regulatory & Commercial Aspects**
+38. **CQ38:** Which regulatory standards (e.g., AOC, DOCG, AVA rules) does a given wine comply with?
+    *   Entities: `Wine`, `RegulatoryStandard`
+    *   Property: `compliesWithStandard` (Object Property, domain: Wine, range: RegulatoryStandard)
+    *   Axioms: `RegulatoryStandard` subclass of `WineProductionElement`. `AOC`, `DOCG`, `AVA` subclasses of `RegulatoryStandard`.
+39. **CQ39:** What are the specific labeling requirements for a wine from a given appellation?
+    *   Entities: `GeographicalIndication`, `LabelingRequirement`
+    *   Property: `imposesLabelingRequirement` (Object Property, domain: GeographicalIndication, range: LabelingRequirement)
+    *   Axioms: `LabelingRequirement` subclass of `RegulatoryStandard`.
+40. **CQ40:** What is the permitted grape variety list for a given geographical indication?
+    *   Entities: `GeographicalIndication`, `GrapeVariety`
+    *   Property: `permitsGrapeVariety` (Object Property, domain: GeographicalIndication, range: GrapeVariety)
+41. **CQ41:** What is the maximum allowable yield for a given appellation?
+    *   Entities: `GeographicalIndication`
+    *   Property: `hasMaximumYield` (Data Property, domain: GeographicalIndication, range: xsd:decimal)
+42. **CQ42:** What is the production volume of a given winery?
+    *   Entities: `Winery`
+    *   Property: `hasProductionVolume` (Data Property, domain: Winery, range: xsd:decimal)
+43. **CQ43:** What is the signature style or flagship wine of a given producer?
+    *   Entities: `Winery`, `Wine`
+    *   Property: `hasSignatureWine` (Object Property, domain: Winery, range: Wine)
+
+**H. Relationships & Inferences**
+44. **CQ44:** List all wines produced by a specific winery.
+    *   Entities: `Wine`, `Winery`
+    *   Property: `producedBy` (Object Property, domain: Wine, range: Winery) (Inverse query).
+45. **CQ45:** List all wines made primarily from a specific grape variety.
+    *   Entities: `Wine`, `GrapeVariety`
+    *   Property: `hasGrapeVariety` (Object Property, domain: Wine, range: GrapeVariety) (Inverse query).
+46. **CQ46:** List all wines originating from a specific wine region or appellation.
+    *   Entities: `Wine`, `WineRegion`
+    *   Property: `producedInRegion` (Object Property, domain: Wine, range: WineRegion) (Inverse query).
+47. **CQ47:** List all red wines from a specific region that have high tannin levels.
+    *   Entities: `Wine`, `WineRegion`, `WineColor`, `TanninLevel`
+    *   Properties: `producedInRegion`, `hasColor`, `hasTanninLevel`
+    *   Axioms: `RedWine` equivalent to `Wine` and (`hasColor` value `RedWineColor`). `HighTanninRedWineFromRegion` equivalent to `RedWine` and (`producedInRegion` some `WineRegion`) and (`hasTanninLevel` value `HighTannin`).
+48. **CQ48:** List all white wines that underwent oak aging.
+    *   Entities: `Wine`, `WineColor`, `AgingVessel`
+    *   Properties: `hasColor`, `agedInVessel`
+    *   Axioms: `WhiteWine` equivalent to `Wine` and (`hasColor` value `WhiteWineColor`). `OakAgedWhiteWine` equivalent to `WhiteWine` and (`agedInVessel` some `OakBarrel`). `OakBarrel` subclass of `AgingVessel`.
+49. **CQ49:** List all sparkling wines produced using the traditional method (Méthode Champenoise).
+    *   Entities: `Wine`, `EffervescenceLevel`, `WinemakingProcess`
+    *   Properties: `hasEffervescence`, `madeUsingWinemakingProcess`
+    *   Axioms: `SparklingWine` equivalent to `Wine` and (`hasEffervescence` value `Sparkling`). `TraditionalMethodSparklingWine` equivalent to `SparklingWine` and (`madeUsingWinemakingProcess` some `TraditionalMethod`). `TraditionalMethod` subclass of `WinemakingProcess`.
+50. **CQ50:** List all wines from a given vintage year that are rated above a certain score.
+    *   Entities: `Wine`, `Vintage`, `QualityRating`
+    *   Properties: `hasVintage`, `hasQualityRating`, `hasScoreValue` (on QualityRating)
+    *   (Requires a rule or query involving data property comparison).
+51. **CQ51:** Which wines share similar sensory profiles (based on tasting note attributes)?
+    *   Entities: `Wine`, `TastingNote`, `SensoryDescriptor`
+    *   Properties: `hasTastingNote`, `hasAromaDescriptor`, `hasFlavorDescriptor`
+    *   (Requires similarity reasoning based on shared descriptors).
+52. **CQ52:** For a given grape variety, which regions is it most commonly grown in?
+    *   Entities: `GrapeVariety`, `WineRegion`
+    *   Property: `commonlyGrownInRegion` (Object Property, domain: GrapeVariety, range: WineRegion)
+53. **CQ53:** Which winemaking processes are typically used for a given wine style (e.g., Orange Wine)?
+    *   Entities: `WineStyle`, `WinemakingProcess`
+    *   Property: `typicallyUsesProcess` (Object Property, domain: WineStyle, range: WinemakingProcess)
+    *   Axioms: `WineStyle` subclass of `Wine`. `OrangeWine` subclass of `WineStyle`.
+54. **CQ54:** What are the typical viticultural challenges for a grape variety in a specific region?
+    *   Entities: `GrapeVariety`, `WineRegion`, `ViticulturalChallenge`
+    *   Properties: `commonlyGrownInRegion` (Object Property, domain: GrapeVariety, range: WineRegion), `facesChallengeInRegion` (Object Property, domain: GrapeVariety, range: ViticulturalChallenge) with qualifier `WineRegion`.
+    *   Axioms: `ViticulturalChallenge` subclass of `ViticulturalPractice`.

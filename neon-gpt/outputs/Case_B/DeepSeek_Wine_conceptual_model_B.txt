@@ -1,0 +1,929 @@
+###start_turtle###
+@prefix : <http://www.semanticweb.org/wine-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Ontology Declaration
+:WineOntology rdf:type owl:Ontology ;
+    rdfs:label "Wine Ontology" ;
+    rdfs:comment "An ontology for the domain of viticulture and oenology." .
+
+# Classes (77 total) with subclass axioms (76 subclass relations)
+:Wine rdf:type owl:Class ;
+    rdfs:label "Wine" ;
+    rdfs:comment "A class representing wine." .
+
+:WineType rdf:type owl:Class ;
+    rdfs:subClassOf :Wine ;
+    rdfs:label "Wine Type" ;
+    rdfs:comment "A classification of wine based on various characteristics." .
+
+:WineClassification rdf:type owl:Class ;
+    rdfs:subClassOf :WineType ;
+    rdfs:label "Wine Classification" ;
+    rdfs:comment "A detailed categorization of wines." .
+
+:ColorClassification rdf:type owl:Class ;
+    rdfs:subClassOf :WineClassification ;
+    rdfs:label "Color Classification" ;
+    rdfs:comment "Categorization based on wine color." .
+
+:RedWine rdf:type owl:Class ;
+    rdfs:subClassOf :ColorClassification ;
+    rdfs:label "Red Wine" .
+
+:WhiteWine rdf:type owl:Class ;
+    rdfs:subClassOf :ColorClassification ;
+    rdfs:label "White Wine" .
+
+:RoséWine rdf:type owl:Class ;
+    rdfs:subClassOf :ColorClassification ;
+    rdfs:label "Rosé Wine" .
+
+:EffervescenceClassification rdf:type owl:Class ;
+    rdfs:subClassOf :WineClassification ;
+    rdfs:label "Effervescence Classification" ;
+    rdfs:comment "Categorization based on effervescence." .
+
+:StillWine rdf:type owl:Class ;
+    rdfs:subClassOf :EffervescenceClassification ;
+    rdfs:label "Still Wine" .
+
+:SparklingWine rdf:type owl:Class ;
+    rdfs:subClassOf :EffervescenceClassification ;
+    rdfs:label "Sparkling Wine" .
+
+:SweetnessClassification rdf:type owl:Class ;
+    rdfs:subClassOf :WineClassification ;
+    rdfs:label "Sweetness Classification" ;
+    rdfs:comment "Categorization based on sweetness levels." .
+
+:DryWine rdf:type owl:Class ;
+    rdfs:subClassOf :SweetnessClassification ;
+    rdfs:label "Dry Wine" .
+
+:SemiDryWine rdf:type owl:Class ;
+    rdfs:subClassOf :SweetnessClassification ;
+    rdfs:label "Semi-Dry Wine" .
+
+:SweetWine rdf:type owl:Class ;
+    rdfs:subClassOf :SweetnessClassification ;
+    rdfs:label "Sweet Wine" .
+
+:FortificationClassification rdf:type owl:Class ;
+    rdfs:subClassOf :WineClassification ;
+    rdfs:label "Fortification Classification" ;
+    rdfs:comment "Categorization based on fortification." .
+
+:FortifiedWine rdf:type owl:Class ;
+    rdfs:subClassOf :FortificationClassification ;
+    rdfs:label "Fortified Wine" .
+
+:Port rdf:type owl:Class ;
+    rdfs:subClassOf :FortifiedWine ;
+    rdfs:label "Port" .
+
+:Sherry rdf:type owl:Class ;
+    rdfs:subClassOf :FortifiedWine ;
+    rdfs:label "Sherry" .
+
+:GrapeVariety rdf:type owl:Class ;
+    rdfs:label "Grape Variety" ;
+    rdfs:comment "A grape cultivar used in winemaking." .
+
+:VitisVinifera rdf:type owl:Class ;
+    rdfs:subClassOf :GrapeVariety ;
+    rdfs:label "Vitis Vinifera" .
+
+:HybridVariety rdf:type owl:Class ;
+    rdfs:subClassOf :GrapeVariety ;
+    rdfs:label "Hybrid Variety" .
+
+:ViticulturalPractice rdf:type owl:Class ;
+    rdfs:label "Viticultural Practice" ;
+    rdfs:comment "Vineyard management technique." .
+
+:Planting rdf:type owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice ;
+    rdfs:label "Planting" .
+
+:Pruning rdf:type owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice ;
+    rdfs:label "Pruning" .
+
+:PestControl rdf:type owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice ;
+    rdfs:label "Pest Control" .
+
+:Harvesting rdf:type owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice ;
+    rdfs:label "Harvesting" .
+
+:WinemakingProcess rdf:type owl:Class ;
+    rdfs:label "Winemaking Process" ;
+    rdfs:comment "Enological process in wine production." .
+
+:Crushing rdf:type owl:Class ;
+    rdfs:subClassOf :WinemakingProcess ;
+    rdfs:label "Crushing" .
+
+:PrimaryFermentation rdf:type owl:Class ;
+    rdfs:subClassOf :WinemakingProcess ;
+    rdfs:label "Primary Fermentation" .
+
+:MalolacticFermentation rdf:type owl:Class ;
+    rdfs:subClassOf :WinemakingProcess ;
+    rdfs:label "Malolactic Fermentation" .
+
+:Aging rdf:type owl:Class ;
+    rdfs:subClassOf :WinemakingProcess ;
+    rdfs:label "Aging" .
+
+:OakBarrelAging rdf:type owl:Class ;
+    rdfs:subClassOf :Aging ;
+    rdfs:label "Oak Barrel Aging" .
+
+:StainlessSteelTankAging rdf:type owl:Class ;
+    rdfs:subClassOf :Aging ;
+    rdfs:label "Stainless Steel Tank Aging" .
+
+:Clarification rdf:type owl:Class ;
+    rdfs:subClassOf :WinemakingProcess ;
+    rdfs:label "Clarification" .
+
+:Bottling rdf:type owl:Class ;
+    rdfs:subClassOf :WinemakingProcess ;
+    rdfs:label "Bottling" .
+
+:WineAttribute rdf:type owl:Class ;
+    rdfs:label "Wine Attribute" ;
+    rdfs:comment "Characteristic of a wine." .
+
+:SensoryCharacteristic rdf:type owl:Class ;
+    rdfs:subClassOf :WineAttribute ;
+    rdfs:label "Sensory Characteristic" .
+
+:Aroma rdf:type owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic ;
+    rdfs:label "Aroma" .
+
+:Flavor rdf:type owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic ;
+    rdfs:label "Flavor" .
+
+:Body rdf:type owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic ;
+    rdfs:label "Body" .
+
+:TanninLevel rdf:type owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic ;
+    rdfs:label "Tannin Level" .
+
+:ChemicalProperty rdf:type owl:Class ;
+    rdfs:subClassOf :WineAttribute ;
+    rdfs:label "Chemical Property" .
+
+:AlcoholContent rdf:type owl:Class ;
+    rdfs:subClassOf :ChemicalProperty ;
+    rdfs:label "Alcohol Content" .
+
+:AcidityLevel rdf:type owl:Class ;
+    rdfs:subClassOf :ChemicalProperty ;
+    rdfs:label "Acidity Level" .
+
+:ResidualSugar rdf:type owl:Class ;
+    rdfs:subClassOf :ChemicalProperty ;
+    rdfs:label "Residual Sugar" .
+
+:QualityIndicator rdf:type owl:Class ;
+    rdfs:subClassOf :WineAttribute ;
+    rdfs:label "Quality Indicator" .
+
+:GeographicalIndication rdf:type owl:Class ;
+    rdfs:label "Geographical Indication" ;
+    rdfs:comment "Legal designation of origin." .
+
+:Appellation rdf:type owl:Class ;
+    rdfs:subClassOf :GeographicalIndication ;
+    rdfs:label "Appellation" .
+
+:RegionOfOrigin rdf:type owl:Class ;
+    rdfs:subClassOf :GeographicalIndication ;
+    rdfs:label "Region of Origin" .
+
+:Terroir rdf:type owl:Class ;
+    rdfs:subClassOf :GeographicalIndication ;
+    rdfs:label "Terroir" .
+
+:Winery rdf:type owl:Class ;
+    rdfs:label "Winery" ;
+    rdfs:comment "Wine producer." .
+
+:Producer rdf:type owl:Class ;
+    rdfs:subClassOf :Winery ;
+    rdfs:label "Producer" .
+
+:Vintage rdf:type owl:Class ;
+    rdfs:label "Vintage" ;
+    rdfs:comment "Specific harvest year." .
+
+:ClimaticCondition rdf:type owl:Class ;
+    rdfs:subClassOf :Vintage ;
+    rdfs:label "Climatic Condition" .
+
+:WinePairing rdf:type owl:Class ;
+    rdfs:label "Wine Pairing" ;
+    rdfs:comment "Guideline for matching wine with food." .
+
+:Food rdf:type owl:Class ;
+    rdfs:label "Food" .
+
+:FlavorCompatibility rdf:type owl:Class ;
+    rdfs:subClassOf :WinePairing ;
+    rdfs:label "Flavor Compatibility" .
+
+:CulturalTradition rdf:type owl:Class ;
+    rdfs:subClassOf :WinePairing ;
+    rdfs:label "Cultural Tradition" .
+
+:RegulatoryAspect rdf:type owl:Class ;
+    rdfs:label "Regulatory Aspect" ;
+    rdfs:comment "Legal standard or requirement." .
+
+:LabelingRequirement rdf:type owl:Class ;
+    rdfs:subClassOf :RegulatoryAspect ;
+    rdfs:label "Labeling Requirement" .
+
+:ClassificationSystem rdf:type owl:Class ;
+    rdfs:subClassOf :RegulatoryAspect ;
+    rdfs:label "Classification System" .
+
+:LegalStandard rdf:type owl:Class ;
+    rdfs:subClassOf :RegulatoryAspect ;
+    rdfs:label "Legal Standard" .
+
+:MarketingRegulation rdf:type owl:Class ;
+    rdfs:subClassOf :RegulatoryAspect ;
+    rdfs:label "Marketing Regulation" .
+
+:SubRegion rdf:type owl:Class ;
+    rdfs:subClassOf :RegionOfOrigin ;
+    rdfs:label "Sub-Region" .
+
+:LegalDesignation rdf:type owl:Class ;
+    rdfs:subClassOf :GeographicalIndication ;
+    rdfs:label "Legal Designation" .
+
+:EnologicalProcess rdf:type owl:Class ;
+    rdfs:subClassOf :WinemakingProcess ;
+    rdfs:label "Enological Process" .
+
+:VineyardManagement rdf:type owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice ;
+    rdfs:label "Vineyard Management" .
+
+:ChemicalPropertyDetail rdf:type owl:Class ;
+    rdfs:subClassOf :ChemicalProperty ;
+    rdfs:label "Chemical Property Detail" .
+
+:SensoryProfile rdf:type owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic ;
+    rdfs:label "Sensory Profile" .
+
+:ProductionMethod rdf:type owl:Class ;
+    rdfs:subClassOf :WinemakingProcess ;
+    rdfs:label "Production Method" .
+
+:EffervescenceLevel rdf:type owl:Class ;
+    rdfs:subClassOf :EffervescenceClassification ;
+    rdfs:label "Effervescence Level" .
+
+:ColorClassificationDetail rdf:type owl:Class ;
+    rdfs:subClassOf :ColorClassification ;
+    rdfs:label "Color Classification Detail" .
+
+:SweetnessClassificationDetail rdf:type owl:Class ;
+    rdfs:subClassOf :SweetnessClassification ;
+    rdfs:label "Sweetness Classification Detail" .
+
+:FortificationType rdf:type owl:Class ;
+    rdfs:subClassOf :FortificationClassification ;
+    rdfs:label "Fortification Type" .
+
+:GrapeCultivarDetail rdf:type owl:Class ;
+    rdfs:subClassOf :GrapeVariety ;
+    rdfs:label "Grape Cultivar Detail" .
+
+:VineyardManagementDetail rdf:type owl:Class ;
+    rdfs:subClassOf :VineyardManagement ;
+    rdfs:label "Vineyard Management Detail" .
+
+:WinemakingProcessDetail rdf:type owl:Class ;
+    rdfs:subClassOf :WinemakingProcess ;
+    rdfs:label "Winemaking Process Detail" .
+
+:SensoryAttributeDetail rdf:type owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic ;
+    rdfs:label "Sensory Attribute Detail" .
+
+:GeographicalOriginDetail rdf:type owl:Class ;
+    rdfs:subClassOf :GeographicalIndication ;
+    rdfs:label "Geographical Origin Detail" .
+
+:ProducerDetail rdf:type owl:Class ;
+    rdfs:subClassOf :Winery ;
+    rdfs:label "Producer Detail" .
+
+:VintageDetail rdf:type owl:Class ;
+    rdfs:subClassOf :Vintage ;
+    rdfs:label "Vintage Detail" .
+
+:FoodPairingDetail rdf:type owl:Class ;
+    rdfs:subClassOf :WinePairing ;
+    rdfs:label "Food Pairing Detail" .
+
+:RegulatoryDetail rdf:type owl:Class ;
+    rdfs:subClassOf :RegulatoryAspect ;
+    rdfs:label "Regulatory Detail" .
+
+:TastingNote rdf:type owl:Class ;
+    rdfs:label "Tasting Note" ;
+    rdfs:comment "Descriptive note about wine tasting." .
+
+# Object Properties (13 total) with domain and range axioms
+:hasGrapeVariety rdf:type owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :GrapeVariety ;
+    rdfs:label "has grape variety" ;
+    rdfs:comment "Relates a wine to the grape varieties used in its production." .
+
+:hasPercentageInBlend rdf:type owl:ObjectProperty ;
+    rdfs:domain :GrapeVariety ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has percentage in blend" ;
+    rdfs:comment "Specifies the percentage of a grape variety in a wine blend." .
+
+:hasGeneticLineage rdf:type owl:ObjectProperty ;
+    rdfs:domain :GrapeVariety ;
+    rdfs:range :GrapeVariety ;
+    rdfs:label "has genetic lineage" ;
+    rdfs:comment "Relates a grape variety to its parent varieties." .
+
+:hasFlavorProfile rdf:type owl:ObjectProperty ;
+    rdfs:domain :GrapeVariety ;
+    rdfs:range :Flavor ;
+    rdfs:label "has flavor profile" ;
+    rdfs:comment "Relates a grape variety to its associated flavor profiles." .
+
+:isSuitableFor rdf:type owl:ObjectProperty ;
+    rdfs:domain :GrapeVariety ;
+    rdfs:range :Terroir ;
+    rdfs:label "is suitable for" ;
+    rdfs:comment "Indicates the suitability of a grape variety for specific terroir." .
+
+:appliesPractice rdf:type owl:ObjectProperty ;
+    rdfs:domain :VineyardManagement ;
+    rdfs:range :ViticulturalPractice ;
+    rdfs:label "applies practice" ;
+    rdfs:comment "Relates vineyard management to specific viticultural practices." .
+
+:involvesProcess rdf:type owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :WinemakingProcess ;
+    rdfs:label "involves process" ;
+    rdfs:comment "Relates a wine to the winemaking processes used in its production." .
+
+:hasAttribute rdf:type owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :WineAttribute ;
+    rdfs:label "has attribute" ;
+    rdfs:comment "Relates a wine to its attributes." .
+
+:producedIn rdf:type owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :GeographicalIndication ;
+    rdfs:label "produced in" ;
+    rdfs:comment "Relates a wine to its geographical indication." .
+
+:producedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :Winery ;
+    rdfs:label "produced by" ;
+    rdfs:comment "Relates a wine to its producer." .
+
+:hasVintage rdf:type owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :Vintage ;
+    rdfs:label "has vintage" ;
+    rdfs:comment "Relates a wine to its vintage." .
+
+:pairsWith rdf:type owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :Food ;
+    rdfs:label "pairs with" ;
+    rdfs:comment "Relates a wine to foods it pairs well with." .
+
+:subjectTo rdf:type owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :RegulatoryAspect ;
+    rdfs:label "subject to" ;
+    rdfs:comment "Relates a wine to regulatory aspects." .
+
+# Data Properties (1 total) with domain and range axioms
+:hasValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain :WineAttribute ;
+    rdfs:range xsd:string ;
+    rdfs:label "has value" ;
+    rdfs:comment "Specifies the value of a wine attribute." .
+
+# Individuals (161 total) - Grape Variety Individuals
+:CabernetSauvignon rdf:type :GrapeVariety ;
+    rdfs:label "Cabernet Sauvignon" .
+
+:Chardonnay rdf:type :GrapeVariety ;
+    rdfs:label "Chardonnay" .
+
+:PinotNoir rdf:type :GrapeVariety ;
+    rdfs:label "Pinot Noir" .
+
+:Merlot rdf:type :GrapeVariety ;
+    rdfs:label "Merlot" .
+
+:Syrah rdf:type :GrapeVariety ;
+    rdfs:label "Syrah" .
+
+:Riesling rdf:type :GrapeVariety ;
+    rdfs:label "Riesling" .
+
+:SauvignonBlanc rdf:type :GrapeVariety ;
+    rdfs:label "Sauvignon Blanc" .
+
+:Zinfandel rdf:type :GrapeVariety ;
+    rdfs:label "Zinfandel" .
+
+:Malbec rdf:type :GrapeVariety ;
+    rdfs:label "Malbec" .
+
+:Tempranillo rdf:type :GrapeVariety ;
+    rdfs:label "Tempranillo" .
+
+:Sangiovese rdf:type :GrapeVariety ;
+    rdfs:label "Sangiovese" .
+
+:Nebbiolo rdf:type :GrapeVariety ;
+    rdfs:label "Nebbiolo" .
+
+:Barbera rdf:type :GrapeVariety ;
+    rdfs:label "Barbera" .
+
+:Grenache rdf:type :GrapeVariety ;
+    rdfs:label "Grenache" .
+
+:Viognier rdf:type :GrapeVariety ;
+    rdfs:label "Viognier" .
+
+:CheninBlanc rdf:type :GrapeVariety ;
+    rdfs:label "Chenin Blanc" .
+
+:Semillon rdf:type :GrapeVariety ;
+    rdfs:label "Semillon" .
+
+:Gewurztraminer rdf:type :GrapeVariety ;
+    rdfs:label "Gewurztraminer" .
+
+:Muscat rdf:type :GrapeVariety ;
+    rdfs:label "Muscat" .
+
+:Carmenere rdf:type :GrapeVariety ;
+    rdfs:label "Carmenere" .
+
+:PetiteSirah rdf:type :GrapeVariety ;
+    rdfs:label "Petite Sirah" .
+
+:Mourvedre rdf:type :GrapeVariety ;
+    rdfs:label "Mourvedre" .
+
+:CabernetFranc rdf:type :GrapeVariety ;
+    rdfs:label "Cabernet Franc" .
+
+:PinotGris rdf:type :GrapeVariety ;
+    rdfs:label "Pinot Gris" .
+
+:PinotBlanc rdf:type :GrapeVariety ;
+    rdfs:label "Pinot Blanc" .
+
+:Albarino rdf:type :GrapeVariety ;
+    rdfs:label "Albarino" .
+
+:Verdejo rdf:type :GrapeVariety ;
+    rdfs:label "Verdejo" .
+
+:Godello rdf:type :GrapeVariety ;
+    rdfs:label "Godello" .
+
+:Trebbiano rdf:type :GrapeVariety ;
+    rdfs:label "Trebbiano" .
+
+:Garganega rdf:type :GrapeVariety ;
+    rdfs:label "Garganega" .
+
+:Corvina rdf:type :GrapeVariety ;
+    rdfs:label "Corvina" .
+
+:Rondinella rdf:type :GrapeVariety ;
+    rdfs:label "Rondinella" .
+
+:Molinara rdf:type :GrapeVariety ;
+    rdfs:label "Molinara" .
+
+:Negroamaro rdf:type :GrapeVariety ;
+    rdfs:label "Negroamaro" .
+
+:Primitivo rdf:type :GrapeVariety ;
+    rdfs:label "Primitivo" .
+
+:Aglianico rdf:type :GrapeVariety ;
+    rdfs:label "Aglianico" .
+
+:Fiano rdf:type :GrapeVariety ;
+    rdfs:label "Fiano" .
+
+:Greco rdf:type :GrapeVariety ;
+    rdfs:label "Greco" .
+
+:Falanghina rdf:type :GrapeVariety ;
+    rdfs:label "Falanghina" .
+
+:Vermentino rdf:type :GrapeVariety ;
+    rdfs:label "Vermentino" .
+
+:Carignan rdf:type :GrapeVariety ;
+    rdfs:label "Carignan" .
+
+:Cinsault rdf:type :GrapeVariety ;
+    rdfs:label "Cinsault" .
+
+:Macabeo rdf:type :GrapeVariety ;
+    rdfs:label "Macabeo" .
+
+:Parellada rdf:type :GrapeVariety ;
+    rdfs:label "Parellada" .
+
+:XarelLo rdf:type :GrapeVariety ;
+    rdfs:label "Xarel-lo" .
+
+:Airén rdf:type :GrapeVariety ;
+    rdfs:label "Airén" .
+
+:Monastrell rdf:type :GrapeVariety ;
+    rdfs:label "Monastrell" .
+
+:Bobal rdf:type :GrapeVariety ;
+    rdfs:label "Bobal" .
+
+:Graciano rdf:type :GrapeVariety ;
+    rdfs:label "Graciano" .
+
+:Mazuelo rdf:type :GrapeVariety ;
+    rdfs:label "Mazuelo" .
+
+:Mencia rdf:type :GrapeVariety ;
+    rdfs:label "Mencia" .
+
+:ListanNegro rdf:type :GrapeVariety ;
+    rdfs:label "Listan Negro" .
+
+:Malvasia rdf:type :GrapeVariety ;
+    rdfs:label "Malvasia" .
+
+:Torrontes rdf:type :GrapeVariety ;
+    rdfs:label "Torrontes" .
+
+:Tannat rdf:type :GrapeVariety ;
+    rdfs:label "Tannat" .
+
+:TourigaNacional rdf:type :GrapeVariety ;
+    rdfs:label "Touriga Nacional" .
+
+:TourigaFranca rdf:type :GrapeVariety ;
+    rdfs:label "Touriga Franca" .
+
+:TintaRoriz rdf:type :GrapeVariety ;
+    rdfs:label "Tinta Roriz" .
+
+:TintaBarroca rdf:type :GrapeVariety ;
+    rdfs:label "Tinta Barroca" .
+
+:TintoCao rdf:type :GrapeVariety ;
+    rdfs:label "Tinto Cão" .
+
+:Sousao rdf:type :GrapeVariety ;
+    rdfs:label "Sousão" .
+
+:Alfrocheiro rdf:type :GrapeVariety ;
+    rdfs:label "Alfrocheiro" .
+
+:Jaen rdf:type :GrapeVariety ;
+    rdfs:label "Jaen" .
+
+:Encruzado rdf:type :GrapeVariety ;
+    rdfs:label "Encruzado" .
+
+:Arinto rdf:type :GrapeVariety ;
+    rdfs:label "Arinto" .
+
+:AntaoVaz rdf:type :GrapeVariety ;
+    rdfs:label "Antão Vaz" .
+
+:Roupeiro rdf:type :GrapeVariety ;
+    rdfs:label "Roupeiro" .
+
+:Perrum rdf:type :GrapeVariety ;
+    rdfs:label "Perrum" .
+
+:Rabigato rdf:type :GrapeVariety ;
+    rdfs:label "Rabigato" .
+
+:Viosinho rdf:type :GrapeVariety ;
+    rdfs:label "Viosinho" .
+
+:Gouveio rdf:type :GrapeVariety ;
+    rdfs:label "Gouveio" .
+
+:Moscatel rdf:type :GrapeVariety ;
+    rdfs:label "Moscatel" .
+
+:Furmint rdf:type :GrapeVariety ;
+    rdfs:label "Furmint" .
+
+:Harslevelu rdf:type :GrapeVariety ;
+    rdfs:label "Hárslevelű" .
+
+:Kekfrankos rdf:type :GrapeVariety ;
+    rdfs:label "Kékfrankos" .
+
+:Kadarka rdf:type :GrapeVariety ;
+    rdfs:label "Kadarka" .
+
+:Juhfark rdf:type :GrapeVariety ;
+    rdfs:label "Juhfark" .
+
+:Picpoul rdf:type :GrapeVariety ;
+    rdfs:label "Picpoul" .
+
+:Clairette rdf:type :GrapeVariety ;
+    rdfs:label "Clairette" .
+
+:Bourboulenc rdf:type :GrapeVariety ;
+    rdfs:label "Bourboulenc" .
+
+:UgniBlanc rdf:type :GrapeVariety ;
+    rdfs:label "Ugni Blanc" .
+
+:Colombard rdf:type :GrapeVariety ;
+    rdfs:label "Colombard" .
+
+:FolleBlanche rdf:type :GrapeVariety ;
+    rdfs:label "Folle Blanche" .
+
+:GrosManseng rdf:type :GrapeVariety ;
+    rdfs:label "Gros Manseng" .
+
+:PetitManseng rdf:type :GrapeVariety ;
+    rdfs:label "Petit Manseng" .
+
+:Courbu rdf:type :GrapeVariety ;
+    rdfs:label "Courbu" .
+
+:Lauzet rdf:type :GrapeVariety ;
+    rdfs:label "Lauzet" .
+
+:PetitCourbu rdf:type :GrapeVariety ;
+    rdfs:label "Petit Courbu" .
+
+:Camaralet rdf:type :GrapeVariety ;
+    rdfs:label "Camaralet" .
+
+:Raffiat rdf:type :GrapeVariety ;
+    rdfs:label "Raffiat" .
+
+:Clarin rdf:type :GrapeVariety ;
+    rdfs:label "Clarin" .
+
+:Mauzac rdf:type :GrapeVariety ;
+    rdfs:label "Mauzac" .
+
+:LenDeLEl rdf:type :GrapeVariety ;
+    rdfs:label "Len de l'El" .
+
+:Ondenc rdf:type :GrapeVariety ;
+    rdfs:label "Ondenc" .
+
+:SauvignonGris rdf:type :GrapeVariety ;
+    rdfs:label "Sauvignon Gris" .
+
+:SauvignonBlancMusque rdf:type :GrapeVariety ;
+    rdfs:label "Sauvignon Blanc Musqué" .
+
+:SauvignonVert rdf:type :GrapeVariety ;
+    rdfs:label "Sauvignon Vert" .
+
+:Chasselas rdf:type :GrapeVariety ;
+    rdfs:label "Chasselas" .
+
+:Muscadelle rdf:type :GrapeVariety ;
+    rdfs:label "Muscadelle" .
+
+:MuscatOttonel rdf:type :GrapeVariety ;
+    rdfs:label "Muscat Ottonel" .
+
+:MuscatAlexandria rdf:type :GrapeVariety ;
+    rdfs:label "Muscat of Alexandria" .
+
+:MuscatHamburg rdf:type :GrapeVariety ;
+    rdfs:label "Muscat Hamburg" .
+
+:MuscatBlancAPetitsGrains rdf:type :GrapeVariety ;
+    rdfs:label "Muscat Blanc à Petits Grains" .
+
+:OrangeMuscat rdf:type :GrapeVariety ;
+    rdfs:label "Orange Muscat" .
+
+:BlackMuscat rdf:type :GrapeVariety ;
+    rdfs:label "Black Muscat" .
+
+:RedMuscat rdf:type :GrapeVariety ;
+    rdfs:label "Red Muscat" .
+
+:EarlyMuscat rdf:type :GrapeVariety ;
+    rdfs:label "Early Muscat" .
+
+:Frontignan rdf:type :GrapeVariety ;
+    rdfs:label "Frontignan" .
+
+:Schiava rdf:type :GrapeVariety ;
+    rdfs:label "Schiava" .
+
+:Teroldego rdf:type :GrapeVariety ;
+    rdfs:label "Teroldego" .
+
+:Lagrein rdf:type :GrapeVariety ;
+    rdfs:label "Lagrein" .
+
+:Marzemino rdf:type :GrapeVariety ;
+    rdfs:label "Marzemino" .
+
+:Refosco rdf:type :GrapeVariety ;
+    rdfs:label "Refosco" .
+
+:Picolit rdf:type :GrapeVariety ;
+    rdfs:label "Picolit" .
+
+:RibollaGialla rdf:type :GrapeVariety ;
+    rdfs:label "Ribolla Gialla" .
+
+:Friulano rdf:type :GrapeVariety ;
+    rdfs:label "Friulano" .
+
+:Verduzzo rdf:type :GrapeVariety ;
+    rdfs:label "Verduzzo" .
+
+:Pignolo rdf:type :GrapeVariety ;
+    rdfs:label "Pignolo" .
+
+:Schioppettino rdf:type :GrapeVariety ;
+    rdfs:label "Schioppettino" .
+
+:Tazzelenghe rdf:type :GrapeVariety ;
+    rdfs:label "Tazzelenghe" .
+
+:Franconia rdf:type :GrapeVariety ;
+    rdfs:label "Franconia" .
+
+:Grignolino rdf:type :GrapeVariety ;
+    rdfs:label "Grignolino" .
+
+:Freisa rdf:type :GrapeVariety ;
+    rdfs:label "Freisa" .
+
+:Brachetto rdf:type :GrapeVariety ;
+    rdfs:label "Brachetto" .
+
+:Croatina rdf:type :GrapeVariety ;
+    rdfs:label "Croatina" .
+
+:Vespolina rdf:type :GrapeVariety ;
+    rdfs:label "Vespolina" .
+
+:UvaRara rdf:type :GrapeVariety ;
+    rdfs:label "Uva Rara" .
+
+:Erbaluce rdf:type :GrapeVariety ;
+    rdfs:label "Erbaluce" .
+
+:Arneis rdf:type :GrapeVariety ;
+    rdfs:label "Arneis" .
+
+:Favorita rdf:type :GrapeVariety ;
+    rdfs:label "Favorita" .
+
+:Timorasso rdf:type :GrapeVariety ;
+    rdfs:label "Timorasso" .
+
+:Cortese rdf:type :GrapeVariety ;
+    rdfs:label "Cortese" .
+
+:Inzolia rdf:type :GrapeVariety ;
+    rdfs:label "Inzolia" .
+
+:Catarratto rdf:type :GrapeVariety ;
+    rdfs:label "Catarratto" .
+
+:Grillo rdf:type :GrapeVariety ;
+    rdfs:label "Grillo" .
+
+:Carricante rdf:type :GrapeVariety ;
+    rdfs:label "Carricante" .
+
+:Minella rdf:type :GrapeVariety ;
+    rdfs:label "Minella" .
+
+:NerelloMascalese rdf:type :GrapeVariety ;
+    rdfs:label "Nerello Mascalese" .
+
+:NerelloCappuccio rdf:type :GrapeVariety ;
+    rdfs:label "Nerello Cappuccio" .
+
+:Perricone rdf:type :GrapeVariety ;
+    rdfs:label "Perricone" .
+
+:Nocera rdf:type :GrapeVariety ;
+    rdfs:label "Nocera" .
+
+:Gaglioppo rdf:type :GrapeVariety ;
+    rdfs:label "Gaglioppo" .
+
+:Magliocco rdf:type :GrapeVariety ;
+    rdfs:label "Magliocco" .
+
+:Marsanne rdf:type :GrapeVariety ;
+    rdfs:label "Marsanne" .
+
+:Roussanne rdf:type :GrapeVariety ;
+    rdfs:label "Roussanne" .
+
+:Vognier rdf:type :GrapeVariety ;
+    rdfs:label "Vognier" .
+
+:PetitVerdot rdf:type :GrapeVariety ;
+    rdfs:label "Petit Verdot" .
+
+# Example Wine Individuals with property assertions
+:ChateauMargaux rdf:type :Wine ;
+    :hasGrapeVariety :CabernetSauvignon ;
+    :hasGrapeVariety :Merlot ;
+    :hasGrapeVariety :CabernetFranc ;
+    :hasGrapeVariety :PetitVerdot ;
+    :producedIn :Bordeaux ;
+    :producedBy :ChateauMargauxWinery ;
+    :hasVintage :Vintage2015 ;
+    :hasAttribute :HighTannin ;
+    :hasAttribute :FullBody ;
+    :hasAttribute :AlcoholContent13_5 ;
+    :involvesProcess :OakBarrelAging ;
+    :pairsWith :RedMeat ;
+    :subjectTo :AOCBordeaux .
+
+:DomPerignon rdf:type :SparklingWine ;
+    :hasGrapeVariety :Chardonnay ;
+    :hasGrapeVariety :PinotNoir ;
+    :producedIn :Champagne ;
+    :producedBy :MoetChandon ;
+    :hasVintage :Vintage2008 ;
+    :hasAttribute :Dry ;
+    :hasAttribute :HighAcidity ;
+    :involvesProcess :SecondaryFermentation ;
+    :pairsWith :Oysters ;
+    :subjectTo :AOCChampagne .
+
+# Supporting Individuals for Properties
+:Bordeaux rdf:type :Appellation .
+:Champagne rdf:type :Appellation .
+:ChateauMargauxWinery rdf:type :Winery .
+:MoetChandon rdf:type :Winery .
+:Vintage2015 rdf:type :Vintage .
+:Vintage2008 rdf:type :Vintage .
+:HighTannin rdf:type :TanninLevel .
+:FullBody rdf:type :Body .
+:AlcoholContent13_5 rdf:type :AlcoholContent .
+:Dry rdf:type :SweetnessClassification .
+:HighAcidity rdf:type :AcidityLevel .
+:OakBarrelAging rdf:type :Aging .
+:SecondaryFermentation rdf:type :PrimaryFermentation .
+:RedMeat rdf:type :Food .
+:Oysters rdf:type :Food .
+:AOCBordeaux rdf:type :LegalStandard .
+:AOCChampagne rdf:type :LegalStandard .
+###end_turtle###

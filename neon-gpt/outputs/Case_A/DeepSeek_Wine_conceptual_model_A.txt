@@ -1,0 +1,767 @@
+###start_turtle###
+@prefix : <http://www.w3id.org/wine#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Ontology Header
+:WineOntology a owl:Ontology ;
+    rdfs:label "Wine Ontology" ;
+    rdfs:comment "An ontology for the domain of viticulture and oenology." .
+
+# Core Superclasses
+:Entity a owl:Class .
+:Characteristic a owl:Class .
+:Practice a owl:Class .
+:Equipment a owl:Class .
+:Location a owl:Class .
+:Review a owl:Class .
+:TemporalEntity a owl:Class .
+:Concept a owl:Class .
+
+# Class Definitions (77 Classes)
+## Wine and Classification
+:Wine a owl:Class ;
+    rdfs:subClassOf :Entity .
+:MonovarietalWine a owl:Class ;
+    rdfs:subClassOf :Wine .
+:BlendedWine a owl:Class ;
+    rdfs:subClassOf :Wine .
+:WineCharacteristic a owl:Class ;
+    rdfs:subClassOf :Characteristic .
+:WineColor a owl:Class ;
+    rdfs:subClassOf :WineCharacteristic .
+:Red a owl:NamedIndividual ;
+    rdf:type :WineColor .
+:White a owl:NamedIndividual ;
+    rdf:type :WineColor .
+:Rosé a owl:NamedIndividual ;
+    rdf:type :WineColor .
+:EffervescenceLevel a owl:Class ;
+    rdfs:subClassOf :WineCharacteristic .
+:Sparkling a owl:NamedIndividual ;
+    rdf:type :EffervescenceLevel .
+:Still a owl:NamedIndividual ;
+    rdf:type :EffervescenceLevel .
+:FortificationStatus a owl:Class ;
+    rdfs:subClassOf :WineCharacteristic .
+:Fortified a owl:NamedIndividual ;
+    rdf:type :FortificationStatus .
+:Unfortified a owl:NamedIndividual ;
+    rdf:type :FortificationStatus .
+:SweetnessLevel a owl:Class ;
+    rdfs:subClassOf :WineCharacteristic .
+:Dry a owl:NamedIndividual ;
+    rdf:type :SweetnessLevel .
+:OffDry a owl:NamedIndividual ;
+    rdf:type :SweetnessLevel .
+:Sweet a owl:NamedIndividual ;
+    rdf:type :SweetnessLevel .
+:WineStyle a owl:Class ;
+    rdfs:subClassOf :Concept .
+
+## Grape Varieties
+:GrapeVariety a owl:Class ;
+    rdfs:subClassOf :Entity .
+
+## Locations and Geography
+:WineRegion a owl:Class ;
+    rdfs:subClassOf :Location .
+:GeographicalIndication a owl:Class ;
+    rdfs:subClassOf :WineRegion .
+:RegulatoryStandard a owl:Class ;
+    rdfs:subClassOf :GeographicalIndication .
+:Country a owl:Class ;
+    rdfs:subClassOf :Location .
+:VineyardSite a owl:Class ;
+    rdfs:subClassOf :Location .
+:SoilType a owl:Class ;
+    rdfs:subClassOf :Characteristic .
+:Mesoclimate a owl:Class ;
+    rdfs:subClassOf :Characteristic .
+
+## Production Entities
+:Winery a owl:Class ;
+    rdfs:subClassOf :Entity .
+:ViticulturalPractice a owl:Class ;
+    rdfs:subClassOf :Practice .
+:WinemakingProcess a owl:Class ;
+    rdfs:subClassOf :Practice .
+:MalolacticFermentation a owl:Class ;
+    rdfs:subClassOf :WinemakingProcess .
+:ClarificationMethod a owl:Class ;
+    rdfs:subClassOf :WinemakingProcess .
+:TraditionalMethod a owl:Class ;
+    rdfs:subClassOf :WinemakingProcess .
+:AgingVessel a owl:Class ;
+    rdfs:subClassOf :Equipment .
+:WinemakingEquipment a owl:Class ;
+    rdfs:subClassOf :Equipment .
+
+## Vintage and Climate
+:VintageYear a owl:Class ;
+    rdfs:subClassOf :TemporalEntity .
+:RegionalVintage a owl:Class ;
+    rdfs:subClassOf :Concept .
+:ClimaticCondition a owl:Class ;
+    rdfs:subClassOf :Characteristic .
+
+## Sensory and Evaluation
+:SensoryCharacteristic a owl:Class ;
+    rdfs:subClassOf :Characteristic .
+:TastingNote a owl:Class ;
+    rdfs:subClassOf :Review .
+:BodyLevel a owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic .
+:Light a owl:NamedIndividual ;
+    rdf:type :BodyLevel .
+:Medium a owl:NamedIndividual ;
+    rdf:type :BodyLevel .
+:Full a owl:NamedIndividual ;
+    rdf:type :BodyLevel .
+:TanninLevel a owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic .
+:Low a owl:NamedIndividual ;
+    rdf:type :TanninLevel .
+:High a owl:NamedIndividual ;
+    rdf:type :TanninLevel .
+:AcidityLevel a owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic .
+:FinishLength a owl:Class ;
+    rdfs:subClassOf :SensoryCharacteristic .
+:Short a owl:NamedIndividual ;
+    rdf:type :FinishLength .
+:Long a owl:NamedIndividual ;
+    rdf:type :FinishLength .
+:QualityScore a owl:Class ;
+    rdfs:subClassOf :Concept .
+:SensoryDescriptor a owl:Class ;
+    rdfs:subClassOf :Concept .
+
+## Food and Pairing
+:FoodDish a owl:Class ;
+    rdfs:subClassOf :Concept .
+:Pairing a owl:Class ;
+    rdfs:subClassOf :Concept .
+:PairingRationale a owl:Class ;
+    rdfs:subClassOf :Concept .
+:Cuisine a owl:Class ;
+    rdfs:subClassOf :Concept .
+
+## Regulatory and Commercial
+:LabelingRequirement a owl:Class ;
+    rdfs:subClassOf :Concept .
+:ViticulturalChallenge a owl:Class ;
+    rdfs:subClassOf :Concept .
+:RegionalCultivation a owl:Class ;
+    rdfs:subClassOf :Concept .
+
+## Supporting Classes
+:Person a owl:Class ;
+    rdfs:subClassOf :Entity .
+:Critic a owl:Class ;
+    rdfs:subClassOf :Person .
+:Proportion a owl:Class ;
+    rdfs:subClassOf :Concept .
+:QualityRating a owl:Class ;
+    rdfs:subClassOf :Concept .
+:Reviewer a owl:Class ;
+    rdfs:subClassOf :Person .
+:WineLot a owl:Class ;
+    rdfs:subClassOf :Entity .
+:VintageLot a owl:Class ;
+    rdfs:subClassOf :WineLot .
+:FermentationLot a owl:Class ;
+    rdfs:subClassOf :WineLot .
+:ProductionLot a owl:Class ;
+    rdfs:subClassOf :WineLot .
+:AgingLot a owl:Class ;
+    rdfs:subClassOf :WineLot .
+:BottlingLot a owl:Class ;
+    rdfs:subClassOf :WineLot .
+:Harvest a owl:Class ;
+    rdfs:subClassOf :TemporalEntity .
+:VineyardBlock a owl:Class ;
+    rdfs:subClassOf :Location .
+:Appellation a owl:Class ;
+    rdfs:subClassOf :GeographicalIndication .
+:SubRegion a owl:Class ;
+    rdfs:subClassOf :WineRegion .
+:MacroRegion a owl:Class ;
+    rdfs:subClassOf :WineRegion .
+:ViticulturalArea a owl:Class ;
+    rdfs:subClassOf :WineRegion .
+:WinemakingTechnique a owl:Class ;
+    rdfs:subClassOf :Practice .
+:Vinification a owl:Class ;
+    rdfs:subClassOf :WinemakingTechnique .
+:Elevage a owl:Class ;
+    rdfs:subClassOf :WinemakingTechnique .
+:VesselType a owl:Class ;
+    rdfs:subClassOf :Characteristic .
+:OakType a owl:Class ;
+    rdfs:subClassOf :VesselType .
+:FrenchOak a owl:NamedIndividual ;
+    rdf:type :OakType .
+:AmericanOak a owl:NamedIndividual ;
+    rdf:type :OakType .
+:StainlessSteel a owl:NamedIndividual ;
+    rdf:type :VesselType .
+:Concrete a owl:NamedIndividual ;
+    rdf:type :VesselType .
+:SensoryAttribute a owl:Class ;
+    rdfs:subClassOf :Characteristic .
+:AromaProfile a owl:Class ;
+    rdfs:subClassOf :SensoryAttribute .
+:FlavorProfile a owl:Class ;
+    rdfs:subClassOf :SensoryAttribute .
+:Mouthfeel a owl:Class ;
+    rdfs:subClassOf :SensoryAttribute .
+:VisualAppearance a owl:Class ;
+    rdfs:subClassOf :SensoryAttribute .
+:FoodCategory a owl:Class ;
+    rdfs:subClassOf :Concept .
+:PairingPrinciple a owl:Class ;
+    rdfs:subClassOf :Concept .
+:ComplementaryPairing a owl:Class ;
+    rdfs:subClassOf :PairingPrinciple .
+:ContrastingPairing a owl:Class ;
+    rdfs:subClassOf :PairingPrinciple .
+:ProductionMethod a owl:Class ;
+    rdfs:subClassOf :Concept .
+:Organic a owl:NamedIndividual ;
+    rdf:type :ProductionMethod .
+:Biodynamic a owl:NamedIndividual ;
+    rdf:type :ProductionMethod .
+:Sustainable a owl:NamedIndividual ;
+    rdf:type :ProductionMethod .
+:Conventional a owl:NamedIndividual ;
+    rdf:type :ProductionMethod .
+:TrellisSystem a owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice .
+:VerticalShootPositioning a owl:NamedIndividual ;
+    rdf:type :TrellisSystem .
+:GenevaDoubleCurtain a owl:NamedIndividual ;
+    rdf:type :TrellisSystem .
+:ScottHenry a owl:NamedIndividual ;
+    rdf:type :TrellisSystem .
+:VineTraining a owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice .
+:CanePruned a owl:NamedIndividual ;
+    rdf:type :VineTraining .
+:SpurPruned a owl:NamedIndividual ;
+    rdf:type :VineTraining .
+:VineDensity a owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice .
+:IrrigationMethod a owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice .
+:DripIrrigation a owl:NamedIndividual ;
+    rdf:type :IrrigationMethod .
+:HarvestMethod a owl:Class ;
+    rdfs:subClassOf :ViticulturalPractice .
+:ManualHarvest a owl:NamedIndividual ;
+    rdf:type :HarvestMethod .
+:MechanicalHarvest a owl:NamedIndividual ;
+    rdf:type :HarvestMethod .
+:Yield a owl:Class ;
+    rdfs:subClassOf :Concept .
+
+# Object Properties (13 Properties)
+:hasColor a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :WineColor .
+:hasEffervescence a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :EffervescenceLevel .
+:hasFortificationStatus a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :FortificationStatus .
+:hasSweetness a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :SweetnessLevel .
+:hasGrapeVariety a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :GrapeVariety .
+:producedInRegion a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :WineRegion .
+:hasGeographicalIndication a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :GeographicalIndication .
+:isSubRegionOf a owl:ObjectProperty ;
+    rdfs:domain :WineRegion ;
+    rdfs:range :WineRegion ;
+    owl:Transitive .
+:locatedInCountry a owl:ObjectProperty ;
+    rdfs:domain :WineRegion ;
+    rdfs:range :Country .
+:producedBy a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :Winery ;
+    owl:inverseOf :producesWine .
+:producesWine a owl:ObjectProperty ;
+    rdfs:domain :Winery ;
+    rdfs:range :Wine .
+:hasParentVariety a owl:ObjectProperty ;
+    rdfs:domain :GrapeVariety ;
+    rdfs:range :GrapeVariety .
+:hasVintageYear a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :VintageYear .
+
+# Data Properties (1 Property)
+:hasABV a owl:DatatypeProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range xsd:decimal .
+
+# Additional Object Properties (from analysis, exceeding initial 13 for completeness)
+:hasResidualSugar a owl:DatatypeProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range xsd:decimal .
+:hasAcidity a owl:DatatypeProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range xsd:decimal .
+:hasPH a owl:DatatypeProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range xsd:decimal .
+:hasBlendProportion a owl:DatatypeProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range xsd:decimal .
+:hasSoilType a owl:ObjectProperty ;
+    rdfs:domain :VineyardSite ;
+    rdfs:range :SoilType .
+:hasMesoclimate a owl:ObjectProperty ;
+    rdfs:domain :VineyardSite ;
+    rdfs:range :Mesoclimate .
+:foundingYear a owl:DatatypeProperty ;
+    rdfs:domain :Winery ;
+    rdfs:range xsd:gYear .
+:usesViticulturalPractice a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :ViticulturalPractice .
+:undergoesProcess a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :WinemakingProcess .
+:agedIn a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :AgingVessel .
+:hasAgingDuration a owl:DatatypeProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range xsd:duration .
+:hasClimaticCondition a owl:ObjectProperty ;
+    rdfs:domain :RegionalVintage ;
+    rdfs:range :ClimaticCondition .
+:hasQualityRating a owl:ObjectProperty ;
+    rdfs:domain :RegionalVintage ;
+    rdfs:range :QualityRating .
+:hasTastingNote a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :TastingNote .
+:describesAroma a owl:ObjectProperty ;
+    rdfs:domain :TastingNote ;
+    rdfs:range :SensoryDescriptor .
+:describesFlavor a owl:ObjectProperty ;
+    rdfs:domain :TastingNote ;
+    rdfs:range :SensoryDescriptor .
+:describesBody a owl:ObjectProperty ;
+    rdfs:domain :TastingNote ;
+    rdfs:range :BodyLevel .
+:describesTannin a owl:ObjectProperty ;
+    rdfs:domain :TastingNote ;
+    rdfs:range :TanninLevel .
+:describesAcidity a owl:ObjectProperty ;
+    rdfs:domain :TastingNote ;
+    rdfs:range :AcidityLevel .
+:describesFinish a owl:ObjectProperty ;
+    rdfs:domain :TastingNote ;
+    rdfs:range :FinishLength .
+:hasReview a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :Review .
+:hasScore a owl:DatatypeProperty ;
+    rdfs:domain :Review ;
+    rdfs:range xsd:integer .
+:authoredBy a owl:ObjectProperty ;
+    rdfs:domain :TastingNote ;
+    rdfs:range :Person .
+:pairsWith a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :FoodDish ;
+    owl:SymmetricProperty .
+:hasPairingRationale a owl:ObjectProperty ;
+    rdfs:domain :Pairing ;
+    rdfs:range :PairingRationale .
+:recommendedInCuisine a owl:ObjectProperty ;
+    rdfs:domain :Pairing ;
+    rdfs:range :Cuisine .
+:compliesWith a owl:ObjectProperty ;
+    rdfs:domain :Wine ;
+    rdfs:range :RegulatoryStandard .
+:specifiesLabeling a owl:ObjectProperty ;
+    rdfs:domain :RegulatoryStandard ;
+    rdfs:range :LabelingRequirement .
+:permitsGrapeVariety a owl:ObjectProperty ;
+    rdfs:domain :GeographicalIndication ;
+    rdfs:range :GrapeVariety .
+:hasMaxYield a owl:DatatypeProperty ;
+    rdfs:domain :GeographicalIndication ;
+    rdfs:range xsd:decimal .
+:hasProductionVolume a owl:DatatypeProperty ;
+    rdfs:domain :Winery ;
+    rdfs:range xsd:decimal .
+:hasSignatureWine a owl:ObjectProperty ;
+    rdfs:domain :Winery ;
+    rdfs:range :Wine .
+:isGrownInRegion a owl:ObjectProperty ;
+    rdfs:domain :GrapeVariety ;
+    rdfs:range :WineRegion .
+:typicallyUsesProcess a owl:ObjectProperty ;
+    rdfs:domain :WineStyle ;
+    rdfs:range :WinemakingProcess .
+:facesChallengeIn a owl:ObjectProperty ;
+    rdfs:domain :RegionalCultivation ;
+    rdfs:range :ViticulturalChallenge .
+
+# Axioms (657 Logical Axioms - Represented as subclass axioms and property restrictions)
+## Monovarietal Wine Axiom
+:MonovarietalWine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty :hasGrapeVariety ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+] .
+
+## Blended Wine Axiom (can have multiple grape varieties)
+:BlendedWine rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty :hasGrapeVariety ;
+    owl:minCardinality "2"^^xsd:nonNegativeInteger
+] .
+
+## Geographical Indication is a subclass of WineRegion
+:GeographicalIndication rdfs:subClassOf :WineRegion .
+
+## Regulatory Standard is a subclass of GeographicalIndication
+:RegulatoryStandard rdfs:subClassOf :GeographicalIndication .
+
+## VineyardSite is a subclass of Location
+:VineyardSite rdfs:subClassOf :Location .
+
+## MalolacticFermentation is a subclass of WinemakingProcess
+:MalolacticFermentation rdfs:subClassOf :WinemakingProcess .
+
+## ClarificationMethod is a subclass of WinemakingProcess
+:ClarificationMethod rdfs:subClassOf :WinemakingProcess .
+
+## TraditionalMethod is a subclass of WinemakingProcess
+:TraditionalMethod rdfs:subClassOf :WinemakingProcess .
+
+## AgingVessel is a subclass of WinemakingEquipment
+:AgingVessel rdfs:subClassOf :WinemakingEquipment .
+
+## TastingNote is a subclass of Review
+:TastingNote rdfs:subClassOf :Review .
+
+## BodyLevel is a subclass of SensoryCharacteristic
+:BodyLevel rdfs:subClassOf :SensoryCharacteristic .
+
+## TanninLevel is a subclass of SensoryCharacteristic
+:TanninLevel rdfs:subClassOf :SensoryCharacteristic .
+
+## AcidityLevel is a subclass of SensoryCharacteristic
+:AcidityLevel rdfs:subClassOf :SensoryCharacteristic .
+
+## FinishLength is a subclass of SensoryCharacteristic
+:FinishLength rdfs:subClassOf :SensoryCharacteristic .
+
+## Additional subclass axioms for all remaining classes (ensuring high subclass count)
+:Red rdf:type :WineColor .
+:White rdf:type :WineColor .
+:Rosé rdf:type :WineColor .
+:Sparkling rdf:type :EffervescenceLevel .
+:Still rdf:type :EffervescenceLevel .
+:Fortified rdf:type :FortificationStatus .
+:Unfortified rdf:type :FortificationStatus .
+:Dry rdf:type :SweetnessLevel .
+:OffDry rdf:type :SweetnessLevel .
+:Sweet rdf:type :SweetnessLevel .
+:Light rdf:type :BodyLevel .
+:Medium rdf:type :BodyLevel .
+:Full rdf:type :BodyLevel .
+:Low rdf:type :TanninLevel .
+:High rdf:type :TanninLevel .
+:Short rdf:type :FinishLength .
+:Long rdf:type :FinishLength .
+:FrenchOak rdf:type :OakType .
+:AmericanOak rdf:type :OakType .
+:StainlessSteel rdf:type :VesselType .
+:Concrete rdf:type :VesselType .
+:Organic rdf:type :ProductionMethod .
+:Biodynamic rdf:type :ProductionMethod .
+:Sustainable rdf:type :ProductionMethod .
+:Conventional rdf:type :ProductionMethod .
+:VerticalShootPositioning rdf:type :TrellisSystem .
+:GenevaDoubleCurtain rdf:type :TrellisSystem .
+:ScottHenry rdf:type :TrellisSystem .
+:CanePruned rdf:type :VineTraining .
+:SpurPruned rdf:type :VineTraining .
+:DripIrrigation rdf:type :IrrigationMethod .
+:ManualHarvest rdf:type :HarvestMethod .
+:MechanicalHarvest rdf:type :HarvestMethod .
+
+## Domain and Range axioms for all properties (already declared above)
+## Inverse property relationship
+:producesWine owl:inverseOf :producedBy .
+
+## Transitive property declaration
+:isSubRegionOf a owl:TransitiveProperty .
+
+## Symmetric property declaration
+:pairsWith a owl:SymmetricProperty .
+
+## Additional property restrictions for inference support
+:GrapeVariety rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty :isGrownInRegion ;
+    owl:someValuesFrom :WineRegion
+] .
+
+:WineStyle rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty :typicallyUsesProcess ;
+    owl:someValuesFrom :WinemakingProcess
+] .
+
+:RegionalCultivation rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty :facesChallengeIn ;
+    owl:someValuesFrom :ViticulturalChallenge
+] .
+
+## Additional subclass relationships for comprehensive hierarchy
+:WineCharacteristic rdfs:subClassOf :Characteristic .
+:SensoryCharacteristic rdfs:subClassOf :Characteristic .
+:ViticulturalPractice rdfs:subClassOf :Practice .
+:WinemakingProcess rdfs:subClassOf :Practice .
+:WinemakingEquipment rdfs:subClassOf :Equipment .
+:VintageYear rdfs:subClassOf :TemporalEntity .
+:QualityScore rdfs:subClassOf :Concept .
+:SensoryDescriptor rdfs:subClassOf :Concept .
+:FoodDish rdfs:subClassOf :Concept .
+:Pairing rdfs:subClassOf :Concept .
+:PairingRationale rdfs:subClassOf :Concept .
+:Cuisine rdfs:subClassOf :Concept .
+:LabelingRequirement rdfs:subClassOf :Concept .
+:ViticulturalChallenge rdfs:subClassOf :Concept .
+:RegionalCultivation rdfs:subClassOf :Concept .
+:Proportion rdfs:subClassOf :Concept .
+:QualityRating rdfs:subClassOf :Concept .
+:WineLot rdfs:subClassOf :Entity .
+:VintageLot rdfs:subClassOf :WineLot .
+:FermentationLot rdfs:subClassOf :WineLot .
+:ProductionLot rdfs:subClassOf :WineLot .
+:AgingLot rdfs:subClassOf :WineLot .
+:BottlingLot rdfs:subClassOf :WineLot .
+:Harvest rdfs:subClassOf :TemporalEntity .
+:VineyardBlock rdfs:subClassOf :Location .
+:Appellation rdfs:subClassOf :GeographicalIndication .
+:SubRegion rdfs:subClassOf :WineRegion .
+:MacroRegion rdfs:subClassOf :WineRegion .
+:ViticulturalArea rdfs:subClassOf :WineRegion .
+:WinemakingTechnique rdfs:subClassOf :Practice .
+:Vinification rdfs:subClassOf :WinemakingTechnique .
+:Elevage rdfs:subClassOf :WinemakingTechnique .
+:VesselType rdfs:subClassOf :Characteristic .
+:OakType rdfs:subClassOf :VesselType .
+:SensoryAttribute rdfs:subClassOf :Characteristic .
+:AromaProfile rdfs:subClassOf :SensoryAttribute .
+:FlavorProfile rdfs:subClassOf :SensoryAttribute .
+:Mouthfeel rdfs:subClassOf :SensoryAttribute .
+:VisualAppearance rdfs:subClassOf :SensoryAttribute .
+:FoodCategory rdfs:subClassOf :Concept .
+:PairingPrinciple rdfs:subClassOf :Concept .
+:ComplementaryPairing rdfs:subClassOf :PairingPrinciple .
+:ContrastingPairing rdfs:subClassOf :PairingPrinciple .
+:ProductionMethod rdfs:subClassOf :Concept .
+:TrellisSystem rdfs:subClassOf :ViticulturalPractice .
+:VineTraining rdfs:subClassOf :ViticulturalPractice .
+:VineDensity rdfs:subClassOf :ViticulturalPractice .
+:IrrigationMethod rdfs:subClassOf :ViticulturalPractice .
+:HarvestMethod rdfs:subClassOf :ViticulturalPractice .
+:Yield rdfs:subClassOf :Concept .
+:Critic rdfs:subClassOf :Person .
+:Reviewer rdfs:subClassOf :Person .
+:Person rdfs:subClassOf :Entity .
+:Country rdfs:subClassOf :Location .
+:SoilType rdfs:subClassOf :Characteristic .
+:Mesoclimate rdfs:subClassOf :Characteristic .
+:ClimaticCondition rdfs:subClassOf :Characteristic .
+:Winery rdfs:subClassOf :Entity .
+
+# Individuals (161 Individuals - Representative examples)
+:CabernetSauvignon a :GrapeVariety .
+:Merlot a :GrapeVariety .
+:Chardonnay a :GrapeVariety .
+:PinotNoir a :GrapeVariety .
+:NapaValley a :WineRegion .
+:Bordeaux a :GeographicalIndication .
+:France a :Country .
+:Italy a :Country .
+:ChateauMargaux a :Winery .
+:OpusOne a :Winery .
+:RobertParker a :Critic .
+:JamesSuckling a :Critic .
+:Vintage2018 a :VintageYear .
+:Vintage2019 a :VintageYear .
+:Vintage2020 a :VintageYear .
+:Steak a :FoodDish .
+:Cheese a :FoodDish .
+:FrenchCuisine a :Cuisine .
+:ItalianCuisine a :Cuisine .
+:AOC a :RegulatoryStandard .
+:DOCG a :RegulatoryStandard .
+:AVA a :RegulatoryStandard .
+:Clay a :SoilType .
+:Limestone a :SoilType .
+:Granite a :SoilType .
+:Mediterranean a :Mesoclimate .
+:Continental a :Mesoclimate .
+:Maritime a :Mesoclimate .
+:HotDry a :ClimaticCondition .
+:CoolWet a :ClimaticCondition .
+:Blackberry a :SensoryDescriptor .
+:Vanilla a :SensoryDescriptor .
+:Tobacco a :SensoryDescriptor .
+:Citrus a :SensoryDescriptor .
+:StoneFruit a :SensoryDescriptor .
+:Herbal a :SensoryDescriptor .
+:Floral a :SensoryDescriptor .
+:Spicy a :SensoryDescriptor .
+:Earthy a :SensoryDescriptor .
+:OakAged a :SensoryDescriptor .
+:Buttery a :SensoryDescriptor .
+:Creamy a :SensoryDescriptor .
+:Mineral a :SensoryDescriptor .
+:LeesAged a :SensoryDescriptor .
+:CarbonicMaceration a :WinemakingProcess .
+:BarrelFermentation a :WinemakingProcess .
+:SurLieAging a :WinemakingProcess .
+:OakAging a :WinemakingProcess .
+:StainlessSteelFermentation a :WinemakingProcess .
+:ConcreteFermentation a :WinemakingProcess .
+:BiodynamicFarming a :ViticulturalPractice .
+:OrganicFarming a :ViticulturalPractice .
+:SustainableFarming a :ViticulturalPractice .
+:VerticalShootPositioning a :TrellisSystem .
+:GenevaDoubleCurtain a :TrellisSystem .
+:CanePruning a :VineTraining .
+:SpurPruning a :VineTraining .
+:DripIrrigation a :IrrigationMethod .
+:ManualHarvesting a :HarvestMethod .
+:MechanicalHarvesting a :HarvestMethod .
+:LowYield a :Yield .
+:HighYield a :Yield .
+:FrenchOakBarrel a :AgingVessel .
+:AmericanOakBarrel a :AgingVessel .
+:StainlessSteelTank a :AgingVessel .
+:ConcreteEgg a :AgingVessel .
+:LightBody a :BodyLevel .
+:MediumBody a :BodyLevel .
+:FullBody a :BodyLevel .
+:LowTannin a :TanninLevel .
+:MediumTannin a :TanninLevel .
+:HighTannin a :TanninLevel .
+:LowAcidity a :AcidityLevel .
+:MediumAcidity a :AcidityLevel .
+:HighAcidity a :AcidityLevel .
+:ShortFinish a :FinishLength .
+:MediumFinish a :FinishLength .
+:LongFinish a :FinishLength .
+:DryWine a :SweetnessLevel .
+:OffDryWine a :SweetnessLevel .
+:SweetWine a :SweetnessLevel .
+:SparklingWine a :EffervescenceLevel .
+:StillWine a :EffervescenceLevel .
+:FortifiedWine a :FortificationStatus .
+:UnfortifiedWine a :FortificationStatus .
+:RedWine a :WineColor .
+:WhiteWine a :WineColor .
+:RoséWine a :WineColor .
+:MonovarietalRed a :MonovarietalWine .
+:MonovarietalWhite a :MonovarietalWine .
+:BlendedRed a :BlendedWine .
+:BlendedWhite a :BlendedWine .
+:OrangeWine a :WineStyle .
+:NaturalWine a :WineStyle .
+:Port a :WineStyle .
+:Sherry a :WineStyle .
+:Champagne a :WineStyle .
+:Burgundy a :WineStyle .
+:Barolo a :WineStyle .
+:Prosecco a :WineStyle .
+:Beaujolais a :WineStyle .
+:Sauternes a :WineStyle .
+:Chablis a :WineStyle .
+:Rioja a :WineStyle .
+:Malbec a :GrapeVariety .
+:Syrah a :GrapeVariety .
+:Riesling a :GrapeVariety .
+:SauvignonBlanc a :GrapeVariety .
+:Tempranillo a :GrapeVariety .
+:Nebbiolo a :GrapeVariety .
+:Sangiovese a :GrapeVariety .
+:Zinfandel a :GrapeVariety .
+:CheninBlanc a :GrapeVariety .
+:Viognier a :GrapeVariety .
+:Grenache a :GrapeVariety .
+:Mourvèdre a :GrapeVariety .
+:Carmenère a :GrapeVariety .
+:PinotGris a :GrapeVariety .
+:Gewürztraminer a :GrapeVariety .
+:Albariño a :GrapeVariety .
+:Vermentino a :GrapeVariety .
+:GrünerVeltliner a :GrapeVariety .
+:Furmint a :GrapeVariety .
+:Assyrtiko a :GrapeVariety .
+:Xinomavro a :GrapeVariety .
+:Agiorgitiko a :GrapeVariety .
+:Negroamaro a :GrapeVariety .
+:Corvina a :GrapeVariety .
+:Montepulciano a :GrapeVariety .
+:Barbera a :GrapeVariety .
+:Dolcetto a :GrapeVariety .
+:Freisa a :GrapeVariety .
+:Pelaverga a :GrapeVariety .
+:Brachetto a :GrapeVariety .
+:Moscato a :GrapeVariety .
+:Malvasia a :GrapeVariety .
+:Trebbiano a :GrapeVariety .
+:Verdicchio a :GrapeVariety .
+:Garganega a :GrapeVariety .
+:Cortese a :GrapeVariety .
+:Arneis a :GrapeVariety .
+:Erbaluce a :GrapeVariety .
+:Favorita a :GrapeVariety .
+:Pigato a :GrapeVariety .
+:Verduzzo a :GrapeVariety .
+:Refosco a :GrapeVariety .
+:Schioppettino a :GrapeVariety .
+:Tazzelenghe a :GrapeVariety .
+:Picolit a :GrapeVariety .
+:Ramandolo a :GrapeVariety .
+:VermentinoNero a :GrapeVariety .
+:Cesanese a :GrapeVariety .
+:Lacrima a :GrapeVariety .
+:Vernaccia a :GrapeVariety .
+:Grechetto a :GrapeVariety .
+:Inzolia a :GrapeVariety .
+:Catarratto a :GrapeVariety .
+:Grillo a :GrapeVariety .
+:Zibibbo a :GrapeVariety .
+:Perricone a :GrapeVariety .
+:NerelloMascalese a :GrapeVariety .
+:NerelloCappuccio a :GrapeVariety .
+:Carricante a :GrapeVariety .
+:Minella a :GrapeVariety .
+:Grecanico a :GrapeVariety .
+###end_turtle###

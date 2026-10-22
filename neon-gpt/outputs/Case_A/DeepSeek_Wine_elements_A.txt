@@ -1,0 +1,71 @@
+**Analysis of Competency Questions for Ontology Development**
+
+**A. Wine Classification & Basic Properties**
+1.  **Entities:** `Wine`, `WineColor`. **Properties:** `hasColor`. **Axioms:** `WineColor` subClassOf `WineCharacteristic`. `hasColor` domain `Wine`, range `WineColor`.
+2.  **Entities:** `Wine`, `EffervescenceLevel`. **Properties:** `hasEffervescence`. **Axioms:** `EffervescenceLevel` subClassOf `WineCharacteristic`. `hasEffervescence` domain `Wine`, range `EffervescenceLevel`.
+3.  **Entities:** `Wine`, `FortificationStatus`. **Properties:** `hasFortificationStatus`. **Axioms:** `FortificationStatus` subClassOf `WineCharacteristic`. `hasFortificationStatus` domain `Wine`, range `FortificationStatus`.
+4.  **Entities:** `Wine`, `SweetnessLevel`. **Properties:** `hasSweetness`. **Axioms:** `SweetnessLevel` subClassOf `WineCharacteristic`. `hasSweetness` domain `Wine`, range `SweetnessLevel`.
+5.  **Entities:** `Wine`. **Properties:** `hasABV`. **Axioms:** `hasABV` domain `Wine`, range `xsd:decimal`.
+6.  **Entities:** `Wine`. **Properties:** `hasResidualSugar`. **Axioms:** `hasResidualSugar` domain `Wine`, range `xsd:decimal`.
+7.  **Entities:** `Wine`. **Properties:** `hasAcidity`, `hasPH`. **Axioms:** `hasAcidity` domain `Wine`, range `xsd:decimal`. `hasPH` domain `Wine`, range `xsd:decimal`.
+
+**B. Composition & Origin**
+8.  **Entities:** `Wine`, `GrapeVariety`. **Properties:** `hasGrapeVariety`. **Axioms:** `MonovarietalWine` subClassOf `Wine` and (`hasGrapeVariety` exactly 1 `GrapeVariety`).
+9.  **Entities:** `Wine`, `GrapeVariety`. **Properties:** `hasGrapeVariety`, `hasBlendProportion`. **Axioms:** `BlendedWine` subClassOf `Wine`. `hasBlendProportion` domain `Wine`, range `xsd:decimal` (or a custom datatype for proportion). A `Wine` can be linked to multiple `GrapeVariety` individuals via `hasGrapeVariety`, with each link potentially annotated with a proportion.
+10. **Entities:** `GrapeVariety`. **Properties:** `hasParentVariety`. **Axioms:** `hasParentVariety` domain `GrapeVariety`, range `GrapeVariety`. Property can be used twice (mother, father) or a list property can be defined.
+11. **Entities:** `Wine`, `WineRegion`. **Properties:** `producedInRegion`. **Axioms:** `producedInRegion` domain `Wine`, range `WineRegion`.
+12. **Entities:** `Wine`, `GeographicalIndication`. **Properties:** `hasGeographicalIndication`. **Axioms:** `GeographicalIndication` subClassOf `WineRegion`. `hasGeographicalIndication` domain `Wine`, range `GeographicalIndication`.
+13. **Entities:** `WineRegion`. **Properties:** `isSubRegionOf`. **Axioms:** `isSubRegionOf` domain `WineRegion`, range `WineRegion`. Transitive property.
+14. **Entities:** `WineRegion`, `Country`. **Properties:** `locatedInCountry`. **Axioms:** `locatedInCountry` domain `WineRegion`, range `Country`.
+15. **Entities:** `VineyardSite`, `SoilType`, `Mesoclimate`. **Properties:** `hasSoilType`, `hasMesoclimate`. **Axioms:** `VineyardSite` subClassOf `Location`. `hasSoilType` domain `VineyardSite`, range `SoilType`. `hasMesoclimate` domain `VineyardSite`, range `Mesoclimate`.
+
+**C. Production & Provenance**
+16. **Entities:** `Wine`, `Winery`. **Properties:** `producedBy`. **Axioms:** `producedBy` domain `Wine`, range `Winery`.
+17. **Entities:** `Winery`. **Properties:** `foundingYear`. **Axioms:** `foundingYear` domain `Winery`, range `xsd:gYear`.
+18. **Entities:** `Wine`, `ViticulturalPractice`. **Properties:** `usesViticulturalPractice`. **Axioms:** `ViticulturalPractice` subClassOf `Practice`. `usesViticulturalPractice` domain `Wine` (or a more specific `VintageLot`), range `ViticulturalPractice`.
+19. **Entities:** `Wine`, `WinemakingProcess`. **Properties:** `undergoesProcess`. **Axioms:** `WinemakingProcess` subClassOf `Practice`. `undergoesProcess` domain `Wine` (or `FermentationLot`), range `WinemakingProcess`.
+20. **Entities:** `Wine`, `AgingVessel`. **Properties:** `agedIn`, `hasAgingDuration`. **Axioms:** `AgingVessel` subClassOf `WinemakingEquipment`. `agedIn` domain `Wine`, range `AgingVessel`. `hasAgingDuration` domain `Wine`, range `xsd:duration` (or `xsd:decimal` for months/years).
+21. **Entities:** `Wine`, `MalolacticFermentation`. **Properties:** `undergoesProcess`. **Axioms:** `MalolacticFermentation` subClassOf `WinemakingProcess`.
+22. **Entities:** `Wine`, `ClarificationMethod`. **Properties:** `undergoesProcess`. **Axioms:** `ClarificationMethod` subClassOf `WinemakingProcess`.
+
+**D. Vintage & Temporal Context**
+23. **Entities:** `Wine`, `VintageYear`. **Properties:** `hasVintageYear`. **Axioms:** `hasVintageYear` domain `Wine`, range `xsd:gYear`. `VintageYear` can be a class of years with properties, or just a datatype property.
+24. **Entities:** `VintageYear`, `WineRegion`, `ClimaticCondition`. **Properties:** `hasClimaticCondition`. **Axioms:** A class `RegionalVintage` linking a `VintageYear`, a `WineRegion`, and a `ClimaticCondition` via object properties.
+25. **Entities:** `RegionalVintage`, `QualityRating`. **Properties:** `hasQualityRating`. **Axioms:** `hasQualityRating` domain `RegionalVintage`, range `QualityRating`.
+26. **Entities:** `Wine`, `VintageYear`. **Properties:** `hasVintageYear`. (See Q23). Query uses this property.
+
+**E. Sensory Profile & Evaluation**
+27. **Entities:** `Wine`, `TastingNote`, `SensoryDescriptor`. **Properties:** `hasTastingNote`, `describesAroma`, `describesFlavor`. **Axioms:** `TastingNote` subClassOf `Review`. `hasTastingNote` domain `Wine`, range `TastingNote`. `describesAroma` domain `TastingNote`, range `SensoryDescriptor`. `describesFlavor` domain `TastingNote`, range `SensoryDescriptor`.
+28. **Entities:** `Wine`, `TastingNote`, `BodyLevel`. **Properties:** `hasTastingNote`, `describesBody`. **Axioms:** `BodyLevel` subClassOf `SensoryCharacteristic`. `describesBody` domain `TastingNote`, range `BodyLevel`.
+29. **Entities:** `Wine`, `TastingNote`, `TanninLevel`. **Properties:** `hasTastingNote`, `describesTannin`. **Axioms:** `TanninLevel` subClassOf `SensoryCharacteristic`. `describesTannin` domain `TastingNote`, range `TanninLevel`.
+30. **Entities:** `Wine`, `TastingNote`, `AcidityLevel`. **Properties:** `hasTastingNote`, `describesAcidity`. **Axioms:** `AcidityLevel` subClassOf `SensoryCharacteristic`. `describesAcidity` domain `TastingNote`, range `AcidityLevel`.
+31. **Entities:** `Wine`, `TastingNote`, `FinishLength`. **Properties:** `hasTastingNote`, `describesFinish`. **Axioms:** `FinishLength` subClassOf `SensoryCharacteristic`. `describesFinish` domain `TastingNote`, range `FinishLength`.
+32. **Entities:** `Wine`, `Review`, `QualityScore`. **Properties:** `hasReview`, `hasScore`. **Axioms:** `Review` is a superclass of `TastingNote`. `hasReview` domain `Wine`, range `Review`. `hasScore` domain `Review`, range `QualityScore` (or `xsd:integer`).
+33. **Entities:** `TastingNote`, `Person` (or `Critic`). **Properties:** `authoredBy`. **Axioms:** `authoredBy` domain `TastingNote`, range `Person`.
+
+**F. Food & Contextual Pairing**
+34. **Entities:** `Wine`, `FoodDish`. **Properties:** `pairsWith`. **Axioms:** `pairsWith` domain `Wine`, range `FoodDish`. Symmetric property.
+35. **Entities:** `Wine`, `FoodDish`, `PairingRationale`. **Properties:** `pairsWith`, `hasPairingRationale`. **Axioms:** A reified relationship `Pairing` linking a `Wine`, a `FoodDish`, and a `PairingRationale`.
+36. **Entities:** `Wine`, `FoodDish`. **Properties:** `pairsWith`. (See Q34). Query uses this property.
+37. **Entities:** `Pairing`, `Cuisine`. **Properties:** `recommendedInCuisine`. **Axioms:** `recommendedInCuisine` domain `Pairing`, range `Cuisine`.
+
+**G. Regulatory & Commercial Aspects**
+38. **Entities:** `Wine`, `RegulatoryStandard`. **Properties:** `compliesWith`. **Axioms:** `RegulatoryStandard` subClassOf `GeographicalIndication` (often). `compliesWith` domain `Wine`, range `RegulatoryStandard`.
+39. **Entities:** `RegulatoryStandard` (or `GeographicalIndication`), `LabelingRequirement`. **Properties:** `specifiesLabeling`. **Axioms:** `specifiesLabeling` domain `RegulatoryStandard`, range `LabelingRequirement`.
+40. **Entities:** `GeographicalIndication`, `GrapeVariety`. **Properties:** `permitsGrapeVariety`. **Axioms:** `permitsGrapeVariety` domain `GeographicalIndication`, range `GrapeVariety`.
+41. **Entities:** `GeographicalIndication`. **Properties:** `hasMaxYield`. **Axioms:** `hasMaxYield` domain `GeographicalIndication`, range `xsd:decimal`.
+42. **Entities:** `Winery`. **Properties:** `hasProductionVolume`. **Axioms:** `hasProductionVolume` domain `Winery`, range `xsd:decimal`.
+43. **Entities:** `Winery`, `Wine`. **Properties:** `hasSignatureWine`. **Axioms:** `hasSignatureWine` domain `Winery`, range `Wine`.
+
+**H. Relationships & Inferences**
+44. **Entities:** `Wine`, `Winery`. **Properties:** `producedBy`. (See Q16). Inverse property `producesWine` domain `Winery`, range `Wine`.
+45. **Entities:** `Wine`, `GrapeVariety`. **Properties:** `hasGrapeVariety`. (See Q8,9). Query uses this property.
+46. **Entities:** `Wine`, `WineRegion`. **Properties:** `producedInRegion`. (See Q11). Query uses this property.
+47. **Entities:** `Wine`, `WineRegion`, `WineColor`, `TanninLevel`, `TastingNote`. **Properties:** `producedInRegion`, `hasColor`, `hasTastingNote`, `describesTannin`. (See A1, B11, E29). Query combines these.
+48. **Entities:** `Wine`, `WineColor`, `AgingVessel`. **Properties:** `hasColor`, `agedIn`. (See A1, C20). Query combines these.
+49. **Entities:** `Wine`, `EffervescenceLevel`, `WinemakingProcess`. **Properties:** `hasEffervescence`, `undergoesProcess`. (See A2, C19). `TraditionalMethod` subClassOf `WinemakingProcess`.
+50. **Entities:** `Wine`, `VintageYear`, `Review`. **Properties:** `hasVintageYear`, `hasReview`, `hasScore`. (See D23, E32). Query combines these.
+51. **Entities:** `Wine`, `TastingNote`, `SensoryDescriptor`. **Properties:** `hasTastingNote`, `describesAroma`, `describesFlavor`. (See E27). Inference based on shared descriptors.
+52. **Entities:** `GrapeVariety`, `WineRegion`. **Properties:** `isGrownInRegion`. **Axioms:** `isGrownInRegion` domain `GrapeVariety`, range `WineRegion`. Can be inferred from `Wine` (`hasGrapeVariety` and `producedInRegion`).
+53. **Entities:** `WineStyle`, `WinemakingProcess`. **Properties:** `typicallyUsesProcess`. **Axioms:** `typicallyUsesProcess` domain `WineStyle`, range `WinemakingProcess`.
+54. **Entities:** `GrapeVariety`, `WineRegion`, `ViticulturalChallenge`. **Properties:** `isGrownInRegion`, `facesChallengeIn`. **Axioms:** A reified relationship `RegionalCultivation` linking `GrapeVariety`, `WineRegion`, and `ViticulturalChallenge`.

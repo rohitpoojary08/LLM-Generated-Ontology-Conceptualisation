@@ -1,0 +1,48 @@
+**Core Module Competency Questions (CQs)**
+
+**Category A: Definitions and Core Concepts**
+*   CQ1: What is geothermal energy?
+*   CQ2: What is a geothermal resource?
+*   CQ3: What is the source of heat for a geothermal resource?
+*   CQ4: What is the primary physical location from which geothermal energy is extracted?
+*   CQ5: What is the difference between geothermal heating and geothermal power?
+
+**Category B: Geological Context and Resource Location**
+*   CQ6: In what type of geological formation is a geothermal resource typically located?
+*   CQ7: What tectonic feature are many high-temperature geothermal resources associated with?
+*   CQ8: What natural surface feature can be an indicator of a subsurface geothermal resource?
+*   CQ9: Is a geothermal resource a type of energy or a type of geological feature?
+
+**Category C: Infrastructure and Technology**
+*   CQ10: What is a geothermal well?
+*   CQ11: What is the function of a geothermal well?
+*   CQ12: What is extracted or accessed through a geothermal well?
+*   CQ13: What is a geothermal fluid?
+*   CQ14: What is the role of a geothermal fluid in the energy extraction process?
+*   CQ15: What is a geothermal power plant?
+*   CQ16: What does a geothermal power plant use as its primary energy input?
+*   CQ17: What is the primary output of a geothermal power plant?
+*   CQ18: What is a ground-source heat pump (GSHP)?
+*   CQ19: How does a ground-source heat pump differ in principle from a geothermal power plant?
+*   CQ20: What does a ground-source heat pump extract heat from?
+
+**Category D: Applications and Utilization**
+*   CQ21: What are the two main categories of geothermal energy applications?
+*   CQ22: What is geothermal heating?
+*   CQ23: What are examples of entities that can be heated using geothermal energy?
+*   CQ24: What is district heating and how is it related to geothermal heating?
+*   CQ25: What is geothermal power?
+*   CQ26: What form of energy is produced through geothermal power generation?
+
+**Category E: Processes and Development Activities**
+*   CQ27: What activity is conducted to locate and assess a potential geothermal resource?
+*   CQ28: What overarching activity prepares a resource for exploitation, following exploration?
+*   CQ29: What specific process within resource development creates the boreholes needed for access?
+*   CQ30: What is the process called that removes thermal energy from the underground resource?
+*   CQ31: What is the process that converts thermal energy into electrical energy?
+
+**Category F: Relationships and System Behavior**
+*   CQ32: What can a geothermal system (e.g., a power plant) experience during its operation?
+*   CQ33: What activity is required to develop a geothermal resource?
+*   CQ34: What does a heat extraction process typically have as a material output?
+*   CQ35: What does a geothermal power generation process act upon to produce electricity?

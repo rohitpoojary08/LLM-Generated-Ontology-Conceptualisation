@@ -1,0 +1,22 @@
+Here is a list of Competency Questions that the core module of the ontology should be able to answer:
+
+1. Where is geothermal energy extracted from?
+2. What are the main uses of geothermal energy?
+3. How is geothermal energy used for heating?
+4. How is electricity generated from geothermal energy?
+5. What does a geothermal power plant use to generate electricity?
+6. What is a geothermal resource?
+7. How are geothermal resources accessed?
+8. What role do geothermal wells play?
+9. What role do geothermal fluids play in heat extraction?
+10. Where are geothermal resources commonly located?
+11. What technologies are used to extract geothermal heat?
+12. What stages are involved in developing a geothermal resource?
+13. What is the relationship between geothermal resources and geological formations?
+14. How do tectonic settings influence geothermal resource development?
+15. What is the purpose of resource exploration in geothermal projects?
+16. How do ground-source heat pumps extract heat from the ground?
+17. What is the role of district heating in geothermal energy utilization?
+18. What are the industrial uses of geothermal energy?
+19. What operational issues arise in geothermal systems?
+20. How are geothermal power plants related to geothermal resources?

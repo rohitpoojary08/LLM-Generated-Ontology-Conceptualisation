@@ -1,0 +1,71 @@
+**Competency Questions for the Core Wine Ontology Module**
+
+**A. Wine Classification & Basic Properties**
+1.  What is the color classification (red, white, rosé) of a given wine?
+2.  Is a given wine sparkling or still?
+3.  Is a given wine fortified?
+4.  What is the sweetness level (dry, off-dry, sweet) of a given wine?
+5.  What is the alcohol by volume (ABV) percentage of a given wine?
+6.  What is the residual sugar content of a given wine?
+7.  What is the pH level or titratable acidity of a given wine?
+
+**B. Composition & Origin**
+8.  Which single grape variety is a given monovarietal wine made from?
+9.  What are the grape varieties used in a given blended wine, and in what proportions?
+10. What is the genetic lineage or parentage of a given grape variety?
+11. In which specific wine region (e.g., Napa Valley) is a given wine produced?
+12. Under which appellation or geographical indication (e.g., AOC Bordeaux, DOCG Barolo) is a given wine classified?
+13. What are the sub-regions within a given major wine region?
+14. Which country is a given wine region located in?
+15. What is the specific terroir (soil type, mesoclimate) associated with a given vineyard site?
+
+**C. Production & Provenance**
+16. Which winery produced a given wine?
+17. When was the producing winery founded?
+18. What viticultural practices (e.g., organic, biodynamic, trellising system) were used in growing the grapes for a given wine?
+19. What specific winemaking processes (e.g., carbonic maceration, barrel fermentation, lees aging) were used to produce a given wine?
+20. What type of vessel (e.g., French oak barrel, stainless steel tank, concrete egg) was used for aging a given wine, and for how long?
+21. Was malolactic fermentation applied to a given wine?
+22. What filtration or clarification method was used before bottling?
+
+**D. Vintage & Temporal Context**
+23. What is the vintage year (harvest year) of a given wine?
+24. What were the general climatic conditions (e.g., hot/dry, cool/wet) for a given vintage in a specific region?
+25. How is the overall quality of a given vintage year rated for a specific region?
+26. Which wines share the same vintage year?
+
+**E. Sensory Profile & Evaluation**
+27. What are the primary aroma and flavor descriptors (e.g., blackberry, vanilla, tobacco) noted in a tasting note for a given wine?
+28. What is the perceived body (light, medium, full) of a given wine?
+29. What is the perceived level of tannins (low, medium, high) in a given red wine?
+30. What is the perceived level of acidity (low, medium, high) in a given wine?
+31. What is the finish length (short, medium, long) of a given wine?
+32. What is the overall quality score or rating (e.g., Parker points) assigned to a given wine?
+33. Who authored a specific tasting note or review?
+
+**F. Food & Contextual Pairing**
+34. With which specific food dishes or categories (e.g., grilled steak, roasted chicken, hard cheese) is a given wine recommended to pair?
+35. What is the rationale for a specific food and wine pairing (e.g., "complements richness", "contrasts saltiness")?
+36. Which wines are recommended to pair with a given food item?
+37. In which cultural cuisine context is a specific wine pairing traditionally recommended?
+
+**G. Regulatory & Commercial Aspects**
+38. Which regulatory standards (e.g., AOC, DOCG, AVA rules) does a given wine comply with?
+39. What are the specific labeling requirements for a wine from a given appellation?
+40. What is the permitted grape variety list for a given geographical indication?
+41. What is the maximum allowable yield for a given appellation?
+42. What is the production volume of a given winery?
+43. What is the signature style or flagship wine of a given producer?
+
+**H. Relationships & Inferences**
+44. List all wines produced by a specific winery.
+45. List all wines made primarily from a specific grape variety.
+46. List all wines originating from a specific wine region or appellation.
+47. List all red wines from a specific region that have high tannin levels.
+48. List all white wines that underwent oak aging.
+49. List all sparkling wines produced using the traditional method (Méthode Champenoise).
+50. List all wines from a given vintage year that are rated above a certain score.
+51. Which wines share similar sensory profiles (based on tasting note attributes)?
+52. For a given grape variety, which regions is it most commonly grown in?
+53. Which winemaking processes are typically used for a given wine style (e.g., Orange Wine)?
+54. What are the typical viticultural challenges for a grape variety in a specific region?

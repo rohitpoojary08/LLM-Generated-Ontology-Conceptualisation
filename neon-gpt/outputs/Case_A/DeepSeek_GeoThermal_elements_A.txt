@@ -1,0 +1,85 @@
+Based on the provided domain description and competency questions, I will extract the necessary entities, properties, and axioms for the ontology. Each competency question (CQ) will be analyzed to identify the required components.
+
+**Extracted Components from Competency Questions:**
+
+**Category A: Definitions and Core Concepts**
+*   CQ1: What is geothermal energy?
+    → Entities: GeothermalEnergy | SubClassOf: ThermalEnergy, extractedFrom: EarthCrust
+*   CQ2: What is a geothermal resource?
+    → Entities: GeothermalResource | SubClassOf: EnergyResource, associatedWith: Heat, locatedIn: GeologicalFormation
+*   CQ3: What is the source of heat for a geothermal resource?
+    → Entities: GeothermalResource, HeatSource, EarthInterior | Property: hasHeatSource
+*   CQ4: What is the primary physical location from which geothermal energy is extracted?
+    → Entities: GeothermalEnergy, EarthCrust | Property: extractedFrom
+*   CQ5: What is the difference between geothermal heating and geothermal power?
+    → Entities: GeothermalHeating, GeothermalPower | SubClassOf: GeothermalEnergyApplication, disjointWith each other
+
+**Category B: Geological Context and Resource Location**
+*   CQ6: In what type of geological formation is a geothermal resource typically located?
+    → Entities: GeothermalResource, GeologicalFormation | Property: locatedIn
+*   CQ7: What tectonic feature are many high-temperature geothermal resources associated with?
+    → Entities: GeothermalResource (HighTemperatureGeothermalResource), TectonicPlateBoundary | Property: associatedWith
+*   CQ8: What natural surface feature can be an indicator of a subsurface geothermal resource?
+    → Entities: HotSpring, GeothermalResource | Property: indicates
+*   CQ9: Is a geothermal resource a type of energy or a type of geological feature?
+    → Entities: GeothermalResource, EnergyResource | SubClassOf: EnergyResource (not GeologicalFeature)
+
+**Category C: Infrastructure and Technology**
+*   CQ10: What is a geothermal well?
+    → Entities: GeothermalWell | SubClassOf: Well
+*   CQ11: What is the function of a geothermal well?
+    → Entities: GeothermalWell, GeothermalResource | Property: accesses
+*   CQ12: What is extracted or accessed through a geothermal well?
+    → Entities: GeothermalWell, GeothermalFluid, ThermalEnergy | Property: extracts, accesses
+*   CQ13: What is a geothermal fluid?
+    → Entities: GeothermalFluid | SubClassOf: Fluid
+*   CQ14: What is the role of a geothermal fluid in the energy extraction process?
+    → Entities: GeothermalFluid, ThermalEnergy, HeatExtraction | Property: transports, usedIn
+*   CQ15: What is a geothermal power plant?
+    → Entities: GeothermalPowerPlant | SubClassOf: PowerPlant
+*   CQ16: What does a geothermal power plant use as its primary energy input?
+    → Entities: GeothermalPowerPlant, ThermalEnergy | Property: usesInput
+*   CQ17: What is the primary output of a geothermal power plant?
+    → Entities: GeothermalPowerPlant, Electricity | Property: generatesOutput
+*   CQ18: What is a ground-source heat pump (GSHP)?
+    → Entities: GroundSourceHeatPump | SubClassOf: HeatPump
+*   CQ19: How does a ground-source heat pump differ in principle from a geothermal power plant?
+    → Entities: GroundSourceHeatPump, GeothermalPowerPlant | disjointWith each other, usesInput: (GSHP uses LowGradeHeat, PowerPlant uses HighGradeHeat)
+*   CQ20: What does a ground-source heat pump extract heat from?
+    → Entities: GroundSourceHeatPump, Ground, ShallowSubsurface | Property: extractsHeatFrom
+
+**Category D: Applications and Utilization**
+*   CQ21: What are the two main categories of geothermal energy applications?
+    → Entities: GeothermalHeating, GeothermalPower | SubClassOf: GeothermalEnergyApplication
+*   CQ22: What is geothermal heating?
+    → Entities: GeothermalHeating | SubClassOf: GeothermalEnergyApplication, usedFor: Heating
+*   CQ23: What are examples of entities that can be heated using geothermal energy?
+    → Entities: Building, Water, DistrictHeatingNetwork | Property: heatedBy
+*   CQ24: What is district heating and how is it related to geothermal heating?
+    → Entities: DistrictHeating, GeothermalHeating | SubClassOf: HeatingSystem, Property: usesEnergySource
+*   CQ25: What is geothermal power?
+    → Entities: GeothermalPower | SubClassOf: GeothermalEnergyApplication
+*   CQ26: What form of energy is produced through geothermal power generation?
+    → Entities: GeothermalPowerGeneration, Electricity | Property: produces
+
+**Category E: Processes and Development Activities**
+*   CQ27: What activity is conducted to locate and assess a potential geothermal resource?
+    → Entities: GeothermalExploration | SubClassOf: Activity
+*   CQ28: What overarching activity prepares a resource for exploitation, following exploration?
+    → Entities: GeothermalResourceDevelopment | SubClassOf: Activity, follows: GeothermalExploration
+*   CQ29: What specific process within resource development creates the boreholes needed for access?
+    → Entities: Drilling | SubClassOf: Activity, partOf: GeothermalResourceDevelopment
+*   CQ30: What is the process called that removes thermal energy from the underground resource?
+    → Entities: HeatExtraction | SubClassOf: Process
+*   CQ31: What is the process that converts thermal energy into electrical energy?
+    → Entities: PowerGeneration | SubClassOf: Process, converts: ThermalEnergy to Electricity
+
+**Category F: Relationships and System Behavior**
+*   CQ32: What can a geothermal system (e.g., a power plant) experience during its operation?
+    → Entities: GeothermalSystem, OperationalIssue | Property: experiences
+*   CQ33: What activity is required to develop a geothermal resource?
+    → Entities: GeothermalResourceDevelopment, GeothermalResource | Property: requiredFor
+*   CQ34: What does a heat extraction process typically have as a material output?
+    → Entities: HeatExtraction, GeothermalFluid | Property: hasOutput
+*   CQ35: What does a geothermal power generation process act upon to produce electricity?
+    → Entities: GeothermalPowerGeneration, ThermalEnergy | Property: actsUpon

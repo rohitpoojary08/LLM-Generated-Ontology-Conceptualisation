@@ -1,0 +1,55 @@
+###start_turtle###
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wine: <http://example.org/wine#> .
+
+# Classes
+wine:Wine rdf:type owl:Class .
+wine:RedWine rdf:type owl:Class ; rdfs:subClassOf wine:Wine .
+wine:WhiteWine rdf:type owl:Class ; rdfs:subClassOf wine:Wine .
+wine:RoseWine rdf:type owl:Class ; rdfs:subClassOf wine:Wine .
+wine:GrapeVariety rdf:type owl:Class .
+wine:Chardonnay rdf:type owl:NamedIndividual ; rdf:type wine:GrapeVariety .
+wine:WineRegion rdf:type owl:Class .
+wine:Burgundy rdf:type owl:NamedIndividual ; rdf:type wine:WineRegion .
+wine:Food rdf:type owl:Class .
+wine:Cheese rdf:type owl:NamedIndividual ; rdf:type wine:Food .
+# ... (other classes and individuals)
+
+# Object Properties
+wine:hasGrapeVariety rdf:type owl:ObjectProperty ; rdfs:domain wine:Wine ; rdfs:range wine:GrapeVariety .
+wine:producedIn rdf:type owl:ObjectProperty ; rdfs:domain wine:Wine ; rdfs:range wine:WineRegion .
+wine:pairsWith rdf:type owl:ObjectProperty ; rdfs:domain wine:Wine ; rdfs:range wine:Food .
+# ... (other object properties)
+
+# Data Properties
+wine:alcoholContent rdf:type owl:DatatypeProperty ; rdfs:domain wine:Wine ; rdfs:range xsd:float .
+
+# Axioms and Triples
+wine:ChardonnayWine rdf:type wine:WhiteWine ; wine:hasGrapeVariety wine:Chardonnay ; wine:producedIn wine:Burgundy ; wine:pairsWith wine:Cheese ; wine:alcoholContent "13.5"^^xsd:float .
+wine:BurgundyRegion rdf:type wine:WineRegion ; rdfs:label "Burgundy"@en .
+wine:Cheddar rdf:type wine:Cheese ; wine:pairsWith wine:ChardonnayWine .
+# ... (other triples and axioms)
+
+# Subclass Relationships
+wine:StillWine rdf:type owl:Class ; rdfs:subClassOf wine:Wine .
+wine:SparklingWine rdf:type owl:Class ; rdfs:subClassOf wine:Wine .
+wine:FortifiedWine rdf:type owl:Class ; rdfs:subClassOf wine:Wine .
+wine:DryWine rdf:type owl:Class ; rdfs:subClassOf wine:Wine .
+wine:SweetWine rdf:type owl:Class ; rdfs:subClassOf wine:Wine .
+# ... (other subclass relationships)
+
+# Logical Axioms
+wine:Wine owl:equivalentClass [ rdf:type owl:Class ; owl:unionOf ( wine:RedWine wine:WhiteWine wine:RoseWine ) ] .
+wine:hasGrapeVariety owl:inverseOf [ rdf:type owl:ObjectProperty ; rdfs:domain wine:GrapeVariety ; rdfs:range wine:Wine ] .
+
+# Individuals and their properties
+wine:Chablis rdf:type wine:WhiteWine ; wine:hasGrapeVariety wine:Chardonnay ; wine:alcoholContent "12.0"^^xsd:float .
+wine:Chablis wine:producedIn wine:ChablisRegion .
+wine:ChablisRegion rdf:type wine:WineRegion .
+
+# ...  (other individuals and their properties)
+
+###end_turtle###

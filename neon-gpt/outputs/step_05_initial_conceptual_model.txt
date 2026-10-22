@@ -1,0 +1,475 @@
+###start_turtle###
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wine: <http://www.semanticweb.org/ontologies/wine#> .
+@prefix : <http://www.semanticweb.org/ontologies/wine#> .
+
+### Ontology Header and Prefixes
+:WineOntology rdf:type owl:Ontology ;
+    owl:imports <http://www.w3.org/2002/07/owl> ;
+    rdfs:label "Wine Ontology"@en ;
+    rdfs:comment "An ontology for the domain of viticulture and oenology."@en .
+
+### Class Definitions (Subject: Class, Predicate: rdf:type, Object: owl:Class)
+:Wine rdf:type owl:Class .
+:WineType rdf:type owl:Class .
+:RedWine rdf:type owl:Class .
+:WhiteWine rdf:type owl:Class .
+:RoséWine rdf:type owl:Class .
+:SparklingWine rdf:type owl:Class .
+:FortifiedWine rdf:type owl:Class .
+:WineColor rdf:type owl:Class .
+:WineBody rdf:type owl:Class .
+:LightBodied rdf:type owl:Class .
+:MediumBodied rdf:type owl:Class .
+:FullBodied rdf:type owl:Class .
+:Appellation rdf:type owl:Class .
+:PDO rdf:type owl:Class .
+:PGI rdf:type owl:Class .
+:OtherAppellation rdf:type owl:Class .
+:GrapeVariety rdf:type owl:Class .
+:VitisVinifera rdf:type owl:Class .
+:HybridGrape rdf:type owl:Class .
+:FlavorProfile rdf:type owl:Class .
+:WineRegion rdf:type owl:Class .
+:OldWorldRegion rdf:type owl:Class .
+:NewWorldRegion rdf:type owl:Class .
+:Winery rdf:type owl:Class .
+:WineryType rdf:type owl:Class .
+:CommercialWinery rdf:type owl:Class .
+:BoutiqueWinery rdf:type owl:Class .
+:CooperativeWinery rdf:type owl:Class .
+:ViticulturalPractice rdf:type owl:Class .
+:OrganicFarming rdf:type owl:Class .
+:PruningMethod rdf:type owl:Class .
+:WinemakingProcess rdf:type owl:Class .
+:Crushing rdf:type owl:Class .
+:PrimaryFermentation rdf:type owl:Class .
+:MalolacticFermentation rdf:type owl:Class .
+:Aging rdf:type owl:Class .
+:Clarification rdf:type owl:Class .
+:Bottling rdf:type owl:Class .
+:AgingVessel rdf:type owl:Class .
+:OakBarrel rdf:type owl:Class .
+:StainlessSteelTank rdf:type owl:Class .
+:Vintage rdf:type owl:Class .
+:VintageQuality rdf:type owl:Class .
+:ExcellentVintage rdf:type owl:Class .
+:GoodVintage rdf:type owl:Class .
+:PoorVintage rdf:type owl:Class .
+:ClimateCondition rdf:type owl:Class .
+:TastingNote rdf:type owl:Class .
+:SensoryCharacteristic rdf:type owl:Class .
+:Aroma rdf:type owl:Class .
+:Flavor rdf:type owl:Class .
+:Mouthfeel rdf:type owl:Class .
+:ChemicalCompound rdf:type owl:Class .
+:TartaricAcid rdf:type owl:Class .
+:Tannin rdf:type owl:Class .
+:Anthocyanin rdf:type owl:Class .
+:SulfurDioxide rdf:type owl:Class .
+:WineAdditive rdf:type owl:Class .
+:Food rdf:type owl:Class .
+:FoodCategory rdf:type owl:Class .
+:Cheese rdf:type owl:Class .
+:Meat rdf:type owl:Class .
+:Dessert rdf:type owl:Class .
+:RegulatoryAspect rdf:type owl:Class .
+:CommercialClassification rdf:type owl:Class .
+:UNSPSC_Code rdf:type owl:Class .
+:ProductionEvent rdf:type owl:Class .
+:ProductionYear rdf:type owl:Class .
+:ProductionVolume rdf:type owl:Class .
+:ProductionMethod rdf:type owl:Class .
+:WineStyle rdf:type owl:Class .
+:WineLabel rdf:type owl:Class .
+:WineBottle rdf:type owl:Class .
+:WineGlass rdf:type owl:Class .
+:WineService rdf:type owl:Class .
+:WineStorage rdf:type owl:Class .
+:WineCollection rdf:type owl:Class .
+:WineAuction rdf:type owl:Class .
+:WineCritic rdf:type owl:Class .
+:WinePublication rdf:type owl:Class .
+:WineEducation rdf:type owl:Class .
+:WineTourism rdf:type owl:Class .
+:WineLaw rdf:type owl:Class .
+:WineTax rdf:type owl:Class .
+:WineTrade rdf:type owl:Class .
+:WineMarket rdf:type owl:Class .
+:WineConsumer rdf:type owl:Class .
+:WineExpert rdf:type owl:Class .
+:WineJudge rdf:type owl:Class .
+:WineCompetition rdf:type owl:Class .
+:WineAward rdf:type owl:Class .
+:WineScore rdf:type owl:Class .
+:WinePrice rdf:type owl:Class .
+:WineInvestment rdf:type owl:Class .
+:WineFraud rdf:type owl:Class .
+:WineAuthentication rdf:type owl:Class .
+
+### Subclass Relationships (Subject: Subclass, Predicate: rdfs:subClassOf, Object: Superclass)
+:RedWine rdfs:subClassOf :Wine .
+:WhiteWine rdfs:subClassOf :Wine .
+:RoséWine rdfs:subClassOf :Wine .
+:SparklingWine rdfs:subClassOf :Wine .
+:FortifiedWine rdfs:subClassOf :Wine .
+:LightBodied rdfs:subClassOf :WineBody .
+:MediumBodied rdfs:subClassOf :WineBody .
+:FullBodied rdfs:subClassOf :WineBody .
+:PDO rdfs:subClassOf :Appellation .
+:PGI rdfs:subClassOf :Appellation .
+:OtherAppellation rdfs:subClassOf :Appellation .
+:VitisVinifera rdfs:subClassOf :GrapeVariety .
+:HybridGrape rdfs:subClassOf :GrapeVariety .
+:OldWorldRegion rdfs:subClassOf :WineRegion .
+:NewWorldRegion rdfs:subClassOf :WineRegion .
+:CommercialWinery rdfs:subClassOf :Winery .
+:BoutiqueWinery rdfs:subClassOf :Winery .
+:CooperativeWinery rdfs:subClassOf :Winery .
+:OrganicFarming rdfs:subClassOf :ViticulturalPractice .
+:PruningMethod rdfs:subClassOf :ViticulturalPractice .
+:Crushing rdfs:subClassOf :WinemakingProcess .
+:PrimaryFermentation rdfs:subClassOf :WinemakingProcess .
+:MalolacticFermentation rdfs:subClassOf :WinemakingProcess .
+:Aging rdfs:subClassOf :WinemakingProcess .
+:Clarification rdfs:subClassOf :WinemakingProcess .
+:Bottling rdfs:subClassOf :WinemakingProcess .
+:OakBarrel rdfs:subClassOf :AgingVessel .
+:StainlessSteelTank rdfs:subClassOf :AgingVessel .
+:ExcellentVintage rdfs:subClassOf :VintageQuality .
+:GoodVintage rdfs:subClassOf :VintageQuality .
+:PoorVintage rdfs:subClassOf :VintageQuality .
+:Aroma rdfs:subClassOf :SensoryCharacteristic .
+:Flavor rdfs:subClassOf :SensoryCharacteristic .
+:Mouthfeel rdfs:subClassOf :SensoryCharacteristic .
+:TartaricAcid rdfs:subClassOf :ChemicalCompound .
+:Tannin rdfs:subClassOf :ChemicalCompound .
+:Anthocyanin rdfs:subClassOf :ChemicalCompound .
+:SulfurDioxide rdfs:subClassOf :ChemicalCompound .
+:Cheese rdfs:subClassOf :FoodCategory .
+:Meat rdfs:subClassOf :FoodCategory .
+:Dessert rdfs:subClassOf :FoodCategory .
+:UNSPSC_Code rdfs:subClassOf :CommercialClassification .
+:WineType rdfs:subClassOf :WineStyle .
+:WineColor rdfs:subClassOf :WineStyle .
+:WineBody rdfs:subClassOf :WineStyle .
+:ProductionEvent rdfs:subClassOf :ProductionMethod .
+:ProductionYear rdfs:subClassOf :ProductionEvent .
+:ProductionVolume rdfs:subClassOf :ProductionEvent .
+:WineLabel rdfs:subClassOf :RegulatoryAspect .
+:WineBottle rdfs:subClassOf :WineService .
+:WineGlass rdfs:subClassOf :WineService .
+:WineStorage rdfs:subClassOf :WineService .
+:WineCollection rdfs:subClassOf :WineService .
+:WineAuction rdfs:subClassOf :WineTrade .
+:WineCritic rdfs:subClassOf :WineExpert .
+:WinePublication rdfs:subClassOf :WineEducation .
+:WineTourism rdfs:subClassOf :WineEducation .
+:WineLaw rdfs:subClassOf :RegulatoryAspect .
+:WineTax rdfs:subClassOf :RegulatoryAspect .
+:WineMarket rdfs:subClassOf :WineTrade .
+:WineConsumer rdfs:subClassOf :WineMarket .
+:WineJudge rdfs:subClassOf :WineExpert .
+:WineCompetition rdfs:subClassOf :WineAward .
+:WineScore rdfs:subClassOf :WineCompetition .
+:WinePrice rdfs:subClassOf :WineMarket .
+:WineInvestment rdfs:subClassOf :WineMarket .
+:WineFraud rdfs:subClassOf :WineLaw .
+:WineAuthentication rdfs:subClassOf :WineLaw .
+
+### Disjoint Classes Axioms
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :RedWine :WhiteWine :RoséWine :SparklingWine :FortifiedWine )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :OldWorldRegion :NewWorldRegion )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CommercialWinery :BoutiqueWinery :CooperativeWinery )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ExcellentVintage :GoodVintage :PoorVintage )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Aroma :Flavor :Mouthfeel )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cheese :Meat :Dessert )
+] .
+
+### Class Equivalence Axioms
+:FullBodiedRedWine owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf ( :Wine
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasWineType ;
+                           owl:someValuesFrom :RedWine
+                         ]
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasBody ;
+                           owl:someValuesFrom :FullBodied
+                         ]
+                       )
+] .
+
+### Object Property Definitions (Subject: Property, Predicate: rdf:type, Object: owl:ObjectProperty)
+:hasWineType rdf:type owl:ObjectProperty .
+:hasColor rdf:type owl:ObjectProperty .
+:hasAppellation rdf:type owl:ObjectProperty .
+:hasBody rdf:type owl:ObjectProperty .
+:madeFromGrapeVariety rdf:type owl:ObjectProperty .
+:hasParentVariety rdf:type owl:ObjectProperty .
+:hasFlavorProfile rdf:type owl:ObjectProperty .
+:producedInRegion rdf:type owl:ObjectProperty .
+:producedByWinery rdf:type owl:ObjectProperty .
+:hasWineryType rdf:type owl:ObjectProperty .
+:employsPractice rdf:type owl:ObjectProperty .
+:underwentProcess rdf:type owl:ObjectProperty .
+:agedIn rdf:type owl:ObjectProperty .
+:hasVintage rdf:type owl:ObjectProperty .
+:hasVintageQuality rdf:type owl:ObjectProperty .
+:influencedByClimate rdf:type owl:ObjectProperty .
+:hasTastingNote rdf:type owl:ObjectProperty .
+:describesCharacteristic rdf:type owl:ObjectProperty .
+:containsCompound rdf:type owl:ObjectProperty .
+:contributesToAcidity rdf:type owl:ObjectProperty .
+:actsAsPreservative rdf:type owl:ObjectProperty .
+:hasAdditive rdf:type owl:ObjectProperty .
+:pairsWithFood rdf:type owl:ObjectProperty .
+:recommendedForCategory rdf:type owl:ObjectProperty .
+:subjectToRegulation rdf:type owl:ObjectProperty .
+:hasLabelCompliance rdf:type owl:ObjectProperty .
+:hasCommercialClassification rdf:type owl:ObjectProperty .
+:producesWine rdf:type owl:ObjectProperty .
+:hasProductionEvent rdf:type owl:ObjectProperty .
+:hasProductionYear rdf:type owl:ObjectProperty .
+:hasProductionVolume rdf:type owl:ObjectProperty .
+:hasProductionMethod rdf:type owl:ObjectProperty .
+:hasWineStyle rdf:type owl:ObjectProperty .
+:hasWineLabel rdf:type owl:ObjectProperty .
+:hasWineBottle rdf:type owl:ObjectProperty .
+:hasWineGlass rdf:type owl:ObjectProperty .
+:hasWineStorage rdf:type owl:ObjectProperty .
+:hasWineCollection rdf:type owl:ObjectProperty .
+:hasWineAuction rdf:type owl:ObjectProperty .
+:hasWineCritic rdf:type owl:ObjectProperty .
+:hasWinePublication rdf:type owl:ObjectProperty .
+:hasWineEducation rdf:type owl:ObjectProperty .
+:hasWineTourism rdf:type owl:ObjectProperty .
+:hasWineLaw rdf:type owl:ObjectProperty .
+:hasWineTax rdf:type owl:ObjectProperty .
+:hasWineTrade rdf:type owl:ObjectProperty .
+:hasWineMarket rdf:type owl:ObjectProperty .
+:hasWineConsumer rdf:type owl:ObjectProperty .
+:hasWineExpert rdf:type owl:ObjectProperty .
+:hasWineJudge rdf:type owl:ObjectProperty .
+:hasWineCompetition rdf:type owl:ObjectProperty .
+:hasWineAward rdf:type owl:ObjectProperty .
+:hasWineScore rdf:type owl:ObjectProperty .
+:hasWinePrice rdf:type owl:ObjectProperty .
+:hasWineInvestment rdf:type owl:ObjectProperty .
+:hasWineFraud rdf:type owl:ObjectProperty .
+:hasWineAuthentication rdf:type owl:ObjectProperty .
+
+### Data Property Definitions (Subject: Property, Predicate: rdf:type, Object: owl:DatatypeProperty)
+:hasAlcoholContent rdf:type owl:DatatypeProperty .
+
+### Domain and Range Restrictions for Object Properties
+:hasWineType rdfs:domain :Wine ;
+             rdfs:range :WineType .
+:hasColor rdfs:domain :Wine ;
+          rdfs:range :WineColor .
+:hasAppellation rdfs:domain :Wine ;
+                rdfs:range :Appellation .
+:hasBody rdfs:domain :Wine ;
+         rdfs:range :WineBody .
+:madeFromGrapeVariety rdfs:domain :Wine ;
+                      rdfs:range :GrapeVariety .
+:hasParentVariety rdfs:domain :GrapeVariety ;
+                  rdfs:range :GrapeVariety .
+:hasFlavorProfile rdfs:domain :GrapeVariety ;
+                  rdfs:range :FlavorProfile .
+:producedInRegion rdfs:domain :Wine ;
+                  rdfs:range :WineRegion .
+:producedByWinery rdfs:domain :Wine ;
+                  rdfs:range :Winery .
+:hasWineryType rdfs:domain :Winery ;
+               rdfs:range :WineryType .
+:employsPractice rdfs:domain :ProductionEvent ;
+                 rdfs:range :ViticulturalPractice .
+:underwentProcess rdfs:domain :ProductionEvent ;
+                  rdfs:range :WinemakingProcess .
+:agedIn rdfs:domain :ProductionEvent ;
+        rdfs:range :AgingVessel .
+:hasVintage rdfs:domain :Wine ;
+            rdfs:range :Vintage .
+:hasVintageQuality rdfs:domain :Vintage ;
+                   rdfs:range :VintageQuality .
+:influencedByClimate rdfs:domain :Vintage ;
+                     rdfs:range :ClimateCondition .
+:hasTastingNote rdfs:domain :Wine ;
+                rdfs:range :TastingNote .
+:describesCharacteristic rdfs:domain :TastingNote ;
+                         rdfs:range :SensoryCharacteristic .
+:containsCompound rdfs:domain :Wine ;
+                  rdfs:range :ChemicalCompound .
+:contributesToAcidity rdfs:domain :ChemicalCompound ;
+                      rdfs:range :Wine .
+:actsAsPreservative rdfs:domain :ChemicalCompound ;
+                    rdfs:range :Wine .
+:hasAdditive rdfs:domain :Wine ;
+             rdfs:range :WineAdditive .
+:pairsWithFood rdfs:domain :Wine ;
+               rdfs:range :Food .
+:recommendedForCategory rdfs:domain :Wine ;
+                        rdfs:range :FoodCategory .
+:subjectToRegulation rdfs:domain :Wine ;
+                     rdfs:range :RegulatoryAspect .
+:hasLabelCompliance rdfs:domain :Wine ;
+                    rdfs:range :RegulatoryAspect .
+:hasCommercialClassification rdfs:domain :Wine ;
+                             rdfs:range :CommercialClassification .
+:producesWine rdfs:domain :Winery ;
+              rdfs:range :Wine .
+:hasProductionEvent rdfs:domain :Wine ;
+                    rdfs:range :ProductionEvent .
+:hasProductionYear rdfs:domain :ProductionEvent ;
+                   rdfs:range :ProductionYear .
+:hasProductionVolume rdfs:domain :ProductionEvent ;
+                     rdfs:range :ProductionVolume .
+:hasProductionMethod rdfs:domain :ProductionEvent ;
+                     rdfs:range :ProductionMethod .
+:hasWineStyle rdfs:domain :Wine ;
+              rdfs:range :WineStyle .
+:hasWineLabel rdfs:domain :Wine ;
+              rdfs:range :WineLabel .
+:hasWineBottle rdfs:domain :Wine ;
+               rdfs:range :WineBottle .
+:hasWineGlass rdfs:domain :Wine ;
+              rdfs:range :WineGlass .
+:hasWineStorage rdfs:domain :Wine ;
+                rdfs:range :WineStorage .
+:hasWineCollection rdfs:domain :Wine ;
+                   rdfs:range :WineCollection .
+:hasWineAuction rdfs:domain :Wine ;
+                rdfs:range :WineAuction .
+:hasWineCritic rdfs:domain :Wine ;
+               rdfs:range :WineCritic .
+:hasWinePublication rdfs:domain :Wine ;
+                    rdfs:range :WinePublication .
+:hasWineEducation rdfs:domain :Wine ;
+                  rdfs:range :WineEducation .
+:hasWineTourism rdfs:domain :Wine ;
+                rdfs:range :WineTourism .
+:hasWineLaw rdfs:domain :Wine ;
+            rdfs:range :WineLaw .
+:hasWineTax rdfs:domain :Wine ;
+            rdfs:range :WineTax .
+:hasWineTrade rdfs:domain :Wine ;
+              rdfs:range :WineTrade .
+:hasWineMarket rdfs:domain :Wine ;
+               rdfs:range :WineMarket .
+:hasWineConsumer rdfs:domain :Wine ;
+                 rdfs:range :WineConsumer .
+:hasWineExpert rdfs:domain :Wine ;
+               rdfs:range :WineExpert .
+:hasWineJudge rdfs:domain :Wine ;
+              rdfs:range :WineJudge .
+:hasWineCompetition rdfs:domain :Wine ;
+                    rdfs:range :WineCompetition .
+:hasWineAward rdfs:domain :Wine ;
+              rdfs:range :WineAward .
+:hasWineScore rdfs:domain :Wine ;
+              rdfs:range :WineScore .
+:hasWinePrice rdfs:domain :Wine ;
+              rdfs:range :WinePrice .
+:hasWineInvestment rdfs:domain :Wine ;
+                   rdfs:range :WineInvestment .
+:hasWineFraud rdfs:domain :Wine ;
+              rdfs:range :WineFraud .
+:hasWineAuthentication rdfs:domain :Wine ;
+                       rdfs:range :WineAuthentication .
+
+### Domain and Range Restrictions for Data Property
+:hasAlcoholContent rdfs:domain :Wine ;
+                   rdfs:range xsd:decimal .
+
+### Property Characteristics
+:hasParentVariety rdf:type owl:TransitiveProperty .
+:producesWine owl:inverseOf :producedByWinery .
+
+### Inverse Property Definitions
+:producedByWinery owl:inverseOf :producesWine .
+
+### Property Chain Axiom for Ancestral Variety Inference
+[ rdf:type owl:Axiom ;
+  owl:annotatedSource :hasParentVariety ;
+  owl:annotatedProperty owl:propertyChainAxiom ;
+  owl:annotatedTarget ( :hasParentVariety :hasParentVariety )
+] .
+
+### Additional Axioms for Complex Queries (CQs 32-38)
+:HighAlcoholWine owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf ( :Wine
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasAlcoholContent ;
+                           owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:decimal ;
+                                                owl:withRestrictions ( [ xsd:minInclusive 14.0 ] )
+                                              ]
+                         ]
+                       )
+] .
+
+:WineFromExcellentVintage owl:equivalentClass [
+    rdf:type owl:Class ;
+    owl:intersectionOf ( :Wine
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasVintage ;
+                           owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasVintageQuality ;
+                                                owl:someValuesFrom :ExcellentVintage
+                                              ]
+                         ]
+                       )
+] .
+
+### Individual Instances (Example Individuals)
+:CabernetSauvignon rdf:type :VitisVinifera .
+:Merlot rdf:type :VitisVinifera .
+:Chardonnay rdf:type :VitisVinifera .
+:Bordeaux rdf:type :OldWorldRegion .
+:NapaValley rdf:type :NewWorldRegion .
+:ChateauMargaux rdf:type :BoutiqueWinery .
+:RobertMondaviWinery rdf:type :CommercialWinery .
+:2010 rdf:type :Vintage .
+:2015 rdf:type :Vintage .
+:WineExample1 rdf:type :FullBodiedRedWine ;
+              :hasAlcoholContent 14.5 ;
+              :madeFromGrapeVariety :CabernetSauvignon ;
+              :producedInRegion :Bordeaux ;
+              :producedByWinery :ChateauMargaux ;
+              :hasVintage :2010 ;
+              :hasWineType :RedWine ;
+              :hasBody :FullBodied ;
+              :hasAppellation :PDO ;
+              :hasColor :RedWine ;
+              :hasTastingNote :TastingNoteExample1 ;
+              :containsCompound :Tannin ;
+              :pairsWithFood :Steak ;
+              :subjectToRegulation :WineLabelExample1 ;
+              :hasCommercialClassification :UNSPSC_CodeExample1 .
+
+:TastingNoteExample1 rdf:type :TastingNote ;
+                     :describesCharacteristic :Aroma ;
+                     :describesCharacteristic :Flavor ;
+                     :describesCharacteristic :Mouthfeel .
+
+:Steak rdf:type :Meat .
+:WineLabelExample1 rdf:type :WineLabel .
+:UNSPSC_CodeExample1 rdf:type :UNSPSC_Code .
+###end_turtle###

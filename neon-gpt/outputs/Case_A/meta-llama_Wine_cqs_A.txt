@@ -1,0 +1,33 @@
+To generate a comprehensive list of Competency Questions for the Wine Ontology, we will consider the various aspects of the wine domain as described in the domain description and ontology requirements. The Competency Questions should cover the key concepts and relationships within the domain.
+
+Here is a list of Competency Questions that the core module of the Wine Ontology should be able to answer:
+
+1. What grape varieties are used in a wine?
+2. Where is this wine produced?
+3. What food does this wine pair well with?
+4. What is the color of this wine?
+5. Who is the producer of this wine?
+6. What is the vintage of this wine?
+7. What is the tasting note of this wine?
+8. What is the alcohol content of this wine?
+9. What is the sweetness level of this wine?
+10. Is this wine still, sparkling, or fortified?
+11. What are the sensory characteristics of this wine?
+12. What viticultural practices were used in the production of this wine?
+13. What winemaking processes were applied to this wine?
+14. What is the geographical indication of this wine?
+15. What are the labeling requirements for this wine?
+16. What regulatory aspects apply to the production and marketing of this wine?
+17. What is the classification of this wine (e.g., by color, sweetness, effervescence)?
+18. Who are the notable wine producers in a specific region?
+19. What are the characteristic flavor profiles of wines from a specific grape variety?
+20. How does the terroir influence the style and quality of wines from a specific region?
+21. What are the typical wine pairings for a specific cuisine or dish?
+22. What are the climatic conditions that affected the grape development and wine characteristics in a specific vintage?
+23. What are the production volumes and signature styles of a specific winery?
+24. What are the chemical properties of this wine (e.g., acidity, residual sugar)?
+25. What are the quality indicators of this wine?
+
+These Competency Questions cover a wide range of aspects related to wine, including wine types and classifications, grape varieties, viticultural practices, winemaking processes, wine attributes, geographical indications, wineries and producers, vintages, wine pairings, and regulatory aspects.
+
+To ensure that the ontology meets the required metrics (77 classes, 657 logical axioms, 13 object properties, 1 data property, 161 individuals, and a high subclass count), the ontology should be designed with a deep hierarchy of classes and a rich set of relationships between them.
