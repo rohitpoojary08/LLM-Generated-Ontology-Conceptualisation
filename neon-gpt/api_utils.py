@@ -9,7 +9,7 @@ import os
 
 
 # === CONFIGURATION === #
-API_KEY = "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"  # <-- Replace with your actual OpenRouter API key
+API_KEY = ""  # <-- Replace with your actual OpenRouter API key
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 #MODEL = "meta-llama/llama-4-maverick-17b-128e-instruct"
 MODEL = "deepseek/deepseek-v3.2-exp"
