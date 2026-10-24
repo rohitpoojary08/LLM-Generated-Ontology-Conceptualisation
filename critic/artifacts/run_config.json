@@ -1,0 +1,15 @@
+{
+  "dataset": "../Datasets/WDV-CQ-HA_final_training_dataset_500.csv",
+  "model_name": "microsoft/deberta-v3-small",
+  "seed": 42,
+  "train_fraction": 0.70,
+  "validation_fraction": 0.15,
+  "test_fraction": 0.15,
+  "max_length": 192,
+  "batch_size": 8,
+  "learning_rate": 2e-5,
+  "weight_decay": 0.01,
+  "max_epochs": 5,
+  "early_stopping_patience": 2,
+  "warmup_fraction": 0.1
+}

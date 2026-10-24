@@ -1,0 +1,50 @@
+{
+  "split": "test",
+  "count": 74,
+  "device": "cpu",
+  "accuracy": 0.9054054054054054,
+  "precision_macro": 0.9129464285714286,
+  "recall_macro": 0.9054054054054055,
+  "f1_macro": 0.9049715648504861,
+  "classification_report": {
+    "class_0": {
+      "precision": 0.96875,
+      "recall": 0.8378378378378378,
+      "f1-score": 0.8985507246376812,
+      "support": 37.0
+    },
+    "class_1": {
+      "precision": 0.8571428571428571,
+      "recall": 0.972972972972973,
+      "f1-score": 0.9113924050632911,
+      "support": 37.0
+    },
+    "accuracy": 0.9054054054054054,
+    "macro avg": {
+      "precision": 0.9129464285714286,
+      "recall": 0.9054054054054055,
+      "f1-score": 0.9049715648504861,
+      "support": 74.0
+    },
+    "weighted avg": {
+      "precision": 0.9129464285714285,
+      "recall": 0.9054054054054054,
+      "f1-score": 0.9049715648504862,
+      "support": 74.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      31,
+      6
+    ],
+    [
+      1,
+      36
+    ]
+  ],
+  "confusion_matrix_labels": [
+    0,
+    1
+  ]
+}

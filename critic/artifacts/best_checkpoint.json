@@ -1,0 +1,5 @@
+{
+  "epoch": 3,
+  "validation_f1_macro": 0.9077509970521935,
+  "model_dir": "D:\\University Studies\\Thesis\\NeOn-GPT\\neon-gpt-extended\\Critic\\artifacts\\model"
+}

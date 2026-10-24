@@ -1,0 +1,6 @@
+.venv/
+.cache/
+.tmp/
+.pip-cache/
+__pycache__/
+artifacts/model/

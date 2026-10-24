@@ -1,0 +1,50 @@
+Model: Claude Sonnet 5.5 (claude-sonnet-5-5)
+Purpose: Generate 250 negative training samples for the Critic model
+
+---------------------------------------------------------------------
+
+ROLE
+You are helping build a training dataset for a Critic model that judges whether an
+LLM-generated ontology triple is in scope of a competency question (CQ).
+
+INPUT
+WDV-CQ-HA positive dataset (CSV) with columns: original_triple (verbalised sentence),
+CQ, Label (=1), Theme. Each triple has multiple CQs in separate rows.
+
+TASK
+Create 250 negative samples (gold_label = 0), 50 per strategy, derived from real
+triples in the dataset (no invented triples). Keep the CQ unchanged and modify or
+re-pair the triple:
+
+1. perturb_hierarchy: reverse or alter a hierarchical relation (part of, member of,
+   located in, parent/child, owned/operated by).
+2. perturb_wrong_relation: keep both entities, replace the relation with a clearly
+   different one that does not satisfy the CQ.
+3. adversarial_in_domain_not_needed: pair an unmodified real triple with a CQ from a
+   different triple of the same theme (low lexical overlap with the CQ).
+4. adversarial_ambiguous_relation: keep both entities, replace the relation with a
+   vague one ("is associated with", "is related to", "is linked to").
+5. adversarial_overly_generic: abstract the triple to generic terms
+   ("An entity has a code.").
+
+CONSTRAINTS
+- Exclude rows with CQ = "-", duplicates.
+- Exclude relation-agnostic CQs ("What is the relation between X and Y?"), since any
+  relation would satisfy them and the negative label would be wrong.
+- Balance negatives across themes where possible.
+- For each negative, add a matched positive: the original triple with the same CQ.
+  This gives 250 positives and 250 negatives (500 rows).
+- Split each triple into subject, relation and object, parsed from the verbalised
+  sentence because the dataset has no such columns.
+
+OUTPUT (CSV)
+original_triple, subject, relation, object, competency_question, gold_label,
+neg_type, theme, source_triple, cq_origin_triple
+
+source_triple: the real dataset triple the row was derived from.
+cq_origin_triple: the triple the CQ originally belongs to. Use it to group
+matched pairs when splitting train/val/test.
+
+QUALITY CHECKS
+No duplicate (triple, CQ) rows; every CQ exists in the source file for its origin
+triple; no unchanged triples among perturbation negatives; 50 rows per strategy.
