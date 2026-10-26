@@ -1,0 +1,94 @@
+**Competency Questions to Ontology Elements Mapping**
+
+**I. Wine Identification & Classification**
+1.  **Entities:** `Wine`, `Identifier` | **Property:** `hasIdentifier` (DataProperty, range: xsd:string)
+2.  **Entities:** `Wine` | **Property:** `hasLabel` (DataProperty, range: xsd:string)
+3.  **Entities:** `Wine`, `WineType` | **Property:** `hasWineType`
+4.  **Entities:** `Wine`, `EffervescenceType` (subclass of `WineType`) | **Property:** `hasWineType`
+5.  **Entities:** `Wine`, `SweetnessLevel` | **Property:** `hasSweetnessLevel`
+6.  **Entities:** `Wine` | **Axiom:** `VarietalWine SubClassOf: (hasGrapeVariety exactly 1 GrapeVariety)`
+7.  **Entities:** `Wine`, `GrapeVariety` | **Property:** `hasGrapeVariety` | **Axiom:** `BlendedWine SubClassOf: (hasGrapeVariety min 2 GrapeVariety)`
+8.  **Entities:** `Wine`, `GeographicalIndication` | **Property:** `hasGeographicalIndication`
+9.  **Entities:** `GeographicalIndication`, `LegalClassification` (e.g., AOC) | **Property:** `hasLegalClassification`
+10. **Entities:** `Wine` | **Property:** `hasAlcoholByVolume` (DataProperty, range: xsd:decimal)
+11. **Entities:** `Wine` | **Property:** `hasResidualSugar` (DataProperty, range: xsd:decimal)
+
+**II. Production & Provenance**
+12. **Entities:** `Wine`, `Winery` | **Property:** `producedBy`
+13. **Entities:** `Wine`, `WineRegion` | **Property:** `producedInRegion`
+14. **Entities:** `WineRegion`, `Country` | **Property:** `locatedIn`
+15. **Entities:** `Wine`, `VineyardSite` (subclass of `WineRegion`) | **Property:** `producedInRegion`
+16. **Entities:** `Wine`, `Vintage` | **Property:** `hasVintage`
+17. **Entities:** `Vintage`, `ClimaticCondition` | **Property:** `hasClimaticCondition`
+18. **Entities:** `Wine`, `GrapeVariety` | **Property:** `hasGrapeVariety`
+19. **Entities:** `GrapeVariety` | **Property:** `hasParentVariety` (self-relation)
+20. **Entities:** `Wine`, `ViticulturalPractice` | **Property:** `madeUsingPractice`
+21. **Entities:** `ViticulturalPractice`, `VineyardTechnique` (e.g., Pruning) | **Property:** `employsTechnique`
+22. **Entities:** `Wine` | **Property:** `hasYieldPerHectare` (DataProperty, range: xsd:decimal)
+
+**III. Winemaking Process**
+23. **Entities:** `Wine`, `WinemakingProcess` | **Property:** `underwentProcess`
+24. **Entities:** `FermentationProcess` (subclass of `WinemakingProcess`), `YeastType` | **Property:** `usesYeastType`
+25. **Entities:** `FermentationProcess`, `FermentationVessel` | **Property:** `usesVessel`
+26. **Entities:** `Wine`, `MalolacticFermentation` (subclass of `WinemakingProcess`) | **Property:** `underwentProcess`
+27. **Entities:** `Wine`, `AgingProcess` (subclass of `WinemakingProcess`) | **Property:** `underwentProcess` | **Property (on AgingProcess):** `hasDuration` (DataProperty)
+28. **Entities:** `AgingProcess`, `AgingVessel` | **Property:** `usesVessel`
+29. **Entities:** `AgingProcess` | **Axiom:** `LeesAging SubClassOf AgingProcess`
+30. **Entities:** `Wine`, `ClarificationMethod` | **Property:** `clarifiedUsing`
+31. **Entities:** `Wine`, `FiltrationMethod` | **Property:** `filteredUsing`
+32. **Entities:** `Wine`, `BottlingClosure` | **Property:** `hasClosure`
+
+**IV. Sensory & Chemical Profile**
+33. **Entities:** `Wine`, `WineColor` | **Property:** `hasColor`
+34. **Entities:** `Wine`, `SensoryProfile` | **Property:** `hasSensoryProfile` | **Property (on SensoryProfile):** `hasAromaIntensity`
+35. **Entities:** `SensoryProfile`, `AromaFamily` | **Property:** `hasAromaFamily`
+36. **Entities:** `SensoryProfile`, `FlavorDescriptor` | **Property:** `hasFlavorDescriptor`
+37. **Entities:** `SensoryProfile` | **Property:** `hasBody` (DataProperty/ObjectProperty to `BodyLevel`)
+38. **Entities:** `SensoryProfile` | **Property:** `hasAcidityLevel` (DataProperty/ObjectProperty to `AcidityLevel`)
+39. **Entities:** `SensoryProfile` | **Property:** `hasTanninLevel` (DataProperty/ObjectProperty to `TanninLevel`)
+40. **Entities:** `SensoryProfile` | **Property:** `hasAlcoholPerception`
+41. **Entities:** `SensoryProfile` | **Property:** `hasFinishLength`
+42. **Entities:** `Wine`, `QualityRating` | **Property:** `hasQualityRating`
+43. **Entities:** `Wine`, `ChemicalAnalysis` | **Property:** `hasChemicalAnalysis` | **Properties (on ChemicalAnalysis):** `hasPH`, `hasTotalAcidity`, `hasVolatileAcidity` (all DataProperties)
+
+**V. Relationships & Context**
+44. **Entities:** `Winery`, `Wine` | **Property (inverse):** `isProducedBy`
+45. **Entities:** `WineRegion`, `Wine` | **Property (inverse):** `isProducedInRegion`
+46. **Entities:** `GrapeVariety`, `Wine` | **Property (inverse):** `isUsedInWine`
+47. **Entities:** `Vintage`, `Wine` | **Property (inverse):** `isVintageOf`
+48. **Entities:** `WineType`, `Wine` | **Property (inverse):** `isTypeOf`
+49. **Entities:** `Wine`, `Winemaker` | **Property:** `madeByWinemaker`
+50. **Entities:** `Winery` | **Property:** `hasFoundingDate` (DataProperty) | **Property:** `hasHistory` (DataProperty)
+51. **Entities:** `Wine` | **Property:** `hasProductionVolume` (DataProperty)
+52. **Entities:** `Wine` | **Property:** `hasDrinkingWindow` (DataProperty/ObjectProperty to `TemporalInterval`)
+53. **Entities:** `Wine` | **Property:** `hasServingTemperature` (DataProperty)
+54. **Entities:** `Wine`, `GlasswareType` | **Property:** `recommendedGlassware`
+
+**VI. Food & Pairing**
+55. **Entities:** `Wine`, `Food` | **Property:** `pairsWith`
+56. **Entities:** `Food`, `CuisineType` | **Property:** `isPartOfCuisine`
+57. **Entities:** `Wine`, `Dish` (subclass of `Food`) | **Property:** `pairsWith`
+58. **Entities:** `Wine`, `CheeseVariety` (subclass of `Food`) | **Property:** `pairsWith`
+59. **Entities:** `Wine` | **Axiom:** `AperitifWine SubClassOf Wine`
+60. **Entities:** `Wine` | **Axiom:** `DessertWine SubClassOf Wine`
+
+**VII. Regulatory & Commercial**
+61. **Entities:** `Wine`, `LabelingRequirement` | **Property:** `fulfillsRequirement`
+62. **Entities:** `Wine`, `TradeRegulation` | **Property:** `subjectToRegulation`
+63. **Entities:** `Wine` | **Property:** `hasPriceRange` (DataProperty)
+64. **Entities:** `Wine`, `Distributor`, `Retailer` | **Property:** `availableThrough`
+65. **Entities:** `Wine`/`Winery`, `SustainabilityCertification` | **Property:** `hasCertification`
+
+**VIII. Advanced & Inferential Queries**
+66. **Entities/Properties Used:** `Wine`, `WineType` (Red), `WineRegion`, `SensoryProfile` (hasTanninLevel high), `AgingPotential` (subclass of `WineCharacteristic`) | **Property:** `hasCharacteristic` linking Wine to AgingPotential.
+67. **Entities/Properties Used:** `Wine`, `WineType` (White), `Vintage`, `AgingProcess` (usesVessel OakBarrel), `Food` (Shellfish) | **Property:** `pairsWith`.
+68. **Entities/Properties Used:** `Wine`, `WineType` (Sparkling), `WinemakingProcess` (TraditionalMethod) | **Property:** `underwentProcess`.
+69. **Entities/Properties Used:** `GrapeVariety`, `WineRegion` | **Property (inferred):** `cultivatedInRegion` (derived from `GrapeVariety isUsedInWine some (Wine and (producedInRegion some WineRegion))`).
+70. **Entities/Properties Used:** `Wine`, `GrapeVariety`, `WineRegion`, `WinemakingStyle` (new class) | **Property:** `hasWinemakingStyle`.
+71. **Entities/Properties Used:** `Wine`, `GrapeVariety` | **Property:** `hasGrapeVarietyPercentage` (DataProperty on a linking class `WineGrapeComponent`).
+72. **Entities/Properties Used:** `Wine`, `ViticulturalPractice` (Biodynamic), `Country` | **Property:** `madeUsingPractice`, `producedInRegion`, `locatedIn`.
+73. **Entities/Properties Used:** `Wine`, `QualityRating`, `Vintage` | **Properties:** `hasQualityRating`, `hasVintage`.
+74. **Entities/Properties Used:** `Wine`, `DietaryConsideration` (e.g., Vegan) | **Property:** `suitableFor`.
+75. **Entities/Properties Used:** `Food` (GrilledSteak), `Wine`, `WineRegion`, `WineType` | **Properties:** `pairsWith`, `producedInRegion`, `hasWineType`.
+76. **Entities/Properties Used:** `WineType`, `WineRegion`, `FlavorProfileEvolution` (new class) | **Property:** `hasTypicalEvolution`.
+77. **Entities/Properties Used:** `TerroirCharacteristic` (Soil, Climate), `GrapeVariety`, `Location` (new class) | **Properties:** `hasSoilType`, `hasClimate`, `isSuitableFor`.

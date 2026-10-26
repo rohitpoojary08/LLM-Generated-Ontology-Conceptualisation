@@ -1,0 +1,46 @@
+**Ontology Requirements Specification (Based on the NeOn Methodology)**
+
+**1. Purpose of the Ontology**
+The primary purpose of the Wine Ontology is to create a standardized, comprehensive, and interoperable semantic framework that formally models the core entities, relationships, and processes within the domain of viticulture and oenology. It aims to integrate fragmented knowledge from scientific, commercial, and cultural perspectives into a coherent, machine-readable structure. This will support data sharing, semantic search, advanced analytics, and automated reasoning across diverse applications in wine science, production, trade, education, and gastronomy.
+
+**2. Scope of the Ontology**
+The ontology will cover the conceptual space defined by the domain description and the provided keywords. Specifically, it will include:
+*   **Core Entities:** `Wine`, `GrapeVariety`, `WineType` (e.g., Red, White, Sparkling, Fortified), `WineRegion` (including hierarchical appellations and terroir concepts), `Winery`/`Producer`, `Vintage`.
+*   **Characteristics & Processes:** `WineColor`, sensory and chemical attributes (captured via `TastingNote` and related properties like aroma, body, tannin, alcohol, acidity), `FoodPairing` relationships, key viticultural practices, and core winemaking processes.
+*   **Relationships:** The ontological relationships between these entities (e.g., a `Wine` is `madeFromGrape` some `GrapeVariety`; a `Wine` is `producedIn` some `WineRegion`; a `Wine` has `Vintage` some year; a `Wine` `pairsWith` some `Food`).
+*   **Exclusions:** While the ontology will model the *concept* of regulatory aspects, winery history, or detailed climatic data, it will not contain exhaustive instance data (e.g., full legal texts, complete historical timelines, or daily weather records for all vintages). These can be linked via the ontology.
+
+**3. Target Group**
+*   **Wine Researchers & Scientists:** For integrating experimental data, studying terroir effects, and modeling viticultural/enological processes.
+*   **Wine Producers & Winemakers:** For documenting production methods, classifying their wines, and sharing technical sheets in a standardized format.
+*   **Regulatory & Certification Bodies:** For defining and checking compliance with appellation rules, labeling requirements, and geographical indications.
+*   **Wine Distributors, Retailers, and Sommeliers:** For enhancing product catalogs with rich, queryable metadata, managing inventories, and recommending wines based on sophisticated criteria.
+*   **Food & Hospitality Industry Professionals:** For systematizing food and wine pairing knowledge.
+*   **Application Developers & Data Engineers:** Building recommendation systems, educational platforms, or semantic search engines for the wine domain.
+
+**4. Intended Uses**
+*   **Semantic Integration:** Harmonizing data from disparate wine databases, producer websites, and research repositories.
+*   **Advanced Querying & Search:** Enabling complex queries (e.g., "find full-bodied red wines from the 2015 vintage in Bordeaux made from Cabernet Sauvignon, with high tannins, suitable for pairing with grilled red meat").
+*   **Knowledge Discovery & Reasoning:** Inferring new knowledge (e.g., if a wine is from the Barolo DOCG region, it can be inferred to be made from Nebbiolo grapes and be of type Red Wine).
+*   **Decision Support:** Assisting in blending decisions, vineyard management planning, or sourcing grapes based on modeled suitability of varieties to regions.
+*   **Education & Storytelling:** Providing a structured knowledge base for learning about wine regions, varieties, and production techniques.
+
+**5. Functional Requirements (Competency Questions)**
+The ontology must be able to answer questions such as:
+*   What are the main grape varieties used to produce a specific wine (e.g., Châteauneuf-du-Pape)?
+*   Which wines are produced in a given region (e.g., Napa Valley) and by which wineries?
+*   List all red wine types with high tannin levels.
+*   What are the typical food pairings for a dry Riesling?
+*   Show all sparkling wines (Champagne, Cava, etc.) and their respective methods of production.
+*   For a given vintage year in a region, what were the general climatic conditions, and which wine attributes were most affected?
+*   What are the legal classification requirements (e.g., DOCG, AOC) for a particular wine?
+*   Which wines are made using oak barrel aging and for how long?
+*   Find wines that are similar to a given wine based on grape variety, region, and style.
+
+**6. Non-Functional Requirements**
+*   **Interoperability:** Reuse and align with relevant existing ontologies/vocabularies (e.g., FoodOn for food pairing, AGROVOC for agricultural terms, schema.org for basic product and organization descriptions).
+*   **Extensibility:** The ontology design must allow for the addition of new grape varieties, regions, winemaking techniques, and sensory descriptors without requiring structural changes.
+*   **Clarity & Consistency:** Classes, properties, and axioms must be defined unambiguously with clear labels, definitions (using `rdfs:comment`), and adherence to ontological best practices (e.g., avoiding class-instance confusion).
+*   **Scalability:** The model should perform efficiently even as the number of instances (specific wines, producers, vintages) grows into the hundreds of thousands.
+*   **Maintainability:** The ontology should be modularly structured (e.g., separating core wine concepts from detailed process ontologies) to facilitate updates and management.
+*   **Usability:** The ontology should be documented with a clear namespace, a human-readable specification, and examples of usage to aid adoption by the target groups.

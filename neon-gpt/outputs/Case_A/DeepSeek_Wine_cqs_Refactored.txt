@@ -1,0 +1,94 @@
+**Competency Questions for the Core Wine Ontology Module**
+
+**I. Wine Identification & Classification**
+1.  What is the unique identifier (URI) for a specific wine?
+2.  What is the name/label of a given wine?
+3.  What type of wine is it (e.g., Red, White, Sparkling, Fortified, Rosé, Dessert)?
+4.  Is this wine classified as a still or sparkling wine?
+5.  What is the sweetness level of this wine (e.g., dry, off-dry, semi-sweet, sweet)?
+6.  Is this wine a varietal wine (primarily made from one grape variety)?
+7.  Is this wine a blend? If so, which grape varieties are blended?
+8.  Does this wine have a protected designation of origin (PDO) or geographical indication (GI)?
+9.  What is the legal classification/appellation of this wine (e.g., AOC, DOCG, AVA)?
+10. What is the alcohol content (ABV) of this wine?
+11. What is the residual sugar content of this wine?
+
+**II. Production & Provenance**
+12. Which winery/producer made this wine?
+13. In which wine region was this wine produced?
+14. What is the country of origin for this wine?
+15. What is the specific sub-region or vineyard site for this wine?
+16. What is the vintage (harvest year) of this wine?
+17. What were the general climatic conditions for this wine's vintage in its region?
+18. What grape varieties were used to produce this wine?
+19. What is the genetic lineage/parentage of the grape varieties used?
+20. Which viticultural practices (e.g., organic, biodynamic, sustainable) were employed for the grapes used in this wine?
+21. What specific vineyard management techniques (e.g., pruning, canopy management) were used?
+22. What was the yield per hectare for the grapes used in this wine?
+
+**III. Winemaking Process**
+23. What are the key winemaking processes involved in producing this wine?
+24. Was this wine fermented using wild/native yeasts or cultured yeasts?
+25. What type of fermentation vessel was used (e.g., stainless steel tank, concrete egg, oak vat)?
+26. Did this wine undergo malolactic fermentation?
+27. Was this wine aged? If so, for how long?
+28. What type of vessel was used for aging (e.g., new French oak barrel, used American oak barrel, neutral oak, stainless steel)?
+29. Was the wine aged on its lees?
+30. What clarification/fining methods were used (e.g., bentonite, egg whites, none/unfined)?
+31. What filtration method was used before bottling?
+32. How was this wine bottled (e.g., under cork, screwcap, other closure)?
+
+**IV. Sensory & Chemical Profile**
+33. What is the color of this wine (e.g., ruby red, garnet, pale lemon, deep gold)?
+34. What is the intensity of the wine's aroma?
+35. What are the primary aroma families detected (e.g., fruity, floral, spicy, vegetal, oak-derived)?
+36. What specific aroma/flavor descriptors apply (e.g., blackcurrant, violet, vanilla, tobacco)?
+37. What is the perceived body/weight of the wine (light, medium, full)?
+38. What is the acidity level (low, medium, high)?
+39. What is the tannin level (low, medium, high, for reds)?
+40. What is the alcohol perception (light, warming, hot)?
+41. What is the finish length (short, medium, long)?
+42. What is the overall quality rating or score of the wine (if applicable)?
+43. What are the main chemical analysis results (pH, total acidity, volatile acidity, etc.)?
+
+**V. Relationships & Context**
+44. Which other wines are produced by the same winery?
+45. Which other wines are produced in the same region?
+46. Which other wines are made from the same grape variety?
+47. Which other wines are of the same vintage?
+48. Which other wines are of the same type/classification?
+49. Who is the winemaker responsible for this wine?
+50. What is the history or founding date of the producing winery?
+51. What is the production volume of this wine?
+52. What is the recommended drinking window (peak maturity) for this wine?
+53. At what temperature should this wine be served?
+54. What type of glassware is recommended for this wine?
+
+**VI. Food & Pairing**
+55. What foods does this wine pair well with?
+56. What types of cuisine does this wine complement (e.g., French, Italian, Asian)?
+57. What specific dishes are recommended pairings for this wine?
+58. What cheese varieties pair well with this wine?
+59. Is this wine suitable as an aperitif?
+60. Is this wine suitable for pairing with dessert?
+
+**VII. Regulatory & Commercial**
+61. What are the labeling requirements fulfilled by this wine?
+62. What import/export regulations apply to this wine?
+63. What is the price range or market value of this wine?
+64. Through which distributors or retailers is this wine available?
+65. What are the sustainability or ethical certifications held by this wine/producer (e.g., vegan, Fair Trade)?
+
+**VIII. Advanced & Inferential Queries**
+66. List all red wines from a specific region with high tannin levels and suitable for long-term aging.
+67. Find all white wines from a given vintage that underwent oak aging and pair with shellfish.
+68. Show all sparkling wines produced using the traditional method (Méthode Champenoise).
+69. For a given grape variety, list all wine regions where it is successfully cultivated.
+70. Find wines that are similar to Wine X based on shared grape variety, region, and winemaking style.
+71. Which wines are blends containing a specific percentage of a particular grape variety?
+72. List all wines produced using biodynamic viticultural practices in a certain country.
+73. Identify wines that received a quality rating above a specific score in a given vintage year.
+74. Find wines that are suitable for a specific dietary restriction (e.g., vegan, low-sulfite).
+75. For a given food item (e.g., grilled steak), recommend wines based on pairing guidelines, region, and style.
+76. What is the typical flavor profile evolution (aging potential) for wines of this type from this region?
+77. Based on modeled terroir characteristics (soil, climate), which grape varieties are most suitable for a new vineyard in a specified location?
