@@ -1,46 +1,46 @@
 {
   "split": "test",
   "count": 74,
-  "device": "cpu",
+  "device": "cuda",
   "accuracy": 0.9054054054054054,
-  "precision_macro": 0.9129464285714286,
+  "precision_macro": 0.9204545454545454,
   "recall_macro": 0.9054054054054055,
-  "f1_macro": 0.9049715648504861,
+  "f1_macro": 0.9045513174866409,
   "classification_report": {
     "class_0": {
-      "precision": 0.96875,
-      "recall": 0.8378378378378378,
-      "f1-score": 0.8985507246376812,
+      "precision": 1.0,
+      "recall": 0.8108108108108109,
+      "f1-score": 0.8955223880597015,
       "support": 37.0
     },
     "class_1": {
-      "precision": 0.8571428571428571,
-      "recall": 0.972972972972973,
-      "f1-score": 0.9113924050632911,
+      "precision": 0.8409090909090909,
+      "recall": 1.0,
+      "f1-score": 0.9135802469135802,
       "support": 37.0
     },
     "accuracy": 0.9054054054054054,
     "macro avg": {
-      "precision": 0.9129464285714286,
+      "precision": 0.9204545454545454,
       "recall": 0.9054054054054055,
-      "f1-score": 0.9049715648504861,
+      "f1-score": 0.9045513174866409,
       "support": 74.0
     },
     "weighted avg": {
-      "precision": 0.9129464285714285,
+      "precision": 0.9204545454545454,
       "recall": 0.9054054054054054,
-      "f1-score": 0.9049715648504862,
+      "f1-score": 0.9045513174866407,
       "support": 74.0
     }
   },
   "confusion_matrix": [
     [
-      31,
-      6
+      30,
+      7
     ],
     [
-      1,
-      36
+      0,
+      37
     ]
   ],
   "confusion_matrix_labels": [

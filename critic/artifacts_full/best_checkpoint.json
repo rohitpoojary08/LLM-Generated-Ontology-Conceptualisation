@@ -1,0 +1,5 @@
+{
+  "epoch": 6,
+  "validation_f1_macro": 0.9558799675587997,
+  "model_dir": "/misc/usrhomes/g122/projects/LLM-Generated-Ontology-Conceptualisation/critic/artifacts_full/model"
+}

@@ -1,5 +1,5 @@
 {
-  "dataset": "D:\\University Studies\\Thesis\\NeOn-GPT\\neon-gpt-extended\\Datasets\\WDV-CQ-HA_final_training_dataset_500.csv",
+  "dataset": "/misc/usrhomes/g122/projects/LLM-Generated-Ontology-Conceptualisation/Datasets/WDV-CQ-HA_final_training_dataset_500.csv",
   "dataset_sha256": "7d93d474d6d428258c80645cdb0c47aeb4fbc2017076c8a892636bd10ec8bf10",
   "seed": 42,
   "group_columns": [

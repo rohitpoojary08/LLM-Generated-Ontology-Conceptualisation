@@ -1,0 +1,30 @@
+{
+  "dataset": "/misc/usrhomes/g122/projects/LLM-Generated-Ontology-Conceptualisation/Datasets/WDV-CQ-HA_final_training_dataset_full.csv",
+  "dataset_sha256": "f3ed12bc44a5e30c2507a65a94743ea90b0bab1e8c0bdb2d8ac940561c6771b2",
+  "seed": 42,
+  "group_columns": [
+    "competency_question",
+    "original_triple",
+    "source_triple",
+    "cq_origin_triple",
+    "subject/relation/object"
+  ],
+  "group_count": 363,
+  "splits": {
+    "train": {
+      "total": 3801,
+      "class_0": 1865,
+      "class_1": 1936
+    },
+    "validation": {
+      "total": 816,
+      "class_0": 404,
+      "class_1": 412
+    },
+    "test": {
+      "total": 816,
+      "class_0": 403,
+      "class_1": 413
+    }
+  }
+}

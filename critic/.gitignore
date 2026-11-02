@@ -4,3 +4,4 @@
 .pip-cache/
 __pycache__/
 artifacts/model/
+artifacts_full/model/

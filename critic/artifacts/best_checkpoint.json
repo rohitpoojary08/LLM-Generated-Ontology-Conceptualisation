@@ -1,5 +1,5 @@
 {
   "epoch": 3,
-  "validation_f1_macro": 0.9077509970521935,
-  "model_dir": "D:\\University Studies\\Thesis\\NeOn-GPT\\neon-gpt-extended\\Critic\\artifacts\\model"
+  "validation_f1_macro": 0.8946638946638947,
+  "model_dir": "/misc/usrhomes/g122/projects/LLM-Generated-Ontology-Conceptualisation/critic/artifacts/model"
 }
