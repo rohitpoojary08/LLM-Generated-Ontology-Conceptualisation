@@ -1,10 +1,27 @@
 {
-  "dataset": "../Datasets/WDV-CQ-HA_final_training_dataset_full.csv",
+  "dataset": "../Datasets/Grounding_Traininig_Dataset.csv",
   "model_name": "microsoft/deberta-v3-small",
   "seed": 42,
   "train_fraction": 0.70,
   "validation_fraction": 0.15,
   "test_fraction": 0.15,
+  "theme_splits": {
+    "WDV-CQ-HA": {
+      "train": ["Airport", "Athlete", "Celestial", "Chemical", "City", "Comic", "Consolidate_data.csv", "Food", "MeanOfTransportation", "Monument", "Mountain", "Painting", "Politician", "Sports", "Street", "Taxon", "Written"],
+      "validation": ["Artist", "Astronaut"],
+      "test": ["Building", "University"]
+    },
+    "CQ2Term": {
+      "train": ["Software", "Water", "Video games", "Wine"],
+      "validation": ["African Wildlife"],
+      "test": ["ODRL"]
+    },
+    "CQ2Onto": {
+      "train": ["African Wildlife", "ODRL", "Software", "Video Games"],
+      "validation": ["Water"],
+      "test": ["Wine"]
+    }
+  },
   "max_length": 192,
   "batch_size": 8,
   "learning_rate": 2e-5,
