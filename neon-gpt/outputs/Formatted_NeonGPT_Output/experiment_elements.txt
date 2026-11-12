@@ -1,0 +1,581 @@
+CQ: What is the color classification (red, white, rosé) of a given wine?
+Entities:
+- Wine
+- WineColor
+Relations (properties):
+- hasColor
+Axioms:
+- WineColor subClassOf owl:Thing
+- hasColor domain Wine
+- hasColor range WineColor
+
+CQ: Is a given wine sparkling or still?
+Entities:
+- Wine
+- EffervescenceLevel
+Relations (properties):
+- hasEffervescenceLevel
+Axioms:
+- EffervescenceLevel subClassOf owl:Thing
+- hasEffervescenceLevel domain Wine
+- hasEffervescenceLevel range EffervescenceLevel
+
+CQ: Is a given wine fortified?
+Entities:
+- Wine
+- FortificationStatus
+Relations (properties):
+- hasFortificationStatus
+Axioms:
+- FortificationStatus subClassOf owl:Thing
+- hasFortificationStatus domain Wine
+- hasFortificationStatus range FortificationStatus
+
+CQ: What is the sweetness level (dry, off-dry, sweet) of a given wine?
+Entities:
+- Wine
+- SweetnessLevel
+Relations (properties):
+- hasSweetnessLevel
+Axioms:
+- SweetnessLevel subClassOf owl:Thing
+- hasSweetnessLevel domain Wine
+- hasSweetnessLevel range SweetnessLevel
+
+CQ: What is the alcohol by volume (ABV) percentage of a given wine?
+Entities:
+- Wine
+Relations (properties):
+- hasAlcoholByVolume
+Axioms:
+- hasAlcoholByVolume domain Wine
+- hasAlcoholByVolume range xsd:decimal
+
+CQ: What is the residual sugar content of a given wine?
+Entities:
+- Wine
+Relations (properties):
+- hasResidualSugar
+Axioms:
+- hasResidualSugar domain Wine
+- hasResidualSugar range xsd:decimal
+
+CQ: What is the pH level or titratable acidity of a given wine?
+Entities:
+- Wine
+Relations (properties):
+- hasAcidity
+Axioms:
+- hasAcidity domain Wine
+- hasAcidity range xsd:decimal
+
+CQ: Which single grape variety is a given monovarietal wine made from?
+Entities:
+- Wine
+- GrapeVariety
+Relations (properties):
+- madeFromGrape
+Axioms:
+- MonovarietalWine subClassOf Wine
+- MonovarietalWine subClassOf (madeFromGrape exactly 1 GrapeVariety)
+
+CQ: What are the grape varieties used in a given blended wine, and in what proportions?
+Entities:
+- Wine
+- GrapeVariety
+Relations (properties):
+- madeFromGrape
+- hasBlendProportion
+Axioms:
+- BlendedWine subClassOf Wine
+- hasBlendProportion domain BlendedWine
+- hasBlendProportion range xsd:decimal
+- BlendedWine subClassOf (madeFromGrape min 2 GrapeVariety)
+
+CQ: What is the genetic lineage or parentage of a given grape variety?
+Entities:
+- GrapeVariety
+Relations (properties):
+- hasParent
+Axioms:
+- hasParent domain GrapeVariety
+- hasParent range GrapeVariety
+
+CQ: In which specific wine region (e.g., Napa Valley) is a given wine produced?
+Entities:
+- Wine
+- WineRegion
+Relations (properties):
+- producedInRegion
+Axioms:
+- producedInRegion domain Wine
+- producedInRegion range WineRegion
+
+CQ: Under which appellation or geographical indication (e.g., AOC Bordeaux, DOCG Barolo) is a given wine classified?
+Entities:
+- Wine
+- GeographicalIndication
+Relations (properties):
+- classifiedUnder
+Axioms:
+- classifiedUnder domain Wine
+- classifiedUnder range GeographicalIndication
+
+CQ: What are the sub-regions within a given major wine region?
+Entities:
+- WineRegion
+Relations (properties):
+- hasSubRegion
+Axioms:
+- hasSubRegion domain WineRegion
+- hasSubRegion range WineRegion
+
+CQ: Which country is a given wine region located in?
+Entities:
+- WineRegion
+- Country
+Relations (properties):
+- locatedInCountry
+Axioms:
+- locatedInCountry domain WineRegion
+- locatedInCountry range Country
+
+CQ: What is the specific terroir (soil type, mesoclimate) associated with a given vineyard site?
+Entities:
+- VineyardSite
+- Terroir
+Relations (properties):
+- hasTerroir
+Axioms:
+- hasTerroir domain VineyardSite
+- hasTerroir range Terroir
+
+CQ: Which winery produced a given wine?
+Entities:
+- Wine
+- Winery
+Relations (properties):
+- producedBy
+Axioms:
+- producedBy domain Wine
+- producedBy range Winery
+
+CQ: When was the producing winery founded?
+Entities:
+- Winery
+Relations (properties):
+- foundedInYear
+Axioms:
+- foundedInYear domain Winery
+- foundedInYear range xsd:gYear
+
+CQ: What viticultural practices (e.g., organic, biodynamic, trellising system) were used in growing the grapes for a given wine?
+Entities:
+- Wine
+- ViticulturalPractice
+Relations (properties):
+- usedViticulturalPractice
+Axioms:
+- usedViticulturalPractice domain Wine
+- usedViticulturalPractice range ViticulturalPractice
+
+CQ: What specific winemaking processes (e.g., carbonic maceration, barrel fermentation, lees aging) were used to produce a given wine?
+Entities:
+- Wine
+- WinemakingProcess
+Relations (properties):
+- usedWinemakingProcess
+Axioms:
+- usedWinemakingProcess domain Wine
+- usedWinemakingProcess range WinemakingProcess
+
+CQ: What type of vessel (e.g., French oak barrel, stainless steel tank, concrete egg) was used for aging a given wine, and for how long?
+Entities:
+- Wine
+- AgingVessel
+Relations (properties):
+- agedIn
+- agingDuration
+Axioms:
+- agedIn domain Wine
+- agedIn range AgingVessel
+- agingDuration domain Wine
+- agingDuration range xsd:duration
+
+CQ: Was malolactic fermentation applied to a given wine?
+Entities:
+- Wine
+- MalolacticFermentation
+Relations (properties):
+- appliedProcess
+Axioms:
+- MalolacticFermentation subClassOf WinemakingProcess
+- appliedProcess domain Wine
+- appliedProcess range WinemakingProcess
+
+CQ: What filtration or clarification method was used before bottling?
+Entities:
+- Wine
+- ClarificationMethod
+Relations (properties):
+- usedClarificationMethod
+Axioms:
+- usedClarificationMethod domain Wine
+- usedClarificationMethod range ClarificationMethod
+
+CQ: What is the vintage year (harvest year) of a given wine?
+Entities:
+- Wine
+- Vintage
+Relations (properties):
+- hasVintage
+Axioms:
+- hasVintage domain Wine
+- hasVintage range Vintage
+
+CQ: What were the general climatic conditions (e.g., hot/dry, cool/wet) for a given vintage in a specific region?
+Entities:
+- Vintage
+- WineRegion
+- ClimaticCondition
+Relations (properties):
+- hasClimaticCondition
+- appliesToRegion
+Axioms:
+- hasClimaticCondition domain Vintage
+- hasClimaticCondition range ClimaticCondition
+- appliesToRegion domain ClimaticCondition
+- appliesToRegion range WineRegion
+
+CQ: How is the overall quality of a given vintage year rated for a specific region?
+Entities:
+- Vintage
+- WineRegion
+- QualityRating
+Relations (properties):
+- hasQualityRating
+- ratedForRegion
+Axioms:
+- hasQualityRating domain Vintage
+- hasQualityRating range QualityRating
+- ratedForRegion domain QualityRating
+- ratedForRegion range WineRegion
+
+CQ: Which wines share the same vintage year?
+Entities:
+- Wine
+- Vintage
+Relations (properties):
+- hasVintage
+Axioms:
+- hasVintage domain Wine
+- hasVintage range Vintage
+
+CQ: What are the primary aroma and flavor descriptors (e.g., blackberry, vanilla, tobacco) noted in a tasting note for a given wine?
+Entities:
+- Wine
+- TastingNote
+- SensoryDescriptor
+Relations (properties):
+- hasTastingNote
+- hasDescriptor
+Axioms:
+- hasTastingNote domain Wine
+- hasTastingNote range TastingNote
+- hasDescriptor domain TastingNote
+- hasDescriptor range SensoryDescriptor
+
+CQ: What is the perceived body (light, medium, full) of a given wine?
+Entities:
+- Wine
+- WineBody
+Relations (properties):
+- hasBody
+Axioms:
+- hasBody domain Wine
+- hasBody range WineBody
+
+CQ: What is the perceived level of tannins (low, medium, high) in a given red wine?
+Entities:
+- Wine
+- TanninLevel
+Relations (properties):
+- hasTanninLevel
+Axioms:
+- RedWine subClassOf Wine
+- hasTanninLevel domain Wine
+- hasTanninLevel range TanninLevel
+
+CQ: What is the perceived level of acidity (low, medium, high) in a given wine?
+Entities:
+- Wine
+- AcidityLevel
+Relations (properties):
+- hasAcidityLevel
+Axioms:
+- hasAcidityLevel domain Wine
+- hasAcidityLevel range AcidityLevel
+
+CQ: What is the finish length (short, medium, long) of a given wine?
+Entities:
+- Wine
+- FinishLength
+Relations (properties):
+- hasFinishLength
+Axioms:
+- hasFinishLength domain Wine
+- hasFinishLength range FinishLength
+
+CQ: What is the overall quality score or rating (e.g., Parker points) assigned to a given wine?
+Entities:
+- Wine
+- QualityScore
+Relations (properties):
+- hasQualityScore
+Axioms:
+- hasQualityScore domain Wine
+- hasQualityScore range QualityScore
+
+CQ: Who authored a specific tasting note or review?
+Entities:
+- TastingNote
+- Reviewer
+Relations (properties):
+- authoredBy
+Axioms:
+- authoredBy domain TastingNote
+- authoredBy range Reviewer
+
+CQ: With which specific food dishes or categories (e.g., grilled steak, roasted chicken, hard cheese) is a given wine recommended to pair?
+Entities:
+- Wine
+- Food
+Relations (properties):
+- pairsWith
+Axioms:
+- pairsWith domain Wine
+- pairsWith range Food
+
+CQ: What is the rationale for a specific food and wine pairing (e.g., "complements richness", "contrasts saltiness")?
+Entities:
+- Wine
+- Food
+- PairingRationale
+Relations (properties):
+- pairsWith
+- hasPairingRationale
+Axioms:
+- hasPairingRationale domain (Wine and Food)
+- hasPairingRationale range PairingRationale
+
+CQ: Which wines are recommended to pair with a given food item?
+Entities:
+- Wine
+- Food
+Relations (properties):
+- pairsWith
+Axioms:
+- pairsWith domain Wine
+- pairsWith range Food
+
+CQ: In which cultural cuisine context is a specific wine pairing traditionally recommended?
+Entities:
+- Wine
+- Food
+- CulturalCuisine
+Relations (properties):
+- pairsWith
+- recommendedInCuisine
+Axioms:
+- recommendedInCuisine domain (Wine and Food)
+- recommendedInCuisine range CulturalCuisine
+
+CQ: Which regulatory standards (e.g., AOC, DOCG, AVA rules) does a given wine comply with?
+Entities:
+- Wine
+- RegulatoryStandard
+Relations (properties):
+- compliesWith
+Axioms:
+- compliesWith domain Wine
+- compliesWith range RegulatoryStandard
+
+CQ: What are the specific labeling requirements for a wine from a given appellation?
+Entities:
+- GeographicalIndication
+- LabelingRequirement
+Relations (properties):
+- hasLabelingRequirement
+Axioms:
+- hasLabelingRequirement domain GeographicalIndication
+- hasLabelingRequirement range LabelingRequirement
+
+CQ: What is the permitted grape variety list for a given geographical indication?
+Entities:
+- GeographicalIndication
+- GrapeVariety
+Relations (properties):
+- permitsGrapeVariety
+Axioms:
+- permitsGrapeVariety domain GeographicalIndication
+- permitsGrapeVariety range GrapeVariety
+
+CQ: What is the maximum allowable yield for a given appellation?
+Entities:
+- GeographicalIndication
+Relations (properties):
+- hasMaximumYield
+Axioms:
+- hasMaximumYield domain GeographicalIndication
+- hasMaximumYield range xsd:decimal
+
+CQ: What is the production volume of a given winery?
+Entities:
+- Winery
+Relations (properties):
+- hasProductionVolume
+Axioms:
+- hasProductionVolume domain Winery
+- hasProductionVolume range xsd:decimal
+
+CQ: What is the signature style or flagship wine of a given producer?
+Entities:
+- Winery
+- Wine
+Relations (properties):
+- hasSignatureStyle
+Axioms:
+- hasSignatureStyle domain Winery
+- hasSignatureStyle range Wine
+
+CQ: List all wines produced by a specific winery.
+Entities:
+- Wine
+- Winery
+Relations (properties):
+- producedBy
+Axioms:
+- producedBy domain Wine
+- producedBy range Winery
+
+CQ: List all wines made primarily from a specific grape variety.
+Entities:
+- Wine
+- GrapeVariety
+Relations (properties):
+- madeFromGrape
+Axioms:
+- madeFromGrape domain Wine
+- madeFromGrape range GrapeVariety
+
+CQ: List all wines originating from a specific wine region or appellation.
+Entities:
+- Wine
+- WineRegion
+- GeographicalIndication
+Relations (properties):
+- producedInRegion
+- classifiedUnder
+Axioms:
+- producedInRegion domain Wine
+- producedInRegion range WineRegion
+- classifiedUnder domain Wine
+- classifiedUnder range GeographicalIndication
+
+CQ: List all red wines from a specific region that have high tannin levels.
+Entities:
+- Wine
+- WineRegion
+- TanninLevel
+Relations (properties):
+- producedInRegion
+- hasTanninLevel
+Axioms:
+- RedWine subClassOf Wine
+- producedInRegion domain Wine
+- producedInRegion range WineRegion
+- hasTanninLevel domain Wine
+- hasTanninLevel range TanninLevel
+
+CQ: List all white wines that underwent oak aging.
+Entities:
+- Wine
+- AgingVessel
+Relations (properties):
+- agedIn
+Axioms:
+- WhiteWine subClassOf Wine
+- agedIn domain Wine
+- agedIn range AgingVessel
+
+CQ: List all sparkling wines produced using the traditional method (Méthode Champenoise).
+Entities:
+- Wine
+- WinemakingProcess
+Relations (properties):
+- usedWinemakingProcess
+Axioms:
+- SparklingWine subClassOf Wine
+- TraditionalMethod subClassOf WinemakingProcess
+- usedWinemakingProcess domain Wine
+- usedWinemakingProcess range WinemakingProcess
+
+CQ: List all wines from a given vintage year that are rated above a certain score.
+Entities:
+- Wine
+- Vintage
+- QualityScore
+Relations (properties):
+- hasVintage
+- hasQualityScore
+Axioms:
+- hasVintage domain Wine
+- hasVintage range Vintage
+- hasQualityScore domain Wine
+- hasQualityScore range QualityScore
+
+CQ: Which wines share similar sensory profiles (based on tasting note attributes)?
+Entities:
+- Wine
+- TastingNote
+- SensoryDescriptor
+Relations (properties):
+- hasTastingNote
+- hasDescriptor
+Axioms:
+- hasTastingNote domain Wine
+- hasTastingNote range TastingNote
+- hasDescriptor domain TastingNote
+- hasDescriptor range SensoryDescriptor
+
+CQ: For a given grape variety, which regions is it most commonly grown in?
+Entities:
+- GrapeVariety
+- WineRegion
+Relations (properties):
+- commonlyGrownIn
+Axioms:
+- commonlyGrownIn domain GrapeVariety
+- commonlyGrownIn range WineRegion
+
+CQ: Which winemaking processes are typically used for a given wine style (e.g., Orange Wine)?
+Entities:
+- WineStyle
+- WinemakingProcess
+Relations (properties):
+- typicallyUsesProcess
+Axioms:
+- typicallyUsesProcess domain WineStyle
+- typicallyUsesProcess range WinemakingProcess
+
+CQ: What are the typical viticultural challenges for a grape variety in a specific region?
+Entities:
+- GrapeVariety
+- WineRegion
+- ViticulturalChallenge
+Relations (properties):
+- hasChallengeInRegion
+Axioms:
+- hasChallengeInRegion domain GrapeVariety
+- hasChallengeInRegion range ViticulturalChallenge
+- hasChallengeInRegion some WineRegion

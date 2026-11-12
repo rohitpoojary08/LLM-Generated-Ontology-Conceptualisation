@@ -1,0 +1,354 @@
+[
+  {
+    "cq": "What is the color classification (red, white, rosé) of a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasColor", "object": "WineColor"},
+      {"subject": "WineColor", "predicate": "subClassOf", "object": "owl:Thing"}
+    ]
+  },
+  {
+    "cq": "Is a given wine sparkling or still?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasEffervescenceLevel", "object": "EffervescenceLevel"},
+      {"subject": "EffervescenceLevel", "predicate": "subClassOf", "object": "owl:Thing"}
+    ]
+  },
+  {
+    "cq": "Is a given wine fortified?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasFortificationStatus", "object": "FortificationStatus"},
+      {"subject": "FortificationStatus", "predicate": "subClassOf", "object": "owl:Thing"}
+    ]
+  },
+  {
+    "cq": "What is the sweetness level (dry, off-dry, sweet) of a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasSweetnessLevel", "object": "SweetnessLevel"},
+      {"subject": "SweetnessLevel", "predicate": "subClassOf", "object": "owl:Thing"}
+    ]
+  },
+  {
+    "cq": "What is the alcohol by volume (ABV) percentage of a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasAlcoholByVolume", "object": "xsd:decimal"}
+    ]
+  },
+  {
+    "cq": "What is the residual sugar content of a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasResidualSugar", "object": "xsd:decimal"}
+    ]
+  },
+  {
+    "cq": "What is the pH level or titratable acidity of a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasAcidity", "object": "xsd:decimal"}
+    ]
+  },
+  {
+    "cq": "Which single grape variety is a given monovarietal wine made from?",
+    "triples": [
+      {"subject": "MonovarietalWine", "predicate": "subClassOf", "object": "Wine"},
+      {"subject": "MonovarietalWine", "predicate": "madeFromGrape", "object": "GrapeVariety"},
+      {"subject": "MonovarietalWine", "predicate": "subClassOf", "object": "madeFromGrape exactly 1 GrapeVariety"}
+    ]
+  },
+  {
+    "cq": "What are the grape varieties used in a given blended wine, and in what proportions?",
+    "triples": [
+      {"subject": "BlendedWine", "predicate": "subClassOf", "object": "Wine"},
+      {"subject": "BlendedWine", "predicate": "madeFromGrape", "object": "GrapeVariety"},
+      {"subject": "BlendedWine", "predicate": "hasBlendProportion", "object": "xsd:decimal"},
+      {"subject": "BlendedWine", "predicate": "subClassOf", "object": "madeFromGrape min 2 GrapeVariety"}
+    ]
+  },
+  {
+    "cq": "What is the genetic lineage or parentage of a given grape variety?",
+    "triples": [
+      {"subject": "GrapeVariety", "predicate": "hasParent", "object": "GrapeVariety"}
+    ]
+  },
+  {
+    "cq": "In which specific wine region (e.g., Napa Valley) is a given wine produced?",
+    "triples": [
+      {"subject": "Wine", "predicate": "producedInRegion", "object": "WineRegion"}
+    ]
+  },
+  {
+    "cq": "Under which appellation or geographical indication (e.g., AOC Bordeaux, DOCG Barolo) is a given wine classified?",
+    "triples": [
+      {"subject": "Wine", "predicate": "classifiedUnder", "object": "GeographicalIndication"}
+    ]
+  },
+  {
+    "cq": "What are the sub-regions within a given major wine region?",
+    "triples": [
+      {"subject": "WineRegion", "predicate": "hasSubRegion", "object": "WineRegion"}
+    ]
+  },
+  {
+    "cq": "Which country is a given wine region located in?",
+    "triples": [
+      {"subject": "WineRegion", "predicate": "locatedInCountry", "object": "Country"}
+    ]
+  },
+  {
+    "cq": "What is the specific terroir (soil type, mesoclimate) associated with a given vineyard site?",
+    "triples": [
+      {"subject": "VineyardSite", "predicate": "hasTerroir", "object": "Terroir"}
+    ]
+  },
+  {
+    "cq": "Which winery produced a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "producedBy", "object": "Winery"}
+    ]
+  },
+  {
+    "cq": "When was the producing winery founded?",
+    "triples": [
+      {"subject": "Winery", "predicate": "foundedInYear", "object": "xsd:gYear"}
+    ]
+  },
+  {
+    "cq": "What viticultural practices (e.g., organic, biodynamic, trellising system) were used in growing the grapes for a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "usedViticulturalPractice", "object": "ViticulturalPractice"}
+    ]
+  },
+  {
+    "cq": "What specific winemaking processes (e.g., carbonic maceration, barrel fermentation, lees aging) were used to produce a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "usedWinemakingProcess", "object": "WinemakingProcess"}
+    ]
+  },
+  {
+    "cq": "What type of vessel (e.g., French oak barrel, stainless steel tank, concrete egg) was used for aging a given wine, and for how long?",
+    "triples": [
+      {"subject": "Wine", "predicate": "agedIn", "object": "AgingVessel"},
+      {"subject": "Wine", "predicate": "agingDuration", "object": "xsd:duration"}
+    ]
+  },
+  {
+    "cq": "Was malolactic fermentation applied to a given wine?",
+    "triples": [
+      {"subject": "MalolacticFermentation", "predicate": "subClassOf", "object": "WinemakingProcess"},
+      {"subject": "Wine", "predicate": "appliedProcess", "object": "WinemakingProcess"}
+    ]
+  },
+  {
+    "cq": "What filtration or clarification method was used before bottling?",
+    "triples": [
+      {"subject": "Wine", "predicate": "usedClarificationMethod", "object": "ClarificationMethod"}
+    ]
+  },
+  {
+    "cq": "What is the vintage year (harvest year) of a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasVintage", "object": "Vintage"}
+    ]
+  },
+  {
+    "cq": "What were the general climatic conditions (e.g., hot/dry, cool/wet) for a given vintage in a specific region?",
+    "triples": [
+      {"subject": "Vintage", "predicate": "hasClimaticCondition", "object": "ClimaticCondition"},
+      {"subject": "ClimaticCondition", "predicate": "appliesToRegion", "object": "WineRegion"}
+    ]
+  },
+  {
+    "cq": "How is the overall quality of a given vintage year rated for a specific region?",
+    "triples": [
+      {"subject": "Vintage", "predicate": "hasQualityRating", "object": "QualityRating"},
+      {"subject": "QualityRating", "predicate": "ratedForRegion", "object": "WineRegion"}
+    ]
+  },
+  {
+    "cq": "Which wines share the same vintage year?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasVintage", "object": "Vintage"}
+    ]
+  },
+  {
+    "cq": "What are the primary aroma and flavor descriptors (e.g., blackberry, vanilla, tobacco) noted in a tasting note for a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasTastingNote", "object": "TastingNote"},
+      {"subject": "TastingNote", "predicate": "hasDescriptor", "object": "SensoryDescriptor"}
+    ]
+  },
+  {
+    "cq": "What is the perceived body (light, medium, full) of a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasBody", "object": "WineBody"}
+    ]
+  },
+  {
+    "cq": "What is the perceived level of tannins (low, medium, high) in a given red wine?",
+    "triples": [
+      {"subject": "RedWine", "predicate": "subClassOf", "object": "Wine"},
+      {"subject": "Wine", "predicate": "hasTanninLevel", "object": "TanninLevel"}
+    ]
+  },
+  {
+    "cq": "What is the perceived level of acidity (low, medium, high) in a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasAcidityLevel", "object": "AcidityLevel"}
+    ]
+  },
+  {
+    "cq": "What is the finish length (short, medium, long) of a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasFinishLength", "object": "FinishLength"}
+    ]
+  },
+  {
+    "cq": "What is the overall quality score or rating (e.g., Parker points) assigned to a given wine?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasQualityScore", "object": "QualityScore"}
+    ]
+  },
+  {
+    "cq": "Who authored a specific tasting note or review?",
+    "triples": [
+      {"subject": "TastingNote", "predicate": "authoredBy", "object": "Reviewer"}
+    ]
+  },
+  {
+    "cq": "With which specific food dishes or categories (e.g., grilled steak, roasted chicken, hard cheese) is a given wine recommended to pair?",
+    "triples": [
+      {"subject": "Wine", "predicate": "pairsWith", "object": "Food"}
+    ]
+  },
+  {
+    "cq": "What is the rationale for a specific food and wine pairing (e.g., \"complements richness\", \"contrasts saltiness\")?",
+    "triples": [
+      {"subject": "Wine", "predicate": "pairsWith", "object": "Food"},
+      {"subject": "Wine", "predicate": "hasPairingRationale", "object": "PairingRationale"},
+      {"subject": "Food", "predicate": "hasPairingRationale", "object": "PairingRationale"}
+    ]
+  },
+  {
+    "cq": "Which wines are recommended to pair with a given food item?",
+    "triples": [
+      {"subject": "Wine", "predicate": "pairsWith", "object": "Food"}
+    ]
+  },
+  {
+    "cq": "In which cultural cuisine context is a specific wine pairing traditionally recommended?",
+    "triples": [
+      {"subject": "Wine", "predicate": "pairsWith", "object": "Food"},
+      {"subject": "Wine", "predicate": "recommendedInCuisine", "object": "CulturalCuisine"},
+      {"subject": "Food", "predicate": "recommendedInCuisine", "object": "CulturalCuisine"}
+    ]
+  },
+  {
+    "cq": "Which regulatory standards (e.g., AOC, DOCG, AVA rules) does a given wine comply with?",
+    "triples": [
+      {"subject": "Wine", "predicate": "compliesWith", "object": "RegulatoryStandard"}
+    ]
+  },
+  {
+    "cq": "What are the specific labeling requirements for a wine from a given appellation?",
+    "triples": [
+      {"subject": "GeographicalIndication", "predicate": "hasLabelingRequirement", "object": "LabelingRequirement"}
+    ]
+  },
+  {
+    "cq": "What is the permitted grape variety list for a given geographical indication?",
+    "triples": [
+      {"subject": "GeographicalIndication", "predicate": "permitsGrapeVariety", "object": "GrapeVariety"}
+    ]
+  },
+  {
+    "cq": "What is the maximum allowable yield for a given appellation?",
+    "triples": [
+      {"subject": "GeographicalIndication", "predicate": "hasMaximumYield", "object": "xsd:decimal"}
+    ]
+  },
+  {
+    "cq": "What is the production volume of a given winery?",
+    "triples": [
+      {"subject": "Winery", "predicate": "hasProductionVolume", "object": "xsd:decimal"}
+    ]
+  },
+  {
+    "cq": "What is the signature style or flagship wine of a given producer?",
+    "triples": [
+      {"subject": "Winery", "predicate": "hasSignatureStyle", "object": "Wine"}
+    ]
+  },
+  {
+    "cq": "List all wines produced by a specific winery.",
+    "triples": [
+      {"subject": "Wine", "predicate": "producedBy", "object": "Winery"}
+    ]
+  },
+  {
+    "cq": "List all wines made primarily from a specific grape variety.",
+    "triples": [
+      {"subject": "Wine", "predicate": "madeFromGrape", "object": "GrapeVariety"}
+    ]
+  },
+  {
+    "cq": "List all wines originating from a specific wine region or appellation.",
+    "triples": [
+      {"subject": "Wine", "predicate": "producedInRegion", "object": "WineRegion"},
+      {"subject": "Wine", "predicate": "classifiedUnder", "object": "GeographicalIndication"}
+    ]
+  },
+  {
+    "cq": "List all red wines from a specific region that have high tannin levels.",
+    "triples": [
+      {"subject": "RedWine", "predicate": "subClassOf", "object": "Wine"},
+      {"subject": "Wine", "predicate": "producedInRegion", "object": "WineRegion"},
+      {"subject": "Wine", "predicate": "hasTanninLevel", "object": "TanninLevel"}
+    ]
+  },
+  {
+    "cq": "List all white wines that underwent oak aging.",
+    "triples": [
+      {"subject": "WhiteWine", "predicate": "subClassOf", "object": "Wine"},
+      {"subject": "Wine", "predicate": "agedIn", "object": "AgingVessel"}
+    ]
+  },
+  {
+    "cq": "List all sparkling wines produced using the traditional method (Méthode Champenoise).",
+    "triples": [
+      {"subject": "SparklingWine", "predicate": "subClassOf", "object": "Wine"},
+      {"subject": "TraditionalMethod", "predicate": "subClassOf", "object": "WinemakingProcess"},
+      {"subject": "Wine", "predicate": "usedWinemakingProcess", "object": "WinemakingProcess"}
+    ]
+  },
+  {
+    "cq": "List all wines from a given vintage year that are rated above a certain score.",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasVintage", "object": "Vintage"},
+      {"subject": "Wine", "predicate": "hasQualityScore", "object": "QualityScore"}
+    ]
+  },
+  {
+    "cq": "Which wines share similar sensory profiles (based on tasting note attributes)?",
+    "triples": [
+      {"subject": "Wine", "predicate": "hasTastingNote", "object": "TastingNote"},
+      {"subject": "TastingNote", "predicate": "hasDescriptor", "object": "SensoryDescriptor"}
+    ]
+  },
+  {
+    "cq": "For a given grape variety, which regions is it most commonly grown in?",
+    "triples": [
+      {"subject": "GrapeVariety", "predicate": "commonlyGrownIn", "object": "WineRegion"}
+    ]
+  },
+  {
+    "cq": "Which winemaking processes are typically used for a given wine style (e.g., Orange Wine)?",
+    "triples": [
+      {"subject": "WineStyle", "predicate": "typicallyUsesProcess", "object": "WinemakingProcess"}
+    ]
+  },
+  {
+    "cq": "What are the typical viticultural challenges for a grape variety in a specific region?",
+    "triples": [
+      {"subject": "GrapeVariety", "predicate": "hasChallengeInRegion", "object": "ViticulturalChallenge"},
+      {"subject": "GrapeVariety", "predicate": "hasChallengeInRegion", "object": "WineRegion"}
+    ]
+  }
+]

@@ -58,7 +58,7 @@ def send_prompt(prompt: str, persona: str, step_name: str, model: str = None, ma
             json={
                 "model": selected_model,
                 "messages": [system_prompt, user_prompt],
-                "max_tokens": 4096,
+                "max_tokens": 16384,
             }
         )
 

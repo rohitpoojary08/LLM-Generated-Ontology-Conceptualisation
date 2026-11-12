@@ -121,7 +121,27 @@ def extract_elements(domain_description,cqs,persona,ontology_metrics,few_shot_en
             A single competency question can help in extracting more than one triple.
             Do this for ALL competency questions, not just a snippet.
 
-            Here are some examples to guide you: {few_shot_entity_extraction}
+            Here are some examples to guide extraction: {few_shot_entity_extraction}
+            These examples guide the content only; follow the output format below.
+
+            Preserve CQ provenance in the output. Create one block per input CQ,
+            in the original order, copying the complete CQ text verbatim.
+            Under each CQ, list its entities, relations (properties), and axioms.
+            Do not combine different CQs into a single block. If an element is
+            motivated by multiple CQs, repeat it under each relevant CQ.
+            Include every CQ, even if a category has no elements; write None
+            for that category. Do not invent or paraphrase CQs.
+
+            Use this format for each block:
+            CQ: <exact input CQ text>
+            Entities:
+            - <entity>
+            Relations (properties):
+            - <relation>
+            Axioms:
+            - <axiom>
+
+            Put all CQ blocks between ###start_output### and ###end_output###.
 
             The original ontology has: {ontology_metrics}
             Make sure that the generated ontology reflects the previous metrics 
@@ -155,20 +175,39 @@ def generate_conceptual_model(domain_description,cqs,elements,persona,ontology_m
 
             Considering all the generated entities, relations (properties),
             and axioms, generate a conceptual model expressing the triples of the entities, properties (relations), 
-            and axioms in the format plain-text list of triples.
-            Write exactly one triple per line in this format:
-            (Subject - relation - Object)
+            and axioms, grouped by the exact CQ that motivates them.
+            Preserve the CQ-to-element associations in the extracted elements.
+            Include every input CQ exactly once, in its original order, and copy
+            the complete CQ text verbatim into the "cq" field.
+            Include all triples motivated by that CQ in its "triples" array.
+            If a triple supports multiple CQs, repeat it under each relevant CQ.
+            Use an empty array if no triples are justified for a CQ.
+            Do not invent or paraphrase CQs or add unmotivated triples merely
+            to meet ontology metrics. Attribute any necessary supporting
+            hierarchy or axiom triples to the CQ(s) they help answer.
 
-            Do it for all the entities, properties (relations), and axioms — not just a snippet.
+            Return a valid JSON array, with one object per CQ, using this schema:
+            [
+              {{
+                "cq": "<exact input CQ text>",
+                "triples": [
+                  {{
+                    "subject": "<subject name>",
+                    "predicate": "<relation name>",
+                    "object": "<object name>"
+                  }}
+                ]
+              }}
+            ]
 
-            Examples:
-            (RedWine - subclassOf - Wine)
-            (Wine - hasGrapeVariety - GrapeVariety)
-            (hasGrapeVariety - domain - Wine)
-
+            Each triple must have exactly the keys "subject", "predicate", and
+            "object", with string values. Use double-quoted JSON keys and strings,
+            escape quotes and newlines within strings, and omit trailing commas.
             Use names, not RDF prefixes or URIs. Do not output Turtle,
-            @prefix declarations, RDF/OWL syntax, Markdown tables, or code fences.
-            Put the complete list between ###start_output### and ###end_output###.
+            @prefix declarations, RDF/OWL syntax, Markdown tables, code fences,
+            comments, or explanatory prose.
+            Put only the complete JSON array between ###start_output### and
+            ###end_output###.
 
             The original ontology has:
             {ontology_metrics}
@@ -180,7 +219,6 @@ def generate_conceptual_model(domain_description,cqs,elements,persona,ontology_m
             (e.g., Wrong inverse relationships, Cycles in a class hierarchy, Multiple domains or ranges, 
             and Wrong transitive relationships).
             
-            Here are all the extracted triples from the previous step:
         """
 
     return send_prompt(
@@ -300,7 +338,7 @@ if __name__ == "__main__":
     '''result = run_experiment(
         domain_description=config["domain_description"],
         config=config,
-        model="mistralai/mistral-large-2512"
+        model="deepseek/deepseek-v3.2-exp"
     )'''
 
     # Load requirements generated during Case A
