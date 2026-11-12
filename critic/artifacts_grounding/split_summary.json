@@ -1,0 +1,141 @@
+{
+  "dataset": "/misc/usrhomes/g122/projects/LLM-Generated-Ontology-Conceptualisation/Datasets/Grounding_Traininig_Dataset.csv",
+  "dataset_sha256": "24a9e790a231de4f90bbbfcc10446566c0b0817bb1b927e2f3958b7d9b408a98",
+  "seed": 42,
+  "strategy": "Each source is split by whole themes. Train, validation, and test use disjoint themes within a source.",
+  "fractions_requested": {
+    "train": 0.7,
+    "validation": 0.15,
+    "test": 0.15
+  },
+  "splits": {
+    "train": {
+      "total": 7206,
+      "class_0": 4028,
+      "class_1": 3178
+    },
+    "validation": {
+      "total": 1519,
+      "class_0": 799,
+      "class_1": 720
+    },
+    "test": {
+      "total": 1633,
+      "class_0": 808,
+      "class_1": 825
+    }
+  },
+  "sources": {
+    "WDV-CQ-HA": {
+      "total": 9197,
+      "splits": {
+        "train": {
+          "total": 6390,
+          "class_0": 3632,
+          "class_1": 2758,
+          "themes": {
+            "Airport": 309,
+            "Athlete": 593,
+            "Celestial": 240,
+            "Chemical": 249,
+            "City": 353,
+            "Comic": 641,
+            "Consolidate_data.csv": 6,
+            "Food": 511,
+            "MeanOfTransportation": 493,
+            "Monument": 543,
+            "Mountain": 255,
+            "Painting": 239,
+            "Politician": 617,
+            "Sports": 564,
+            "Street": 220,
+            "Taxon": 306,
+            "Written": 251
+          }
+        },
+        "validation": {
+          "total": 1371,
+          "class_0": 707,
+          "class_1": 664,
+          "themes": {
+            "Artist": 719,
+            "Astronaut": 652
+          }
+        },
+        "test": {
+          "total": 1436,
+          "class_0": 714,
+          "class_1": 722,
+          "themes": {
+            "Building": 736,
+            "University": 700
+          }
+        }
+      }
+    },
+    "CQ2Term": {
+      "total": 697,
+      "splits": {
+        "train": {
+          "total": 490,
+          "class_0": 233,
+          "class_1": 257,
+          "themes": {
+            "Software": 152,
+            "Video games": 128,
+            "Water": 131,
+            "Wine": 79
+          }
+        },
+        "validation": {
+          "total": 80,
+          "class_0": 58,
+          "class_1": 22,
+          "themes": {
+            "African Wildlife": 80
+          }
+        },
+        "test": {
+          "total": 127,
+          "class_0": 59,
+          "class_1": 68,
+          "themes": {
+            "ODRL": 127
+          }
+        }
+      }
+    },
+    "CQ2Onto": {
+      "total": 464,
+      "splits": {
+        "train": {
+          "total": 326,
+          "class_0": 163,
+          "class_1": 163,
+          "themes": {
+            "African Wildlife": 44,
+            "ODRL": 122,
+            "Software": 54,
+            "Video Games": 106
+          }
+        },
+        "validation": {
+          "total": 68,
+          "class_0": 34,
+          "class_1": 34,
+          "themes": {
+            "Water": 68
+          }
+        },
+        "test": {
+          "total": 70,
+          "class_0": 35,
+          "class_1": 35,
+          "themes": {
+            "Wine": 70
+          }
+        }
+      }
+    }
+  }
+}

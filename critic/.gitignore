@@ -5,3 +5,4 @@
 __pycache__/
 artifacts/model/
 artifacts_full/model/
+artifacts_grounding/model/
