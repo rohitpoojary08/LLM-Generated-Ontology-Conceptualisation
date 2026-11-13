@@ -1,0 +1,537 @@
+[
+  {
+    "cq": "CQ1: What is geothermal energy?",
+    "triples": [
+      {
+        "subject": "GeothermalEnergy",
+        "predicate": "isSubclassOf",
+        "object": "ThermalEnergy"
+      },
+      {
+        "subject": "GeothermalEnergy",
+        "predicate": "isExtractedFrom",
+        "object": "EarthCrust"
+      },
+      {
+        "subject": "EarthCrust",
+        "predicate": "isSubclassOf",
+        "object": "GeologicalLayer"
+      }
+    ]
+  },
+  {
+    "cq": "CQ2: What is a geothermal resource?",
+    "triples": [
+      {
+        "subject": "GeothermalResource",
+        "predicate": "isSubclassOf",
+        "object": "GeologicalFeature"
+      },
+      {
+        "subject": "GeothermalResource",
+        "predicate": "contains",
+        "object": "Heat"
+      },
+      {
+        "subject": "GeothermalResource",
+        "predicate": "isExploitedFor",
+        "object": "GeothermalEnergy"
+      }
+    ]
+  },
+  {
+    "cq": "CQ3: What is the source of heat for a geothermal resource?",
+    "triples": [
+      {
+        "subject": "GeothermalResource",
+        "predicate": "contains",
+        "object": "Heat"
+      },
+      {
+        "subject": "Heat",
+        "predicate": "isSubclassOf",
+        "object": "Energy"
+      },
+      {
+        "subject": "Heat",
+        "predicate": "containedWithin",
+        "object": "Earth"
+      }
+    ]
+  },
+  {
+    "cq": "CQ4: What is the primary physical location from which geothermal energy is extracted?",
+    "triples": [
+      {
+        "subject": "GeothermalEnergy",
+        "predicate": "isExtractedFrom",
+        "object": "EarthCrust"
+      },
+      {
+        "subject": "EarthCrust",
+        "predicate": "isSubclassOf",
+        "object": "GeologicalLayer"
+      }
+    ]
+  },
+  {
+    "cq": "CQ5: What is the difference between geothermal heating and geothermal power?",
+    "triples": [
+      {
+        "subject": "GeothermalHeating",
+        "predicate": "isSubclassOf",
+        "object": "GeothermalApplication"
+      },
+      {
+        "subject": "GeothermalPower",
+        "predicate": "isSubclassOf",
+        "object": "GeothermalApplication"
+      },
+      {
+        "subject": "GeothermalHeating",
+        "predicate": "isApplicationOf",
+        "object": "GeothermalEnergy"
+      },
+      {
+        "subject": "GeothermalPower",
+        "predicate": "isApplicationOf",
+        "object": "GeothermalEnergy"
+      }
+    ]
+  },
+  {
+    "cq": "CQ6: In what type of geological formation is a geothermal resource typically located?",
+    "triples": [
+      {
+        "subject": "GeothermalResource",
+        "predicate": "isLocatedIn",
+        "object": "GeologicalFormation"
+      }
+    ]
+  },
+  {
+    "cq": "CQ7: What tectonic feature are many high-temperature geothermal resources associated with?",
+    "triples": [
+      {
+        "subject": "HighTemperatureGeothermalResource",
+        "predicate": "isSubclassOf",
+        "object": "GeothermalResource"
+      },
+      {
+        "subject": "GeothermalResource",
+        "predicate": "isAssociatedWith",
+        "object": "TectonicPlateBoundary"
+      }
+    ]
+  },
+  {
+    "cq": "CQ8: What natural surface feature can be an indicator of a subsurface geothermal resource?",
+    "triples": [
+      {
+        "subject": "HotSpring",
+        "predicate": "isSubclassOf",
+        "object": "NaturalSurfaceFeature"
+      },
+      {
+        "subject": "HotSpring",
+        "predicate": "isIndicatorOf",
+        "object": "GeothermalResource"
+      }
+    ]
+  },
+  {
+    "cq": "CQ9: Is a geothermal resource a type of energy or a type of geological feature?",
+    "triples": [
+      {
+        "subject": "GeothermalResource",
+        "predicate": "isSubclassOf",
+        "object": "GeologicalFeature"
+      },
+      {
+        "subject": "GeothermalResource",
+        "predicate": "isExploitedFor",
+        "object": "Energy"
+      }
+    ]
+  },
+  {
+    "cq": "CQ10: What is a geothermal well?",
+    "triples": [
+      {
+        "subject": "GeothermalWell",
+        "predicate": "isSubclassOf",
+        "object": "Borehole"
+      }
+    ]
+  },
+  {
+    "cq": "CQ11: What is the function of a geothermal well?",
+    "triples": [
+      {
+        "subject": "GeothermalWell",
+        "predicate": "accesses",
+        "object": "GeothermalResource"
+      }
+    ]
+  },
+  {
+    "cq": "CQ12: What is extracted or accessed through a geothermal well?",
+    "triples": [
+      {
+        "subject": "GeothermalWell",
+        "predicate": "accesses",
+        "object": "GeothermalResource"
+      },
+      {
+        "subject": "GeothermalWell",
+        "predicate": "extracts",
+        "object": "GeothermalFluid"
+      },
+      {
+        "subject": "GeothermalWell",
+        "predicate": "extracts",
+        "object": "Heat"
+      }
+    ]
+  },
+  {
+    "cq": "CQ13: What is a geothermal fluid?",
+    "triples": [
+      {
+        "subject": "GeothermalFluid",
+        "predicate": "isSubclassOf",
+        "object": "Fluid"
+      },
+      {
+        "subject": "GeothermalFluid",
+        "predicate": "transports",
+        "object": "Heat"
+      }
+    ]
+  },
+  {
+    "cq": "CQ14: What is the role of a geothermal fluid in the energy extraction process?",
+    "triples": [
+      {
+        "subject": "GeothermalFluid",
+        "predicate": "transports",
+        "object": "Heat"
+      },
+      {
+        "subject": "GeothermalFluid",
+        "predicate": "usedIn",
+        "object": "HeatExtractionProcess"
+      }
+    ]
+  },
+  {
+    "cq": "CQ15: What is a geothermal power plant?",
+    "triples": [
+      {
+        "subject": "GeothermalPowerPlant",
+        "predicate": "isSubclassOf",
+        "object": "PowerPlant"
+      },
+      {
+        "subject": "GeothermalPowerPlant",
+        "predicate": "usesInput",
+        "object": "GeothermalResource"
+      }
+    ]
+  },
+  {
+    "cq": "CQ16: What does a geothermal power plant use as its primary energy input?",
+    "triples": [
+      {
+        "subject": "GeothermalPowerPlant",
+        "predicate": "usesInput",
+        "object": "GeothermalResource"
+      },
+      {
+        "subject": "GeothermalResource",
+        "predicate": "isExploitedFor",
+        "object": "GeothermalEnergy"
+      }
+    ]
+  },
+  {
+    "cq": "CQ17: What is the primary output of a geothermal power plant?",
+    "triples": [
+      {
+        "subject": "GeothermalPowerPlant",
+        "predicate": "generates",
+        "object": "Electricity"
+      }
+    ]
+  },
+  {
+    "cq": "CQ18: What is a ground-source heat pump (GSHP)?",
+    "triples": [
+      {
+        "subject": "GroundSourceHeatPump",
+        "predicate": "isSubclassOf",
+        "object": "HeatPump"
+      },
+      {
+        "subject": "GroundSourceHeatPump",
+        "predicate": "extractsHeatFrom",
+        "object": "Ground"
+      }
+    ]
+  },
+  {
+    "cq": "CQ19: How does a ground-source heat pump differ in principle from a geothermal power plant?",
+    "triples": [
+      {
+        "subject": "GroundSourceHeatPump",
+        "predicate": "extractsHeatFrom",
+        "object": "Ground"
+      },
+      {
+        "subject": "GeothermalPowerPlant",
+        "predicate": "usesInput",
+        "object": "GeothermalResource"
+      }
+    ]
+  },
+  {
+    "cq": "CQ20: What does a ground-source heat pump extract heat from?",
+    "triples": [
+      {
+        "subject": "GroundSourceHeatPump",
+        "predicate": "extractsHeatFrom",
+        "object": "Ground"
+      },
+      {
+        "subject": "Ground",
+        "predicate": "contains",
+        "object": "Heat"
+      }
+    ]
+  },
+  {
+    "cq": "CQ21: What are the two main categories of geothermal energy applications?",
+    "triples": [
+      {
+        "subject": "GeothermalHeating",
+        "predicate": "isSubclassOf",
+        "object": "GeothermalApplication"
+      },
+      {
+        "subject": "GeothermalPower",
+        "predicate": "isSubclassOf",
+        "object": "GeothermalApplication"
+      }
+    ]
+  },
+  {
+    "cq": "CQ22: What is geothermal heating?",
+    "triples": [
+      {
+        "subject": "GeothermalHeating",
+        "predicate": "isSubclassOf",
+        "object": "Heating"
+      },
+      {
+        "subject": "GeothermalHeating",
+        "predicate": "isApplicationOf",
+        "object": "GeothermalEnergy"
+      }
+    ]
+  },
+  {
+    "cq": "CQ23: What are examples of entities that can be heated using geothermal energy?",
+    "triples": [
+      {
+        "subject": "GeothermalHeating",
+        "predicate": "heats",
+        "object": "Building"
+      },
+      {
+        "subject": "GeothermalHeating",
+        "predicate": "heats",
+        "object": "Water"
+      }
+    ]
+  },
+  {
+    "cq": "CQ24: What is district heating and how is it related to geothermal heating?",
+    "triples": [
+      {
+        "subject": "DistrictHeating",
+        "predicate": "isSubclassOf",
+        "object": "HeatingSystem"
+      },
+      {
+        "subject": "DistrictHeating",
+        "predicate": "isTypeOf",
+        "object": "GeothermalHeating"
+      }
+    ]
+  },
+  {
+    "cq": "CQ25: What is geothermal power?",
+    "triples": [
+      {
+        "subject": "GeothermalPower",
+        "predicate": "isSubclassOf",
+        "object": "ElectricityGeneration"
+      },
+      {
+        "subject": "GeothermalPower",
+        "predicate": "isApplicationOf",
+        "object": "GeothermalEnergy"
+      }
+    ]
+  },
+  {
+    "cq": "CQ26: What form of energy is produced through geothermal power generation?",
+    "triples": [
+      {
+        "subject": "GeothermalPower",
+        "predicate": "produces",
+        "object": "Electricity"
+      }
+    ]
+  },
+  {
+    "cq": "CQ27: What activity is conducted to locate and assess a potential geothermal resource?",
+    "triples": [
+      {
+        "subject": "Exploration",
+        "predicate": "isSubclassOf",
+        "object": "Activity"
+      },
+      {
+        "subject": "Exploration",
+        "predicate": "locates",
+        "object": "GeothermalResource"
+      },
+      {
+        "subject": "Exploration",
+        "predicate": "assesses",
+        "object": "GeothermalResource"
+      }
+    ]
+  },
+  {
+    "cq": "CQ28: What overarching activity prepares a resource for exploitation, following exploration?",
+    "triples": [
+      {
+        "subject": "Development",
+        "predicate": "isSubclassOf",
+        "object": "Activity"
+      },
+      {
+        "subject": "Development",
+        "predicate": "preparesForExploitation",
+        "object": "GeothermalResource"
+      }
+    ]
+  },
+  {
+    "cq": "CQ29: What specific process within resource development creates the boreholes needed for access?",
+    "triples": [
+      {
+        "subject": "Drilling",
+        "predicate": "isSubclassOf",
+        "object": "Process"
+      },
+      {
+        "subject": "Drilling",
+        "predicate": "creates",
+        "object": "Borehole"
+      }
+    ]
+  },
+  {
+    "cq": "CQ30: What is the process called that removes thermal energy from the underground resource?",
+    "triples": [
+      {
+        "subject": "HeatExtraction",
+        "predicate": "isSubclassOf",
+        "object": "Process"
+      },
+      {
+        "subject": "HeatExtraction",
+        "predicate": "removes",
+        "object": "ThermalEnergy"
+      },
+      {
+        "subject": "HeatExtraction",
+        "predicate": "actsUpon",
+        "object": "GeothermalResource"
+      }
+    ]
+  },
+  {
+    "cq": "CQ31: What is the process that converts thermal energy into electrical energy?",
+    "triples": [
+      {
+        "subject": "PowerGeneration",
+        "predicate": "isSubclassOf",
+        "object": "Process"
+      },
+      {
+        "subject": "PowerGeneration",
+        "predicate": "convertsTo",
+        "object": "ElectricalEnergy"
+      },
+      {
+        "subject": "PowerGeneration",
+        "predicate": "actsUpon",
+        "object": "ThermalEnergy"
+      }
+    ]
+  },
+  {
+    "cq": "CQ32: What can a geothermal system (e.g., a power plant) experience during its operation?",
+    "triples": [
+      {
+        "subject": "GeothermalSystem",
+        "predicate": "experiences",
+        "object": "OperationalIssue"
+      }
+    ]
+  },
+  {
+    "cq": "CQ33: What activity is required to develop a geothermal resource?",
+    "triples": [
+      {
+        "subject": "Development",
+        "predicate": "isRequiredFor",
+        "object": "GeothermalResource"
+      }
+    ]
+  },
+  {
+    "cq": "CQ34: What does a heat extraction process typically have as a material output?",
+    "triples": [
+      {
+        "subject": "HeatExtraction",
+        "predicate": "hasOutput",
+        "object": "GeothermalFluid"
+      }
+    ]
+  },
+  {
+    "cq": "CQ35: What does a geothermal power generation process act upon to produce electricity?",
+    "triples": [
+      {
+        "subject": "GeothermalPowerGeneration",
+        "predicate": "isSubclassOf",
+        "object": "Process"
+      },
+      {
+        "subject": "GeothermalPowerGeneration",
+        "predicate": "actsUpon",
+        "object": "GeothermalResource"
+      },
+      {
+        "subject": "GeothermalPowerGeneration",
+        "predicate": "produces",
+        "object": "Electricity"
+      }
+    ]
+  }
+]

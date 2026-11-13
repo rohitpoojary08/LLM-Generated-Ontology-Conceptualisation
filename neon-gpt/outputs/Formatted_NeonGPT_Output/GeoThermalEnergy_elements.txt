@@ -1,0 +1,386 @@
+CQ: What is geothermal energy?
+Entities:
+- GeothermalEnergy
+- ThermalEnergy
+- EarthCrust
+Relations (properties):
+- isExtractedFrom
+Axioms:
+- GeothermalEnergy is a subclass of ThermalEnergy.
+- GeothermalEnergy isExtractedFrom EarthCrust.
+
+CQ: What is a geothermal resource?
+Entities:
+- GeothermalResource
+- GeothermalEnergy
+- Earth
+Relations (properties):
+- contains
+- isExploitedFor
+Axioms:
+- GeothermalResource is a subclass of GeologicalFeature.
+- GeothermalResource contains Heat.
+- GeothermalResource isExploitedFor GeothermalEnergy.
+
+CQ: What is the source of heat for a geothermal resource?
+Entities:
+- Heat
+- GeothermalResource
+- Earth
+Relations (properties):
+- contains
+Axioms:
+- GeothermalResource contains Heat.
+- Heat is a subclass of Energy.
+- Heat is contained within Earth.
+
+CQ: What is the primary physical location from which geothermal energy is extracted?
+Entities:
+- GeothermalEnergy
+- EarthCrust
+Relations (properties):
+- isExtractedFrom
+Axioms:
+- GeothermalEnergy isExtractedFrom EarthCrust.
+- EarthCrust is a subclass of GeologicalLayer.
+
+CQ: What is the difference between geothermal heating and geothermal power?
+Entities:
+- GeothermalHeating
+- GeothermalPower
+- GeothermalEnergy
+Relations (properties):
+- isApplicationOf
+Axioms:
+- GeothermalHeating is a subclass of GeothermalApplication.
+- GeothermalPower is a subclass of GeothermalApplication.
+- GeothermalHeating isApplicationOf GeothermalEnergy.
+- GeothermalPower isApplicationOf GeothermalEnergy.
+
+CQ: In what type of geological formation is a geothermal resource typically located?
+Entities:
+- GeothermalResource
+- GeologicalFormation
+Relations (properties):
+- isLocatedIn
+Axioms:
+- GeothermalResource isLocatedIn GeologicalFormation.
+
+CQ: What tectonic feature are many high-temperature geothermal resources associated with?
+Entities:
+- GeothermalResource
+- TectonicPlateBoundary
+Relations (properties):
+- isAssociatedWith
+Axioms:
+- HighTemperatureGeothermalResource is a subclass of GeothermalResource.
+- GeothermalResource isAssociatedWith TectonicPlateBoundary.
+
+CQ: What natural surface feature can be an indicator of a subsurface geothermal resource?
+Entities:
+- HotSpring
+- GeothermalResource
+Relations (properties):
+- isIndicatorOf
+Axioms:
+- HotSpring is a subclass of NaturalSurfaceFeature.
+- HotSpring isIndicatorOf GeothermalResource.
+
+CQ: Is a geothermal resource a type of energy or a type of geological feature?
+Entities:
+- GeothermalResource
+- GeologicalFeature
+- Energy
+Relations (properties):
+- isExploitedFor
+Axioms:
+- GeothermalResource is a subclass of GeologicalFeature.
+- GeothermalResource isExploitedFor Energy.
+
+CQ: What is a geothermal well?
+Entities:
+- GeothermalWell
+- Borehole
+Relations (properties):
+- None
+Axioms:
+- GeothermalWell is a subclass of Borehole.
+
+CQ: What is the function of a geothermal well?
+Entities:
+- GeothermalWell
+- GeothermalResource
+Relations (properties):
+- accesses
+Axioms:
+- GeothermalWell accesses GeothermalResource.
+
+CQ: What is extracted or accessed through a geothermal well?
+Entities:
+- GeothermalWell
+- GeothermalResource
+- GeothermalFluid
+- Heat
+Relations (properties):
+- accesses
+- extracts
+Axioms:
+- GeothermalWell accesses GeothermalResource.
+- GeothermalWell extracts GeothermalFluid.
+- GeothermalWell extracts Heat.
+
+CQ: What is a geothermal fluid?
+Entities:
+- GeothermalFluid
+- Fluid
+Relations (properties):
+- transports
+Axioms:
+- GeothermalFluid is a subclass of Fluid.
+- GeothermalFluid transports Heat.
+
+CQ: What is the role of a geothermal fluid in the energy extraction process?
+Entities:
+- GeothermalFluid
+- Heat
+- HeatExtractionProcess
+Relations (properties):
+- transports
+- usedIn
+Axioms:
+- GeothermalFluid transports Heat.
+- GeothermalFluid usedIn HeatExtractionProcess.
+
+CQ: What is a geothermal power plant?
+Entities:
+- GeothermalPowerPlant
+- PowerPlant
+- GeothermalResource
+Relations (properties):
+- usesInput
+Axioms:
+- GeothermalPowerPlant is a subclass of PowerPlant.
+- GeothermalPowerPlant usesInput GeothermalResource.
+
+CQ: What does a geothermal power plant use as its primary energy input?
+Entities:
+- GeothermalPowerPlant
+- GeothermalResource
+- GeothermalEnergy
+Relations (properties):
+- usesInput
+Axioms:
+- GeothermalPowerPlant usesInput GeothermalResource.
+- GeothermalResource isExploitedFor GeothermalEnergy.
+
+CQ: What is the primary output of a geothermal power plant?
+Entities:
+- GeothermalPowerPlant
+- Electricity
+Relations (properties):
+- generates
+Axioms:
+- GeothermalPowerPlant generates Electricity.
+
+CQ: What is a ground-source heat pump (GSHP)?
+Entities:
+- GroundSourceHeatPump
+- HeatPump
+- Ground
+Relations (properties):
+- extractsHeatFrom
+Axioms:
+- GroundSourceHeatPump is a subclass of HeatPump.
+- GroundSourceHeatPump extractsHeatFrom Ground.
+
+CQ: How does a ground-source heat pump differ in principle from a geothermal power plant?
+Entities:
+- GroundSourceHeatPump
+- GeothermalPowerPlant
+- Ground
+- GeothermalResource
+Relations (properties):
+- extractsHeatFrom
+- usesInput
+Axioms:
+- GroundSourceHeatPump extractsHeatFrom Ground.
+- GeothermalPowerPlant usesInput GeothermalResource.
+
+CQ: What does a ground-source heat pump extract heat from?
+Entities:
+- GroundSourceHeatPump
+- Ground
+- Heat
+Relations (properties):
+- extractsHeatFrom
+Axioms:
+- GroundSourceHeatPump extractsHeatFrom Ground.
+- Ground contains Heat.
+
+CQ: What are the two main categories of geothermal energy applications?
+Entities:
+- GeothermalHeating
+- GeothermalPower
+- GeothermalApplication
+Relations (properties):
+- None
+Axioms:
+- GeothermalHeating is a subclass of GeothermalApplication.
+- GeothermalPower is a subclass of GeothermalApplication.
+
+CQ: What is geothermal heating?
+Entities:
+- GeothermalHeating
+- GeothermalEnergy
+- Heating
+Relations (properties):
+- isApplicationOf
+Axioms:
+- GeothermalHeating is a subclass of Heating.
+- GeothermalHeating isApplicationOf GeothermalEnergy.
+
+CQ: What are examples of entities that can be heated using geothermal energy?
+Entities:
+- Building
+- Water
+- GeothermalHeating
+Relations (properties):
+- heats
+Axioms:
+- GeothermalHeating heats Building.
+- GeothermalHeating heats Water.
+
+CQ: What is district heating and how is it related to geothermal heating?
+Entities:
+- DistrictHeating
+- GeothermalHeating
+- HeatingSystem
+Relations (properties):
+- isTypeOf
+Axioms:
+- DistrictHeating is a subclass of HeatingSystem.
+- DistrictHeating isTypeOf GeothermalHeating.
+
+CQ: What is geothermal power?
+Entities:
+- GeothermalPower
+- GeothermalEnergy
+- ElectricityGeneration
+Relations (properties):
+- isApplicationOf
+Axioms:
+- GeothermalPower is a subclass of ElectricityGeneration.
+- GeothermalPower isApplicationOf GeothermalEnergy.
+
+CQ: What form of energy is produced through geothermal power generation?
+Entities:
+- GeothermalPower
+- Electricity
+Relations (properties):
+- produces
+Axioms:
+- GeothermalPower produces Electricity.
+
+CQ: What activity is conducted to locate and assess a potential geothermal resource?
+Entities:
+- Exploration
+- Activity
+- GeothermalResource
+Relations (properties):
+- locates
+- assesses
+Axioms:
+- Exploration is a subclass of Activity.
+- Exploration locates GeothermalResource.
+- Exploration assesses GeothermalResource.
+
+CQ: What overarching activity prepares a resource for exploitation, following exploration?
+Entities:
+- Development
+- Activity
+- GeothermalResource
+Relations (properties):
+- preparesForExploitation
+Axioms:
+- Development is a subclass of Activity.
+- Development preparesForExploitation GeothermalResource.
+
+CQ: What specific process within resource development creates the boreholes needed for access?
+Entities:
+- Drilling
+- Process
+- Borehole
+Relations (properties):
+- creates
+Axioms:
+- Drilling is a subclass of Process.
+- Drilling creates Borehole.
+
+CQ: What is the process called that removes thermal energy from the underground resource?
+Entities:
+- HeatExtraction
+- Process
+- ThermalEnergy
+- GeothermalResource
+Relations (properties):
+- removes
+- actsUpon
+Axioms:
+- HeatExtraction is a subclass of Process.
+- HeatExtraction removes ThermalEnergy.
+- HeatExtraction actsUpon GeothermalResource.
+
+CQ: What is the process that converts thermal energy into electrical energy?
+Entities:
+- PowerGeneration
+- Process
+- ThermalEnergy
+- ElectricalEnergy
+Relations (properties):
+- convertsTo
+Axioms:
+- PowerGeneration is a subclass of Process.
+- PowerGeneration convertsTo ElectricalEnergy.
+- PowerGeneration actsUpon ThermalEnergy.
+
+CQ: What can a geothermal system (e.g., a power plant) experience during its operation?
+Entities:
+- GeothermalSystem
+- OperationalIssue
+Relations (properties):
+- experiences
+Axioms:
+- GeothermalSystem experiences OperationalIssue.
+
+CQ: What activity is required to develop a geothermal resource?
+Entities:
+- Development
+- Activity
+- GeothermalResource
+Relations (properties):
+- isRequiredFor
+Axioms:
+- Development isRequiredFor GeothermalResource.
+
+CQ: What does a heat extraction process typically have as a material output?
+Entities:
+- HeatExtraction
+- GeothermalFluid
+Relations (properties):
+- hasOutput
+Axioms:
+- HeatExtraction hasOutput GeothermalFluid.
+
+CQ: What does a geothermal power generation process act upon to produce electricity?
+Entities:
+- GeothermalPowerGeneration
+- Process
+- GeothermalResource
+- Electricity
+Relations (properties):
+- actsUpon
+- produces
+Axioms:
+- GeothermalPowerGeneration is a subclass of Process.
+- GeothermalPowerGeneration actsUpon GeothermalResource.
+- GeothermalPowerGeneration produces Electricity.

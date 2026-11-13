@@ -1,0 +1,89 @@
+Model: [Claude Sonnet 5.5 / ChatGPT 6]
+Purpose: Generate the negative training samples for the Critic model
+
+-------------------------------------------------------------------------
+
+ROLE
+You are helping build a training dataset for a Critic model that judges whether
+a class-level ontology triple (subject, relation, object) is grounded in a
+competency question (CQ), that is, whether the CQ justifies the triple. The
+Critic must learn CQ-based justification, not general semantic relatedness or
+vocabulary overlap.
+
+BACKGROUND AND ADAPTED STRATEGY
+The negative-sampling design adapts "Generating Hard-Negative Out-of-Scope Data
+with ChatGPT for Intent Classification" (LREC-COLING 2024). In that work,
+out-of-scope utterances are generated so that they reuse keywords of an
+in-scope intent while not belonging to it, and are then verified as (i) not
+belonging to the target intent and (ii) not belonging to any other intent.
+Here, an "intent" is a (CQ, positive triple) pair. A hard negative is a triple
+that shares keywords or classes with the CQ but is not justified by it.
+
+INPUT
+WDV-CQ-HA positive dataset (CSV) with columns: original_triple, subject,
+relation, object, competency_question, gold_label (=1), theme, source.
+Triples are class-level. Each triple may be associated with several CQs, one
+per row.
+
+TASK
+Construct the full set of negative samples (gold_label = 0) for the WDV-CQ-HA
+source. Keep the CQ unchanged and pair it with a class-level triple that the
+CQ does not justify. Each negative is generated under one of the following types:
+
+1. same_subject_valid_elsewhere: a different valid relationship for the same
+   subject class, supported by another CQ.
+2. cq_relation_substitution: subject and object classes are kept; the relation
+   is replaced by one the CQ does not justify.
+3. same_theme_valid_elsewhere: a valid triple from another CQ of the same theme
+   that shares at least one keyword or class with the CQ.
+4. cross_domain_valid_elsewhere: a valid triple from a different theme
+   (easy control; keep a small share).
+5. keyword_preserving_hard_negative: a triple that reuses the CQ's keywords or
+   classes but is not justified by it, produced by one of:
+   - sibling_relation: same classes, adjacent but different relation.
+   - shared_relation_keyword: the CQ's relation word with a wrong subject or
+     object class.
+   - surface_keyword_overlap: a shared surface word with a different sense.
+   - argument_direction_swap: subject and object reversed.
+   - shared_object_class: same object class, different subject and relation.
+
+SOURCE SELECTION
+- Use only positives whose CQ explicitly evidences the subject and the
+  relation or object.
+- Exclude generic CQs ("What is a X?", "What does a X have?") and
+  relation-agnostic CQs ("What is the relation between X and Y?"), because any
+  relation would satisfy them and the negative label would be incorrect.
+- Exclude CQ = "-" and duplicates.
+- Sample one positive per distinct CQ and stratify across themes.
+
+CONSTRAINTS
+- A negative must differ from the positive for the same CQ.
+- It must not be an inverse, near-synonym, superclass or subclass reading of
+  the positive that the CQ would also license.
+- It must not answer an open-ended CQ (for example "What is X named after?").
+- It must not be a positive for the same CQ, its CQ-origin cluster, or a
+  near-paraphrase CQ.
+- Types 1 to 3 and 5 must share at least one keyword or class with the CQ;
+  negatives with no lexical or conceptual overlap are admissible only under
+  type 4.
+- Use class-level terms only. Prefer triples from the existing vocabulary and
+  flag novel ones.
+- Balance negatives across themes and report the distribution by type.
+
+OUTPUT (CSV, one row per negative)
+original_triple, subject, relation, object, competency_question, gold_label,
+theme, source
+
+- original_triple format: "(Subject, relation, Object)".
+- gold_label = 0; source = WDV-CQ-HA; theme inherited from the source CQ.
+
+VERIFICATION
+1. Programmatic: no duplicate (triple, CQ) rows; no negative equal to a
+   positive for the same CQ, its CQ-origin cluster, or a near-paraphrase CQ;
+   every CQ exists in the source file.
+2. Blind grounding check (separate session; the verifier sees only the CQ and
+   the triple, with no negative type and no source positive): answer
+   JUSTIFIED / NOT_JUSTIFIED / UNSURE. Retain only NOT_JUSTIFIED rows.
+3. Hardness check: a lexical-overlap-only baseline should reject the new
+   negatives less often than it rejects the original negatives.
+---------------------------------------------------------------------
