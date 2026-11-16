@@ -14,7 +14,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import torch
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, precision_recall_fscore_support
 from torch.utils.data import DataLoader
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollatorWithPadding
 
@@ -52,6 +52,42 @@ def evaluate_model(config, output_dir, split="test"):
         "confusion_matrix_labels": [0, 1],
     }
     prefix = "test" if split == "test" else split
+    # Reuse held-out predictions to report performance for each data source.
+    source_names = {"WDV-CQ-HA": "WDV-CQ", "CQ2Term": "CQ2Term", "CQ2Onto": "CQ2Onto"}
+    source_metrics = {}
+    for source in sorted({row["source"] for row in selected}):
+        indices = [i for i, row in enumerate(selected) if row["source"] == source]
+        source_gold = [gold[i] for i in indices]
+        source_predicted = [predicted[i] for i in indices]
+        precision, recall, f1, _ = precision_recall_fscore_support(
+            source_gold, source_predicted, labels=[0, 1], average="macro", zero_division=0,
+        )
+        source_metrics[source_names.get(source, source)] = {
+            "source": source,
+            "split": split,
+            "count": len(indices),
+            "accuracy": float(accuracy_score(source_gold, source_predicted)),
+            "precision_macro": float(precision),
+            "recall_macro": float(recall),
+            "f1_macro": float(f1),
+            "classification_report": classification_report(
+                source_gold, source_predicted, labels=[0, 1],
+                target_names=["class_0", "class_1"], output_dict=True, zero_division=0,
+            ),
+            "confusion_matrix": confusion_matrix(
+                source_gold, source_predicted, labels=[0, 1],
+            ).tolist(),
+            "confusion_matrix_labels": [0, 1],
+        }
+    (output_dir / f"{prefix}_metrics_by_source.json").write_text(
+        json.dumps(source_metrics, indent=2), encoding="utf-8",
+    )
+    columns = ["source", "count", "accuracy", "precision_macro", "recall_macro", "f1_macro"]
+    with (output_dir / f"{prefix}_metrics_by_source.csv").open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns)
+        writer.writeheader()
+        for name, values in source_metrics.items():
+            writer.writerow({"source": name, **{column: values[column] for column in columns[1:]}})
     (output_dir / f"{prefix}_metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
     with (output_dir / f"{prefix}_classification_report.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
