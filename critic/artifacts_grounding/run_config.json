@@ -1,5 +1,5 @@
 {
-  "dataset": "../Datasets/Grounding_Traininig_Dataset.csv",
+  "dataset": "../Datasets/Grounding_Training_Dataset.csv",
   "model_name": "microsoft/deberta-v3-small",
   "seed": 42,
   "train_fraction": 0.7,

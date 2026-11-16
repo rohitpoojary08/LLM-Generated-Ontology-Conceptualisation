@@ -1,6 +1,6 @@
 {
-  "dataset": "/misc/usrhomes/g122/projects/LLM-Generated-Ontology-Conceptualisation/Datasets/Grounding_Traininig_Dataset.csv",
-  "dataset_sha256": "24a9e790a231de4f90bbbfcc10446566c0b0817bb1b927e2f3958b7d9b408a98",
+  "dataset": "/misc/usrhomes/g122/projects/LLM-Generated-Ontology-Conceptualisation/Datasets/Grounding_Training_Dataset.csv",
+  "dataset_sha256": "00cff727f811459f8c971c531d16e2ae98c30875ffc36909598851ce99681b42",
   "seed": 42,
   "strategy": "Each source is split by whole themes. Train, validation, and test use disjoint themes within a source.",
   "fractions_requested": {
@@ -10,65 +10,65 @@
   },
   "splits": {
     "train": {
-      "total": 7206,
-      "class_0": 4028,
-      "class_1": 3178
+      "total": 7052,
+      "class_0": 3896,
+      "class_1": 3156
     },
     "validation": {
-      "total": 1519,
-      "class_0": 799,
-      "class_1": 720
+      "total": 1479,
+      "class_0": 765,
+      "class_1": 714
     },
     "test": {
-      "total": 1633,
-      "class_0": 808,
-      "class_1": 825
+      "total": 1588,
+      "class_0": 768,
+      "class_1": 820
     }
   },
   "sources": {
     "WDV-CQ-HA": {
-      "total": 9197,
+      "total": 8958,
       "splits": {
         "train": {
-          "total": 6390,
-          "class_0": 3632,
-          "class_1": 2758,
+          "total": 6236,
+          "class_0": 3500,
+          "class_1": 2736,
           "themes": {
-            "Airport": 309,
-            "Athlete": 593,
-            "Celestial": 240,
-            "Chemical": 249,
-            "City": 353,
-            "Comic": 641,
-            "Consolidate_data.csv": 6,
-            "Food": 511,
-            "MeanOfTransportation": 493,
-            "Monument": 543,
-            "Mountain": 255,
-            "Painting": 239,
-            "Politician": 617,
-            "Sports": 564,
-            "Street": 220,
-            "Taxon": 306,
-            "Written": 251
+            "Airport": 313,
+            "Athlete": 579,
+            "Celestial": 250,
+            "Chemical": 250,
+            "City": 339,
+            "Comic": 610,
+            "Consolidate_data.csv": 5,
+            "Food": 478,
+            "MeanOfTransportation": 481,
+            "Monument": 514,
+            "Mountain": 257,
+            "Painting": 245,
+            "Politician": 588,
+            "Sports": 543,
+            "Street": 232,
+            "Taxon": 302,
+            "Written": 250
           }
         },
         "validation": {
-          "total": 1371,
-          "class_0": 707,
-          "class_1": 664,
+          "total": 1331,
+          "class_0": 673,
+          "class_1": 658,
           "themes": {
-            "Artist": 719,
-            "Astronaut": 652
+            "Artist": 696,
+            "Astronaut": 635
           }
         },
         "test": {
-          "total": 1436,
-          "class_0": 714,
-          "class_1": 722,
+          "total": 1391,
+          "class_0": 674,
+          "class_1": 717,
           "themes": {
-            "Building": 736,
-            "University": 700
+            "Building": 718,
+            "University": 673
           }
         }
       }

@@ -1,5 +1,5 @@
 {
-  "epoch": 4,
-  "validation_f1_macro": 0.9749224063923925,
+  "epoch": 6,
+  "validation_f1_macro": 0.9648140692482249,
   "model_dir": "/misc/usrhomes/g122/projects/LLM-Generated-Ontology-Conceptualisation/critic/artifacts_grounding/model"
 }
